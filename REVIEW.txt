@@ -3,8 +3,10 @@ Article 审查说明
 
 交付文件
 - Article.md：唯一正文源文件，中文审查稿；补齐引言、相关工作、姿态控制、机械臂、Delta 遥操作、实验讨论和结论。
-- Article.pdf：由同一 Markdown 生成的 A4 双栏 PDF，共 7 页，45 个连续编号公式、4 张表。
-- scripts/build_pdf.py、scripts/paper.typ、scripts/requirements.txt：可重建的排版脚本及依赖。
+- Article.docx：以 conference-template-a4.docx 为 reference document 生成，直接保留原模板样式定义，正文内容与 Article.md 一致。
+- Article.pdf：从模板版 Word 直接导出，共 10 页，45 个连续编号公式、4 张表。
+- scripts/build_docx.py、scripts/build_pdf.py、scripts/requirements.txt：Word 模板套用与 PDF 导出脚本。
+- scripts/verify_docx.py：校验模板样式/双栏属性与 230 处可编辑 Office Math 表达式（其中 45 个独立编号公式）。
 - scripts/verify_math.py：关键推导的数值校核；使用合成数据，不代表硬件实验。
 
 已保留的技术逻辑
@@ -30,14 +32,14 @@ Article 审查说明
 Fig. 1   2      整体结构与分层控制框图：底盘、机械臂、主端、反馈和前馈通路。
 Fig. 2   2      单腿坐标系及关节零位。仓库现有“腿坐标系示意图.png”中 q1 从正 y 轴起画，与正文负 y 轴伸直零位不一致，需重标或重画；原图文件未修改。
 Fig. 4   3      轮体自由体图：地面力、小腿作用力、重力、接触力臂和轴向力矩。
-Fig. 5   3      整机质心、四个触点及接触力；注意基座中心和质心不应混同。
-Fig. 6   4      六轴机械臂 DH 坐标、腕心和控制通路；需与实际关节零位匹配。
-Fig. 7   5      Delta 几何模型与三编码器手柄；需标主动臂角、各半径和连杆长度。
-Fig. 8   6      关节阶跃曲线。报告第 41 页有截图，但缺原始日志和清晰坐标；应补时间、角度、指令/反馈图例及稳定误差带。
-Fig. 9   6      越障、坡道与姿态调节连续画面；分别标明仿真/实机、障碍尺寸和负载。
+Fig. 5   4      整机质心、四个触点及接触力；注意基座中心和质心不应混同。
+Fig. 6   5      六轴机械臂 DH 坐标、腕心和控制通路；需与实际关节零位匹配。
+Fig. 7   6      Delta 几何模型与三编码器手柄；需标主动臂角、各半径和连杆长度。
+Fig. 8   9      关节阶跃曲线。报告第 41 页有截图，但缺原始日志和清晰坐标；应补时间、角度、指令/反馈图例及稳定误差带。
+Fig. 9   9      越障、坡道与姿态调节连续画面；分别标明仿真/实机、障碍尺寸和负载。
 
 已有图片
-- Fig. 3(a)、Fig. 3(b) 使用 figures/mec_A.png 和 figures/mec_B.png，位于 PDF 第 2 页。
+- Fig. 3(a)、Fig. 3(b) 使用 figures/mec_A.png 和 figures/mec_B.png，位于 PDF 第 3 页。
 - 未修改原有 PNG、DOCX、DPS、drawio 或技术报告 PDF。
 
 资料与结论的对应关系
@@ -64,14 +66,23 @@ Fig. 9   6      越障、坡道与姿态调节连续画面；分别标明仿真/
 - 图题置于图下，表题置于表上；正文使用 Fig. 和 TABLE，公式编号连续且靠右。
 - 参考 IEEE 官方写作说明：https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/
 - 已核对数学排版说明：https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE-Editorial-Style-Manual.pdf
-- 这是中文双栏审查稿，使用 Nimbus Roman、中文回退字体和嵌入数学字体。并非目标会议的正式英文投稿版，也未声称通过 IEEE PDF eXpress 或套用了官方 LaTeX 类。
-- 构建程序从 Article.md 直接生成公式与 PDF，无需维护两份正文；build/ 中间文件不入库。
+- 本次按用户指定的 conference-template-a4.docx 直接套用，styles.xml 与原模板逐字节一致；使用原模板的 paper title、Author、Abstract、Keywords、heading 1–3、Body Text、equation、figure caption、table head、table copy 和 references 样式。保留正文双栏及末页连续分节；作者人数待确认，保留居中占位，不制造六位作者。
+- 论文内容未作新修改。原标题中的节号与图表编号已是明确文本，因此关闭相应段落的额外自动编号，避免重复编号。
+- Word 使用原模板声明的 Times New Roman、SimSun/MS Mincho 等字体；本机缺少这些字体，PDF 导出用 Liberation Serif、Noto Serif CJK SC 回退并嵌入字体。在装有模板原字体的 Word 环境中，字形与分页可能略有不同。
+- PDF 由 LibreOffice Writer 26.2.5.2（含 Math 模块）从 Word 导出，不再使用旧的 Typst 仿排模板；旧脚本 paper.typ 已移除。
+- LibreOffice 26.2 的 OMML 导入不读取 m:sty 的粗体/正体属性。导出程序仅在临时副本中使用等价数学 Unicode 字母及 m:nor 保持字形，提交的 Article.docx 保留标准、可编辑的 Office Math。已检查单位正体、矢量粗斜体和矩阵粗体。
+- 兼容性核对依据（handleR 实现）：https://github.com/LibreOffice/core/blob/libreoffice-26.2.5.2/starmath/source/ooxmlimport.cxx
+- 构建流程为 Article.md → Article.docx → Article.pdf，无需手工维护两份正文；build/ 中间文件不入库。未声称通过 IEEE PDF eXpress。
 
 复现命令（在仓库根目录）
 python3 -m venv .venv
 .venv/bin/python -m pip install -r scripts/requirements.txt
 .venv/bin/python scripts/verify_math.py
-.venv/bin/python scripts/build_pdf.py
+.venv/bin/python scripts/build_docx.py
+.venv/bin/python scripts/verify_docx.py
+.venv/bin/python scripts/build_pdf.py --no-rebuild
 .venv/bin/python scripts/verify_pdf.py
 
-本机已安装系统字体 Nimbus Roman 和 Droid Sans Fallback；其他机器需安装同名字体以保持版面一致。安装依赖后，构建和校核不访问网络。
+PDF 导出需 LibreOffice Writer 和 Math 模块，以及可用的中英文/数学字体；正常系统安装可直接执行上述命令。本次因环境无 sudo 权限，软件解压至 /tmp/ieee-lo，导出命令为：
+/tmp/ieee-paper-venv/bin/python scripts/build_pdf.py --office-root /tmp/ieee-lo --no-rebuild
+系统外的临时软件与字体不入库，未修改全局软件配置。安装所需工具后，构建及校核不访问网络。

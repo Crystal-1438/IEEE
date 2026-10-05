@@ -1,83 +1,102 @@
-"""Build Article.pdf from the single source Article.md, without network access.
-Setup: python3 -m venv .venv
-       .venv/bin/pip install -r scripts/requirements.txt
-Build: .venv/bin/python scripts/build_pdf.py
-Fonts: Nimbus Roman and Droid Sans Fallback (installed system fonts).
-Pandoc's TeX math parser converts equations; Typst embeds text/math fonts.
+"""Export the template-based Word document using LibreOffice Writer + Math.
+Normal system install: python scripts/build_pdf.py
+Portable install: python scripts/build_pdf.py --office-root /path/to/unpacked/root
+Use --no-rebuild to export an already-built Article.docx.
+No network access is used. PDF is replaced only after a successful export.
 """
-import json
-import re
+import argparse
+import os
 from pathlib import Path
-import pypandoc
-import typst
+import shutil
+import subprocess
+import sys
+import tempfile
+import unicodedata
+from zipfile import ZipFile, ZIP_DEFLATED
+from xml.etree import ElementTree as E
 
-ROOT = Path(__file__).resolve().parents[1]
-source = (ROOT / 'Article.md').read_text()
-# Keep figure placeholders and captions as one unbreakable object in the PDF.
-source = re.sub(
-    r'<!-- FIGURE_SLOT:(\d+) -->\s*\n\*([^\n]+)\*',
-    lambda m: '\n```{=typst}\n#blank-figure[' + m[2] + ']\n```\n', source)
-ast = json.loads(pypandoc.convert_text(source, 'json', format='markdown'))
-# Extract the title and author placeholder; the remaining body is two-column.
-title = ast['blocks'].pop(0)
-assert title['t'] == 'Header'
-author = ast['blocks'].pop(0)
-assert author['t'] == 'Para'
-count = 0
-
-
-def visit(node):
-    global count
-    if isinstance(node, list):
-        return [visit(x) for x in node]
-    if not isinstance(node, dict):
-        return node
-    if node.get('t') == 'Math' and node['c'][0]['t'] == 'DisplayMath':
-        count += 1
-        formula = node['c'][1]
-        tag = re.search(r'\\tag\{(\d+)\}', formula)
-        assert tag and int(tag[1]) == count, 'Equation numbering out of sequence'
-        formula = re.sub(r'\\tag\{\d+\}', '', formula).strip()
-        converted = pypandoc.convert_text('$$\n'+formula+'\n$$', 'typst', format='markdown').strip()
-        assert converted.startswith('$ ') and converted.endswith(' $'), converted
-        raw = '#paper-equation($' + converted[1:-1].strip() + '$, "' + str(count) + '")'
-        return {'t': 'RawInline', 'c': ['typst', raw]}
-    return {key: visit(value) for key, value in node.items()}
-
-
-ast = visit(ast)
-# Keep explicit TABLE titles together with their tables across column/page breaks.
-blocks = []
-i = 0
-while i < len(ast['blocks']):
-    current = ast['blocks'][i]
-    is_title = (current['t'] == 'Para' and current['c']
-                and current['c'][0]['t'] == 'Strong'
-                and current['c'][0]['c'][0].get('c') == 'TABLE')
-    if is_title and i+1 < len(ast['blocks']) and ast['blocks'][i+1]['t'] == 'Table':
-        pair = {**ast, 'blocks': ast['blocks'][i:i+2]}
-        rendered = pypandoc.convert_text(json.dumps(pair), 'typst', format='json')
-        blocks.append({'t': 'RawBlock', 'c': ['typst', '#block(breakable: false)[\n'+rendered+'\n]']})
-        i += 2
-    else:
-        blocks.append(current)
-        i += 1
-ast['blocks'] = blocks
-body = pypandoc.convert_text(json.dumps(ast), 'typst', format='json', extra_args=['--wrap=none'])
-# Pandoc emits #figure with an image and a caption; keep its explicit Fig. labels.
-body = body.replace('image("figures/', 'image("../figures/')
-# Start references in the second column of the final review page.
-body = body.replace('== 参考文献（References）',
-    '#colbreak()\n#set text(size: 9pt)\n#set par(justify: false, first-line-indent: 0pt)\n'
-    '== 参考文献（References）')
-heading_ast = {**ast, 'blocks': [{'t': 'Para', 'c': title['c'][2]}, author]}
-heading_text = pypandoc.convert_text(json.dumps(heading_ast), 'typst', format='json')
-title_text, author_text = heading_text.strip().split('\n\n', 1)
-preamble = (ROOT / 'scripts/paper.typ').read_text()
-result = preamble + '\n#align(center)[\n#text(size: 19pt, weight: "bold")[' + title_text + \
-    ']\n#v(7pt)\n#text(size: 9pt)[' + author_text + ']\n]\n#v(8pt)\n#columns(2, gutter: 6.3mm)[\n' + body + '\n]\n'
-build = ROOT / 'build'
-build.mkdir(exist_ok=True)
-(build / 'Article.typ').write_text(result)
-typst.compile(str(build / 'Article.typ'), output=str(ROOT / 'Article.pdf'), root=str(ROOT))
-print(f'Built Article.pdf with {count} numbered equations.')
+ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--office-root',type=Path)
+parser.add_argument('--no-rebuild',action='store_true')
+args=parser.parse_args()
+if not args.no_rebuild:
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_docx.py')],check=True,cwd=ROOT)
+env=os.environ.copy()
+if args.office_root:
+    office=args.office_root.resolve()
+    program=office/'usr/lib/libreoffice/program'
+    soffice=str(program/'soffice')
+    env['LD_LIBRARY_PATH']=str(program)+':'+str(office/'usr/lib/x86_64-linux-gnu')
+else:
+    soffice=shutil.which('libreoffice') or shutil.which('soffice')
+    if not soffice:raise SystemExit('Install LibreOffice Writer and Math, or pass --office-root.')
+build=ROOT/'build';build.mkdir(exist_ok=True)
+with tempfile.TemporaryDirectory(prefix='ieee-word-export-') as temp:
+    temporary=Path(temp)
+    font_dirs=f'<dir>{office}/usr/share/fonts</dir>' if args.office_root else ''
+    font_config=temporary/'fonts.conf'
+    font_config.write_text(f'''<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig><include>/etc/fonts/fonts.conf</include>{font_dirs}
+<cachedir>{temporary}/font-cache</cachedir>
+<alias><family>SimSun</family><prefer><family>Noto Serif CJK SC</family></prefer></alias>
+<alias><family>MS Mincho</family><prefer><family>Noto Serif CJK SC</family></prefer></alias>
+<alias><family>Times New Roman</family><prefer><family>Liberation Serif</family></prefer></alias>
+</fontconfig>''')
+    env['FONTCONFIG_FILE']=str(font_config)
+    # LibreOffice 26.2 ignores m:sty (p/b/bi) in OMML. Normalize only the
+    # temporary export copy: upright text via m:nor; styled identifiers via
+    # equivalent Unicode mathematical alphabets. Article.docx remains native.
+    M='http://schemas.openxmlformats.org/officeDocument/2006/math'
+    W='http://schemas.openxmlformats.org/wordprocessingml/2006/main'
+    with ZipFile(ROOT/'Article.docx') as z: parts={n:z.read(n) for n in z.namelist()}
+    doc=E.fromstring(parts['word/document.xml'])
+    for parent in doc.iter():
+        previous=None
+        for run in list(parent):
+            if run.tag != '{'+M+'}r':previous=None;continue
+            sty=run.find('{'+M+'}rPr/{'+M+'}sty')
+            txt=run.find('{'+M+'}t')
+            if sty is None or txt is None:previous=None;continue
+            value=sty.get('{'+M+'}val')
+            if value=='p' and (txt.text or '').isascii() and (txt.text or '').isalpha():
+                if previous is not None:
+                    previous.text=(previous.text or '')+(txt.text or '');parent.remove(run);continue
+                previous=txt
+            else:previous=None
+    for run in doc.iter('{'+M+'}r'):
+        pr=run.find('{'+M+'}rPr')
+        sty=pr.find('{'+M+'}sty') if pr is not None else None
+        txt=run.find('{'+M+'}t')
+        if sty is None or txt is None:continue
+        value=sty.get('{'+M+'}val'); original=txt.text or ''
+        if value not in ['p','b','bi'] or not any(c.isalpha() for c in original):continue
+        if value in ['b','bi']:
+            converted=[]
+            for c in original:
+                name=unicodedata.name(c,'')
+                if name.startswith('LATIN '):name=name.removeprefix('LATIN ').replace(' LETTER','')
+                elif name.startswith('GREEK '):name=name.removeprefix('GREEK ').replace(' LETTER','')
+                else:converted.append(c);continue
+                try:converted.append(unicodedata.lookup('MATHEMATICAL '+('BOLD ITALIC ' if value=='bi' else 'BOLD ')+name))
+                except KeyError:converted.append(c)
+            txt.text=''.join(converted)
+        if pr.find('{'+M+'}nor') is None:pr.insert(0,E.Element('{'+M+'}nor'))
+    parts['word/document.xml']=E.tostring(doc,encoding='utf-8',xml_declaration=True)
+    export_docx=temporary/'Article.docx'
+    with ZipFile(export_docx,'w',ZIP_DEFLATED) as z:
+        for name,data in parts.items():z.writestr(name,data)
+    command=[soffice,'--headless','-env:UserInstallation='+str((temporary/'profile').as_uri()),
+             '--convert-to','pdf:writer_pdf_Export','--outdir',str(temporary),str(export_docx)]
+    result=subprocess.run(command,cwd=ROOT,env=env,capture_output=True,text=True,timeout=180)
+    (build/'word-export.log').write_text(result.stdout+'\n'+result.stderr)
+    if result.returncode or not (temporary/'Article.pdf').is_file():
+        raise SystemExit('Word export failed; see build/word-export.log.')
+    import pymupdf
+    with pymupdf.open(temporary/'Article.pdf') as pdf:
+        text='\n'.join(page.get_text() for page in pdf)
+        if len(text)<14000:raise SystemExit('Possible missing formulas. Install LibreOffice Math.')
+        pages=len(pdf)
+    shutil.copy2(temporary/'Article.pdf',ROOT/'Article.pdf')
+print(f'Exported Article.docx -> Article.pdf ({pages} pages) using LibreOffice.')

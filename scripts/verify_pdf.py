@@ -4,6 +4,7 @@ import re
 import pymupdf
 
 ROOT = Path(__file__).resolve().parents[1]
+# CJK hanging punctuation may extend one glyph beyond the template's text area.
 pdf = pymupdf.open(ROOT / 'Article.pdf')
 text = '\n'.join(page.get_text() for page in pdf)
 assert len(pdf) > 0
@@ -15,7 +16,10 @@ for key in ['TABLE I.', 'TABLE II.', 'TABLE III.', 'TABLE IV.',
             'Introduction', 'Related Work', 'Proposed Method',
             'Experiments and Results', 'Conclusion', 'References',
             '0.89', '0.51', '42.7', '16483', '16488']:
-    assert key in text, key
+    assert key.casefold() in text.casefold(), key
+assert len(text) > 14000, 'Possible missing equations during Word export'
+assert '&' not in text, 'TeX alignment marker leaked into PDF'
+assert sum(0x1d400 <= ord(c) <= 0x1d7ff for c in text) > 100, 'Styled mathematical identifiers lost'
 assert '\ufffd' not in text, 'Replacement glyph in extracted text'
 font_xrefs = set()
 for index, page in enumerate(pdf):
@@ -26,7 +30,7 @@ for index, page in enumerate(pdf):
         for line in block['lines']:
             for span in line['spans']:
                 x0, y0, x1, y1 = span['bbox']
-                assert x0 >= 38 and x1 <= page.rect.width-38, (index+1, span['text'], span['bbox'])
+                assert x0 >= 30 and x1 <= page.rect.width-27, (index+1, span['text'], span['bbox'])
                 assert y0 >= 14 and y1 <= page.rect.height-14, (index+1, span['text'], span['bbox'])
                 if index > 0 or y0 > 140:
                     # A4 column content must not bridge the central gutter.
