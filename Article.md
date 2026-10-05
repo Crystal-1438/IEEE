@@ -44,7 +44,7 @@
 
 *Fig. 1. 整体结构与分层控制框图（留白，待补图）。*
 
-标量采用斜体，矢量采用粗斜体，矩阵采用粗正体；描述性下标、单位和函数名称采用正体。上标 $\mathsf{T}$ 表示转置，$\dagger$ 表示 Moore–Penrose 伪逆；$[\boldsymbol{x}]_\times\boldsymbol{y}=\boldsymbol{x}\times\boldsymbol{y}$。$\mathbf{I}_n$ 为 $n$ 阶单位矩阵，惯性张量另记为 $\mathbf{I}_{\mathrm{c}}$ 或 $\mathbf{I}_{\mathrm{b}}$。符号 $\mathrm{d}$、$\mathrm{ff}$ 和 $\mathrm{fb}$ 分别表示期望、前馈和反馈量。长度、时间和角度统一采用国际单位制。
+标量采用斜体，矢量采用粗斜体，矩阵采用粗正体；描述性下标、单位和函数名称采用正体。上标 $\mathrm{T}$ 表示转置，$\dagger$ 表示 Moore–Penrose 伪逆；$[\boldsymbol{x}]_\times\boldsymbol{y}=\boldsymbol{x}\times\boldsymbol{y}$。$\mathbf{I}_n$ 为 $n$ 阶单位矩阵，惯性张量另记为 $\mathbf{I}_{\mathrm{c}}$ 或 $\mathbf{I}_{\mathrm{b}}$。符号 $\mathrm{d}$、$\mathrm{ff}$ 和 $\mathrm{fb}$ 分别表示期望、前馈和反馈量。长度、时间和角度统一采用国际单位制。
 
 定义惯性系 $\{\mathrm{s}\}$ 的竖直轴向上；机体系 $\{\mathrm{b}\}$ 固连底盘，原点位于基座中心，$x$ 轴向前、$y$ 轴向左、$z$ 轴向上。腿基系 $\{\mathrm{l}_i\}$ 位于第 $i$ 个髋部，腿部运动平面为其 $xy$ 平面。$\mathbf{R}_{\mathrm{s}\mathrm{b}}$ 将机体系分量变换至惯性系。力矩计算涉及的各矢量必须先变换至同一坐标系；基座中心与整机质心不重合时，力臂必须相对于质心重新计算。
 
@@ -54,7 +54,7 @@
 
 底盘由基座与四条腿组成，每条腿包含轴线平行的髋部俯仰关节、膝关节和一个麦克纳姆轮，共十二个主动自由度。控制沿用“单腿建模—整机合力分配—关节执行”的分层结构。腿部关节调整支撑高度与前后轮心位置，车轮负责平面滚动。
 
-设单腿关节角为 $\boldsymbol{q}_{\mathrm{l}}=[q_{\mathrm{l},1},q_{\mathrm{l},2}]^{\mathsf{T}}$，大腿和小腿长度为 $L_1,L_2$；轮心位置为 $\boldsymbol{p}_{\mathrm{a}}^{\mathrm{l}}=[x_{\mathrm{a}},y_{\mathrm{a}},0]^{\mathsf{T}}$。此处将原稿“足端位置”明确为轮轴中心，区别于轮地触点。零位为两连杆沿腿基系负 $y$ 轴伸直，关节角正向由下式确定。几何参数见 TABLE I，Fig. 2 预留相应坐标图。
+设单腿关节角为 $\boldsymbol{q}_{\mathrm{l}}=[q_{\mathrm{l},1},q_{\mathrm{l},2}]^{\mathrm{T}}$，大腿和小腿长度为 $L_1,L_2$；轮心位置为 $\boldsymbol{p}_{\mathrm{a}}^{\mathrm{l}}=[x_{\mathrm{a}},y_{\mathrm{a}},0]^{\mathrm{T}}$。此处将原稿“足端位置”明确为轮轴中心，区别于轮地触点。零位为两连杆沿腿基系负 $y$ 轴伸直，关节角正向由下式确定。几何参数见 TABLE I，Fig. 2 预留相应坐标图。
 
 <!-- FIGURE_SLOT:2 -->
 
@@ -145,7 +145,7 @@ $$
 其中 $\vartheta_i=\pm\pi/4$ 为从轮轴方向到辊子自由滚动方向的有向角。理想接触下，沿辊子轴线的相对滑动为零，即
 
 $$
-\boldsymbol{n}_i^{\mathsf{T}}\bigl(\boldsymbol{v}_i-r_{\mathrm{w}}\omega_i\boldsymbol{d}_i\bigr)=0.
+\boldsymbol{n}_i^{\mathrm{T}}\bigl(\boldsymbol{v}_i-r_{\mathrm{w}}\omega_i\boldsymbol{d}_i\bigr)=0.
 \tag{7}
 $$
 
@@ -177,7 +177,7 @@ $$
 
 $$
 \begin{aligned}
-\tau_{\mathrm{w}}=\boldsymbol{e}_{\mathrm{ax}}^{\mathsf{T}}\bigl(&\mathbf{I}_{\mathrm{c}}\dot{\boldsymbol{\omega}}_{\mathrm{w}}
+\tau_{\mathrm{w}}=\boldsymbol{e}_{\mathrm{ax}}^{\mathrm{T}}\bigl(&\mathbf{I}_{\mathrm{c}}\dot{\boldsymbol{\omega}}_{\mathrm{w}}
 +\boldsymbol{\omega}_{\mathrm{w}}\times(\mathbf{I}_{\mathrm{c}}\boldsymbol{\omega}_{\mathrm{w}})\\
 &-\boldsymbol{r}_{\mathrm{ce}}\times\boldsymbol{f}_{\mathrm{e}}\bigr).
 \end{aligned}
@@ -198,8 +198,8 @@ $$
 
 $$
 \begin{aligned}
-0={}&\boldsymbol{\tau}_{\mathrm{q}}^{\mathsf{T}}\delta\boldsymbol{q}_{\mathrm{l}}
--\boldsymbol{f}_{\mathrm{w}}^{\mathsf{T}}\mathbf{J}_{\mathrm{l}}\delta\boldsymbol{q}_{\mathrm{l}}\\
+0={}&\boldsymbol{\tau}_{\mathrm{q}}^{\mathrm{T}}\delta\boldsymbol{q}_{\mathrm{l}}
+-\boldsymbol{f}_{\mathrm{w}}^{\mathrm{T}}\mathbf{J}_{\mathrm{l}}\delta\boldsymbol{q}_{\mathrm{l}}\\
 &-\tau_{\mathrm{w}}[1,1]\delta\boldsymbol{q}_{\mathrm{l}}.
 \end{aligned}
 \tag{12}
@@ -209,13 +209,13 @@ $$
 
 $$
 \begin{aligned}
-\boldsymbol{\tau}_{\mathrm{q}}&=\mathbf{J}_{\mathrm{l}}^{\mathsf{T}}\boldsymbol{f}_{\mathrm{w}}+[1,1]^{\mathsf{T}}\tau_{\mathrm{w}},\\
-\boldsymbol{\tau}_{\eta}&=\mathbf{A}_{\mathrm{tr}}^{\mathsf{T}}\boldsymbol{\tau}_{\mathrm{q}}.
+\boldsymbol{\tau}_{\mathrm{q}}&=\mathbf{J}_{\mathrm{l}}^{\mathrm{T}}\boldsymbol{f}_{\mathrm{w}}+[1,1]^{\mathrm{T}}\tau_{\mathrm{w}},\\
+\boldsymbol{\tau}_{\eta}&=\mathbf{A}_{\mathrm{tr}}^{\mathrm{T}}\boldsymbol{\tau}_{\mathrm{q}}.
 \end{aligned}
 \tag{13}
 $$
 
-第二式来自 $\boldsymbol{\tau}_{\eta}^{\mathsf{T}}\delta\boldsymbol{\eta}_{\mathrm{l}}=\boldsymbol{\tau}_{\mathrm{q}}^{\mathsf{T}}\delta\boldsymbol{q}_{\mathrm{l}}$，因而必须使用传动矩阵的转置。若在维修架上考虑杆件自重，应在第一式增加 $-\sum_{j=1}^{2}\mathbf{J}_{\mathrm{c},j}^{\mathsf{T}}m_j\boldsymbol{g}$，其中 $\mathbf{J}_{\mathrm{c},j}$ 为第 $j$ 根杆件质心的雅可比。所有轮端力均须先变换至腿基系。
+第二式来自 $\boldsymbol{\tau}_{\eta}^{\mathrm{T}}\delta\boldsymbol{\eta}_{\mathrm{l}}=\boldsymbol{\tau}_{\mathrm{q}}^{\mathrm{T}}\delta\boldsymbol{q}_{\mathrm{l}}$，因而必须使用传动矩阵的转置。若在维修架上考虑杆件自重，应在第一式增加 $-\sum_{j=1}^{2}\mathbf{J}_{\mathrm{c},j}^{\mathrm{T}}m_j\boldsymbol{g}$，其中 $\mathbf{J}_{\mathrm{c},j}$ 为第 $j$ 根杆件质心的雅可比。所有轮端力均须先变换至腿基系。
 
 #### 4) 整机单刚体动力学
 
@@ -225,7 +225,7 @@ $$
 
 *Fig. 5. 整机质心、四轮触点及接触力分配（留白，待补图）。*
 
-以下各量均在惯性系表示。机体系惯性张量需变换为 $\mathbf{I}_{\mathrm{s}}=\mathbf{R}_{\mathrm{s}\mathrm{b}}\mathbf{I}_{\mathrm{b}}\mathbf{R}_{\mathrm{s}\mathrm{b}}^{\mathsf{T}}$。令
+以下各量均在惯性系表示。机体系惯性张量需变换为 $\mathbf{I}_{\mathrm{s}}=\mathbf{R}_{\mathrm{s}\mathrm{b}}\mathbf{I}_{\mathrm{b}}\mathbf{R}_{\mathrm{s}\mathrm{b}}^{\mathrm{T}}$。令
 
 $$
 \mathbf{H}=\begin{bmatrix}
@@ -241,7 +241,7 @@ $$
 m(\boldsymbol{a}_{\mathrm{G}}-\boldsymbol{g})\\
 \mathbf{I}_{\mathrm{s}}\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times(\mathbf{I}_{\mathrm{s}}\boldsymbol{\omega})
 \end{bmatrix},\\
-\boldsymbol{f}_{\mathrm{e}}&=[\boldsymbol{f}_{\mathrm{e},1}^{\mathsf{T}},\ldots,\boldsymbol{f}_{\mathrm{e},4}^{\mathsf{T}}]^{\mathsf{T}}.
+\boldsymbol{f}_{\mathrm{e}}&=[\boldsymbol{f}_{\mathrm{e},1}^{\mathrm{T}},\ldots,\boldsymbol{f}_{\mathrm{e},4}^{\mathrm{T}}]^{\mathrm{T}}.
 \end{aligned}
 \tag{15}
 $$
@@ -257,13 +257,13 @@ $$
 
 $$
 \boldsymbol{f}_{\mathrm{e}}^{\star}=\mathbf{H}^{\dagger}\boldsymbol{b}_{\mathrm{dyn}}
-=\mathbf{H}^{\mathsf{T}}(\mathbf{H}\mathbf{H}^{\mathsf{T}})^{-1}\boldsymbol{b}_{\mathrm{dyn}},
+=\mathbf{H}^{\mathrm{T}}(\mathbf{H}\mathbf{H}^{\mathrm{T}})^{-1}\boldsymbol{b}_{\mathrm{dyn}},
 \tag{17}
 $$
 
 右侧逆矩阵形式仅在 $\mathbf{H}$ 满行秩时成立。该解最小化接触力的欧氏范数，并不直接最小化电池能耗，也不自动满足法向力非负、摩擦上限以及辊子方向约束。
 
-对于水平接触，理想模型还要求 $f_{\mathrm{e},i,z}\geq0$、$\boldsymbol{t}_i^{\mathsf{T}}\boldsymbol{f}_{\mathrm{e},i}\approx0$ 及 $|\boldsymbol{n}_i^{\mathsf{T}}\boldsymbol{f}_{\mathrm{e},i}|\leq\mu_i f_{\mathrm{e},i,z}$，其中 $\mu_i$ 为有效摩擦系数，方向矢量需转换至惯性系。基线分配不满足这些条件时，不能视为可直接执行的地面力。报告提出的二次规划可加入这些限制，但不属于本文已有实验的实现结果。
+对于水平接触，理想模型还要求 $f_{\mathrm{e},i,z}\geq0$、$\boldsymbol{t}_i^{\mathrm{T}}\boldsymbol{f}_{\mathrm{e},i}\approx0$ 及 $|\boldsymbol{n}_i^{\mathrm{T}}\boldsymbol{f}_{\mathrm{e},i}|\leq\mu_i f_{\mathrm{e},i,z}$，其中 $\mu_i$ 为有效摩擦系数，方向矢量需转换至惯性系。基线分配不满足这些条件时，不能视为可直接执行的地面力。报告提出的二次规划可加入这些限制，但不属于本文已有实验的实现结果。
 
 #### 5) 姿态控制器与离地检测
 
@@ -301,11 +301,11 @@ $$
 
 此处 $h_i^{\mathrm{d}}$ 为向下的支撑高度，腿基系相应目标为 $y_{\mathrm{a},i}^{\mathrm{d}}=-h_i^{\mathrm{d}}$。符号关系来自机身滚转与俯仰引起的髋部高度变化；实际坐标安装方向应据此标定。逆运动学随后将轮心目标转换为关节目标。高度、关节角及输出增量均需限幅，饱和时停止向不可达方向累加。
 
-离地检测使用电机反馈力矩估算腿平面内的轮端载荷。令 $\boldsymbol{\tau}_{\mathrm{q},\mathrm{fb}}=\mathbf{A}_{\mathrm{tr}}^{-\mathsf{T}}\boldsymbol{\tau}_{\eta,\mathrm{fb}}$，由虚功关系可得
+离地检测使用电机反馈力矩估算腿平面内的轮端载荷。令 $\boldsymbol{\tau}_{\mathrm{q},\mathrm{fb}}=\mathbf{A}_{\mathrm{tr}}^{-\mathrm{T}}\boldsymbol{\tau}_{\eta,\mathrm{fb}}$，由虚功关系可得
 
 $$
-\widehat{\boldsymbol{f}}_{\mathrm{w}}=(\mathbf{J}_{\mathrm{l}}^{\mathsf{T}})^{\dagger}
-\bigl(\boldsymbol{\tau}_{\mathrm{q},\mathrm{fb}}-[1,1]^{\mathsf{T}}\tau_{\mathrm{w}}\bigr).
+\widehat{\boldsymbol{f}}_{\mathrm{w}}=(\mathbf{J}_{\mathrm{l}}^{\mathrm{T}})^{\dagger}
+\bigl(\boldsymbol{\tau}_{\mathrm{q},\mathrm{fb}}-[1,1]^{\mathrm{T}}\tau_{\mathrm{w}}\bigr).
 \tag{21}
 $$
 
@@ -327,7 +327,7 @@ $$
 \begin{aligned}
 \mathbf{T}_{j-1,j}&=\mathbf{R}_z(\theta_j)\mathbf{T}_z(d_j)\mathbf{T}_x(a_j)\mathbf{R}_x(\alpha_j),\\
 \mathbf{T}_{06}&=\prod_{j=1}^{6}\mathbf{T}_{j-1,j}
-=\begin{bmatrix}\mathbf{R}_{06}&\boldsymbol{p}_{06}\\\boldsymbol{0}^{\mathsf{T}}&1\end{bmatrix}.
+=\begin{bmatrix}\mathbf{R}_{06}&\boldsymbol{p}_{06}\\\boldsymbol{0}^{\mathrm{T}}&1\end{bmatrix}.
 \end{aligned}
 \tag{22}
 $$
@@ -359,7 +359,7 @@ $$
 前三轴确定后，球腕目标姿态为
 
 $$
-\mathbf{R}_{36}=\mathbf{R}_{03}^{\mathsf{T}}\mathbf{R}_{06}
+\mathbf{R}_{36}=\mathbf{R}_{03}^{\mathrm{T}}\mathbf{R}_{06}
 =[\boldsymbol{n},\boldsymbol{o},\boldsymbol{a}].
 \tag{25}
 $$
@@ -434,7 +434,8 @@ d&=r_{\mathrm{TD}}h_0^2,\qquad a_0=h_0x_2,\qquad y=x_1-r+a_0,\\
 a_1&=\sqrt{d(d+8|y|)},\\
 a_2&=a_0+\operatorname{sgn}(y)(a_1-d)/2,\\
 a&=(a_0+y)S(y,d)+a_2[1-S(y,d)],\\
-\operatorname{fst}&=-r_{\mathrm{TD}}\bigl[(a/d)S(a,d)+\operatorname{sgn}(a)(1-S(a,d))\bigr].
+\operatorname{fst}&=-r_{\mathrm{TD}}\bigl[(a/d)S(a,d)\\
+&\qquad+\operatorname{sgn}(a)(1-S(a,d))\bigr].
 \end{aligned}
 \tag{31}
 $$
@@ -451,7 +452,7 @@ TD 限制参考信号变化并产生速度估计；它会引入跟踪滞后，�
 
 *Fig. 7. Delta 三支链几何、动平台及三编码器姿态手柄（留白，待补图）。*
 
-静平台坐标系 $\{\mathrm{D}\}$ 的 $z$ 轴向上，工作侧为 $z<0$。静、动平台连接点分布圆半径分别记为 $R_{\mathrm{D}},r_{\mathrm{D}}$，主动臂和从动臂长度为 $L_{\mathrm{D}},L_{\mathrm{P}}$。三支链方位角为 $\psi_i=2\pi(i-1)/3$，径向单位矢量为 $\boldsymbol{e}_i=[\cos\psi_i,\sin\psi_i,0]^{\mathsf{T}}$。主动臂角 $\theta_{\mathrm{D},i}$ 从水平向外方向起算，朝负 $z$ 工作侧转动为正。
+静平台坐标系 $\{\mathrm{D}\}$ 的 $z$ 轴向上，工作侧为 $z<0$。静、动平台连接点分布圆半径分别记为 $R_{\mathrm{D}},r_{\mathrm{D}}$，主动臂和从动臂长度为 $L_{\mathrm{D}},L_{\mathrm{P}}$。三支链方位角为 $\psi_i=2\pi(i-1)/3$，径向单位矢量为 $\boldsymbol{e}_i=[\cos\psi_i,\sin\psi_i,0]^{\mathrm{T}}$。主动臂角 $\theta_{\mathrm{D},i}$ 从水平向外方向起算，朝负 $z$ 工作侧转动为正。
 
 **TABLE II. Delta 主端几何参数（来自机械设计资料 [5]）**
 
@@ -462,7 +463,7 @@ TD 限制参考信号变化并产生速度估计；它会引入跟踪滞后，�
 | $L_{\mathrm{D}}$ | $0.150\,\mathrm{m}$ | 主动臂中心距 |
 | $L_{\mathrm{P}}$ | $0.200\,\mathrm{m}$ | 从动臂中心距 |
 
-设动平台中心为 $\boldsymbol{p}_{\mathrm{D}}=[x_{\mathrm{D}},y_{\mathrm{D}},z_{\mathrm{D}}]^{\mathsf{T}}$，将动平台半径移入支链几何后，等效球心为
+设动平台中心为 $\boldsymbol{p}_{\mathrm{D}}=[x_{\mathrm{D}},y_{\mathrm{D}},z_{\mathrm{D}}]^{\mathrm{T}}$，将动平台半径移入支链几何后，等效球心为
 
 $$
 \boldsymbol{c}_i=(R_{\mathrm{D}}-r_{\mathrm{D}}+L_{\mathrm{D}}\cos\theta_{\mathrm{D},i})\boldsymbol{e}_i
@@ -480,18 +481,18 @@ $$
 第 2、3 个方程分别减去第 1 个方程，可消除二次项，得到
 
 $$
-2(\boldsymbol{c}_i-\boldsymbol{c}_1)^{\mathsf{T}}\boldsymbol{p}_{\mathrm{D}}
+2(\boldsymbol{c}_i-\boldsymbol{c}_1)^{\mathrm{T}}\boldsymbol{p}_{\mathrm{D}}
 =\|\boldsymbol{c}_i\|_2^2-\|\boldsymbol{c}_1\|_2^2,\quad i=2,3.
 \tag{34}
 $$
 
-记 $\boldsymbol{c}_i=[c_{ix},c_{iy},c_{iz}]^{\mathsf{T}}$，定义
+记 $\boldsymbol{c}_i=[c_{ix},c_{iy},c_{iz}]^{\mathrm{T}}$，定义
 
 $$
 \begin{aligned}
 \mathbf{B}_{\mathrm{D}}&=2\begin{bmatrix}c_{2x}-c_{1x}&c_{2y}-c_{1y}\\c_{3x}-c_{1x}&c_{3y}-c_{1y}\end{bmatrix},\\
 \boldsymbol{d}_{\mathrm{D}}&=\begin{bmatrix}\|\boldsymbol{c}_2\|^2-\|\boldsymbol{c}_1\|^2\\\|\boldsymbol{c}_3\|^2-\|\boldsymbol{c}_1\|^2\end{bmatrix},\\
-\boldsymbol{e}_{\mathrm{D}}&=2[c_{2z}-c_{1z},c_{3z}-c_{1z}]^{\mathsf{T}}.
+\boldsymbol{e}_{\mathrm{D}}&=2[c_{2z}-c_{1z},c_{3z}-c_{1z}]^{\mathrm{T}}.
 \end{aligned}
 \tag{35}
 $$
@@ -499,7 +500,7 @@ $$
 在 $\mathbf{B}_{\mathrm{D}}$ 可逆时，令 $\boldsymbol{u}=\mathbf{B}_{\mathrm{D}}^{-1}\boldsymbol{d}_{\mathrm{D}}$、$\boldsymbol{v}=-\mathbf{B}_{\mathrm{D}}^{-1}\boldsymbol{e}_{\mathrm{D}}$，有
 
 $$
-[x_{\mathrm{D}},y_{\mathrm{D}}]^{\mathsf{T}}=\boldsymbol{u}+\boldsymbol{v}z_{\mathrm{D}}.
+[x_{\mathrm{D}},y_{\mathrm{D}}]^{\mathrm{T}}=\boldsymbol{u}+\boldsymbol{v}z_{\mathrm{D}}.
 \tag{36}
 $$
 
@@ -507,8 +508,8 @@ $$
 
 $$
 \begin{aligned}
-A_{\mathrm{D}}&=1+\boldsymbol{v}^{\mathsf{T}}\boldsymbol{v},\\
-B_{\mathrm{D}}&=2\bigl[\boldsymbol{v}^{\mathsf{T}}(\boldsymbol{u}-\boldsymbol{c}_{1,xy})-c_{1z}\bigr],\\
+A_{\mathrm{D}}&=1+\boldsymbol{v}^{\mathrm{T}}\boldsymbol{v},\\
+B_{\mathrm{D}}&=2\bigl[\boldsymbol{v}^{\mathrm{T}}(\boldsymbol{u}-\boldsymbol{c}_{1,xy})-c_{1z}\bigr],\\
 C_{\mathrm{D}}&=\|\boldsymbol{u}-\boldsymbol{c}_{1,xy}\|^2+c_{1z}^2-L_{\mathrm{P}}^2.
 \end{aligned}
 \tag{37}
@@ -522,8 +523,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbf{S}_{\mathrm{D}}&=\begin{bmatrix}\boldsymbol{s}_1^{\mathsf{T}}\\\boldsymbol{s}_2^{\mathsf{T}}\\\boldsymbol{s}_3^{\mathsf{T}}\end{bmatrix},\\
-\mathbf{D}_{\mathrm{D}}&=\operatorname{diag}\!\left(\boldsymbol{s}_i^{\mathsf{T}}\frac{\partial\boldsymbol{c}_i}{\partial\theta_{\mathrm{D},i}}\right)_{i=1}^{3},\\
+\mathbf{S}_{\mathrm{D}}&=\begin{bmatrix}\boldsymbol{s}_1^{\mathrm{T}}\\\boldsymbol{s}_2^{\mathrm{T}}\\\boldsymbol{s}_3^{\mathrm{T}}\end{bmatrix},\\
+\mathbf{D}_{\mathrm{D}}&=\operatorname{diag}\!\left(\boldsymbol{s}_i^{\mathrm{T}}\frac{\partial\boldsymbol{c}_i}{\partial\theta_{\mathrm{D},i}}\right)_{i=1}^{3},\\
 \mathbf{J}_{\mathrm{D}}&=\mathbf{S}_{\mathrm{D}}^{-1}\mathbf{D}_{\mathrm{D}},\qquad
 \dot{\boldsymbol{p}}_{\mathrm{D}}=\mathbf{J}_{\mathrm{D}}\dot{\boldsymbol{\theta}}_{\mathrm{D}}.
 \end{aligned}
@@ -533,7 +534,7 @@ $$
 此表达式要求 $\mathbf{S}_{\mathrm{D}}$ 可逆。静力学采用虚功原理：若机构对动平台提供的期望支撑力为 $\boldsymbol{f}_{\mathrm{D}}$，对应电机广义力矩为
 
 $$
-\boldsymbol{\tau}_{\mathrm{D},\mathrm{ff}}=\mathbf{J}_{\mathrm{D}}^{\mathsf{T}}\boldsymbol{f}_{\mathrm{D}}.
+\boldsymbol{\tau}_{\mathrm{D},\mathrm{ff}}=\mathbf{J}_{\mathrm{D}}^{\mathrm{T}}\boldsymbol{f}_{\mathrm{D}}.
 \tag{39}
 $$
 
@@ -591,7 +592,7 @@ $\mathbf{R}_{\mathrm{map},xy}$ 表示在底盘近似水平、朝向固定时，�
 $$
 \begin{aligned}
 E_{\mathrm{p}}&=\sqrt{\frac{1}{N}\sum_{k=1}^{N}\|\boldsymbol{p}_{\mathrm{d}}[k]-\boldsymbol{p}[k]\|_2^2},\\
-e_{\mathrm{R}}[k]&=\arccos\frac{\operatorname{tr}(\mathbf{R}_{\mathrm{d}}^{\mathsf{T}}[k]\mathbf{R}[k])-1}{2},\\
+e_{\mathrm{R}}[k]&=\arccos\frac{\operatorname{tr}(\mathbf{R}_{\mathrm{d}}^{\mathrm{T}}[k]\mathbf{R}[k])-1}{2},\\
 E_{\mathrm{bat}}&=\sum_{k=1}^{N}U[k]I[k]T_{\mathrm{s}}.
 \end{aligned}
 \tag{44}

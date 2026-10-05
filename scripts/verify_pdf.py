@@ -1,6 +1,10 @@
 """Check the generated review PDF for dropped content, numbering and layout bounds."""
 from pathlib import Path
 import re
+import unicodedata
+from collections import Counter
+from zipfile import ZipFile
+from xml.etree import ElementTree as E
 import pymupdf
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,9 +25,36 @@ assert len(text) > 14000, 'Possible missing equations during Word export'
 assert '&' not in text, 'TeX alignment marker leaked into PDF'
 assert sum(0x1d400 <= ord(c) <= 0x1d7ff for c in text) > 100, 'Styled mathematical identifiers lost'
 assert '\ufffd' not in text, 'Replacement glyph in extracted text'
+# Check all styled identifiers against the editable source, including zero
+# vectors. Counts catch dropped glyphs and incorrect matrix/vector conversion.
+M='{http://schemas.openxmlformats.org/officeDocument/2006/math}'
+with ZipFile(ROOT/'Article.docx') as z:
+    doc=E.fromstring(z.read('word/document.xml'))
+expected=Counter()
+for run in doc.iter(M+'r'):
+    sty=run.find(M+'rPr/'+M+'sty');t=run.find(M+'t')
+    if sty is None or t is None:continue
+    value=sty.get(M+'val')
+    if value not in ['b','bi']:continue
+    for c in t.text or '':
+        if not c.isalnum():continue
+        name=unicodedata.name(c).removeprefix('LATIN ').removeprefix('GREEK ').replace(' LETTER','')
+        expected[unicodedata.lookup('MATHEMATICAL '+('BOLD ITALIC ' if value=='bi' else 'BOLD ')+name)]+=1
+actual=Counter(c for c in text if unicodedata.name(c,'').startswith('MATHEMATICAL BOLD'))
+assert actual==expected,('Missing',expected-actual,'Unexpected',actual-expected)
+assert text.count('ℬ')==2,'Calligraphic workspace set B lost'
+assert text.count('ℝ')==2,'Real-number symbol lost'
+# Every non-ASCII mathematical operator in the source must survive export.
+source_symbols=Counter(c for t in doc.iter(M+'t') for c in t.text or ''
+    if ord(c)>127 and not c.isspace() and unicodedata.category(c)=='Sm')
+for c,n in source_symbols.items():assert text.count(c)>=n,(c,n,text.count(c))
 font_xrefs = set()
 for index, page in enumerate(pdf):
     assert len(page.get_text().strip()) > 100, f'Unexpected empty page {index+1}'
+    for span in page.get_texttrace():
+        for codepoint,glyph,origin,bounds in span['chars']:
+            assert glyph!=0,(index+1,'Missing font glyph',chr(codepoint))
+            assert bounds[0]>=30 and bounds[2]<=page.rect.width-27,(index+1,'Clipped glyph',chr(codepoint),bounds)
     for block in page.get_text('dict')['blocks']:
         if block['type'] != 0:
             continue

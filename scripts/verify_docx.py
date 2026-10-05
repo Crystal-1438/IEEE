@@ -3,6 +3,8 @@ from pathlib import Path
 from zipfile import ZipFile
 from xml.etree import ElementTree as E
 import json
+import re
+from collections import Counter
 import pypandoc
 ROOT=Path(__file__).resolve().parents[1]
 NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
@@ -30,6 +32,22 @@ with ZipFile(ROOT/'conference-template-a4.docx') as template, ZipFile(ROOT/'Arti
         tags=[x.tag for x in r]
         if '{'+NS['m']+'}rPr' in tags and W+'rPr' in tags:
             assert tags.index('{'+NS['m']+'}rPr')<tags.index(W+'rPr'),'Invalid OMML property order'
+    # The previous build passed expression-count checks while turning every
+    # matrix into a bold italic vector. Verify semantic style, not just presence.
+    M='{'+NS['m']+'}'
+    source=(ROOT/'Article.md').read_text()
+    expected_matrices=Counter(''.join(re.findall(r'\\mathbf\{([A-Za-z]+)\}',source)))
+    actual_matrices=Counter()
+    for r in root.findall('.//m:r',NS):
+        t=r.find('m:t',NS);sty=r.find('m:rPr/m:sty',NS)
+        value=sty.get(M+'val') if sty is not None else 'i'
+        if value=='b' and t is not None:
+            actual_matrices.update(c for c in t.text or '' if c.isalpha())
+        fonts=r.find('w:rPr/w:rFonts',NS)
+        assert fonts is not None and fonts.get(W+'ascii')=='Cambria Math'
+    assert actual_matrices==expected_matrices,(actual_matrices,expected_matrices)
+    settings=E.fromstring(doc.read('word/settings.xml'))
+    assert settings.find('m:mathPr/m:mathFont',NS).get(M+'val')=='Cambria Math'
     for style_id in ['21','14','12','29','2','3','4','7','17','18','22','24','26','28']:
         assert any(s.get(W+'val')==style_id for s in root.findall('.//w:pStyle',NS)),style_id
     text=''.join(t.text or '' for t in root.findall('.//w:t',NS))

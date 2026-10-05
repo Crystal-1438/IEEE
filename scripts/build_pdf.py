@@ -69,18 +69,31 @@ with tempfile.TemporaryDirectory(prefix='ieee-word-export-') as temp:
         pr=run.find('{'+M+'}rPr')
         sty=pr.find('{'+M+'}sty') if pr is not None else None
         txt=run.find('{'+M+'}t')
-        if sty is None or txt is None:continue
+        if txt is None:continue
+        script=pr.find('{'+M+'}scr') if pr is not None else None
+        if script is not None and script.get('{'+M+'}val')=='script':
+            # Writer 26.2 also drops calligraphic/script alphabets (the set B).
+            converted=[]
+            for c in txt.text or '':
+                name=unicodedata.name(c).removeprefix('LATIN ').replace(' LETTER','')
+                try:converted.append(unicodedata.lookup('MATHEMATICAL SCRIPT '+name))
+                except KeyError:converted.append(unicodedata.lookup('SCRIPT '+name))
+            txt.text=''.join(converted)
+            pr.remove(script)
+            if pr.find('{'+M+'}nor') is None:pr.insert(0,E.Element('{'+M+'}nor'))
+        if sty is None:continue
         value=sty.get('{'+M+'}val'); original=txt.text or ''
-        if value not in ['p','b','bi'] or not any(c.isalpha() for c in original):continue
+        if value not in ['p','b','bi'] or not any(c.isalnum() for c in original):continue
         if value in ['b','bi']:
             converted=[]
             for c in original:
                 name=unicodedata.name(c,'')
                 if name.startswith('LATIN '):name=name.removeprefix('LATIN ').replace(' LETTER','')
                 elif name.startswith('GREEK '):name=name.removeprefix('GREEK ').replace(' LETTER','')
+                elif name.startswith('DIGIT '):pass
                 else:converted.append(c);continue
                 try:converted.append(unicodedata.lookup('MATHEMATICAL '+('BOLD ITALIC ' if value=='bi' else 'BOLD ')+name))
-                except KeyError:converted.append(c)
+                except KeyError:raise ValueError(f'Unsupported styled math character: {c!r}')
             txt.text=''.join(converted)
         if pr.find('{'+M+'}nor') is None:pr.insert(0,E.Element('{'+M+'}nor'))
     parts['word/document.xml']=E.tostring(doc,encoding='utf-8',xml_declaration=True)

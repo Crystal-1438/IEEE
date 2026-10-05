@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 import io
 import re
+import unicodedata
 from zipfile import ZipFile, ZIP_DEFLATED
 from xml.etree import ElementTree as E
 import pypandoc
@@ -92,6 +93,13 @@ def table(widths, border=False):
 source=(ROOT/'Article.md').read_text()
 source=re.sub(r'<!-- FIGURE_SLOT:(\d+) -->',r'FIGURESLOT\1',source)
 source=re.sub(r'\\tag\{\d+\}\n', '',source)
+# Pandoc 3.9 maps TeX \mathbf letters to OMML bi, losing the distinction
+# from vectors. Carry their identities through conversion as Unicode bold,
+# then restore ordinary editable letters with native upright-bold properties.
+source=re.sub(r'\\mathbf\{([A-Za-z0-9]+)\}',
+    lambda m: ''.join(unicodedata.lookup('MATHEMATICAL BOLD '+
+        unicodedata.name(c).removeprefix('LATIN ').replace(' LETTER',''))
+        for c in m[1]),source)
 build=ROOT/'build';build.mkdir(exist_ok=True)
 pypandoc.convert_text(source,'docx',format='markdown',outputfile=str(build/'template-content.docx'),
     extra_args=['--reference-doc='+str(ROOT/'conference-template-a4.docx'),'--resource-path='+str(ROOT)])
@@ -195,8 +203,24 @@ for parent in root.iter():
     for run in list(parent):
         if run.tag == '{'+M+'}r' and ''.join(run.itertext()) == '&':
             parent.remove(run)
-# Mirror explicit Office Math style into Word run properties for Writer import.
-# This preserves upright units/descriptors and bold vectors/matrices in both apps.
+# Restore matrix styling and give every equation run an explicit math font;
+# the template's equation style otherwise inherits the legacy Symbol font.
+for run in root.findall('.//m:r',NS):
+    text=run.find('m:t',NS)
+    if text is not None and text.text and all(
+            unicodedata.name(c,'').startswith('MATHEMATICAL BOLD ')
+            and 'ITALIC' not in unicodedata.name(c,'') for c in text.text):
+        text.text=unicodedata.normalize('NFKC',text.text)
+        pr=prop(run,'m:rPr');prop(pr,'m:sty',{'val':'b'})
+        run.remove(pr);run.insert(0,pr)
+    wp=prop(run,'w:rPr')
+    prop(wp,'w:rFonts',{'ascii':'Cambria Math','hAnsi':'Cambria Math',
+                       'eastAsia':'Cambria Math','cs':'Cambria Math'})
+    run.remove(wp);run.insert(1 if run.find('m:rPr',NS) is not None else 0,wp)
+settings=E.fromstring(files['word/settings.xml'])
+prop(prop(settings,'m:mathPr'),'m:mathFont',{'val':'Cambria Math'})
+files['word/settings.xml']=E.tostring(settings,encoding='utf-8',xml_declaration=True)
+# Mirror native Office Math styles into ordinary Word run properties.
 for run in root.findall('.//m:r',NS):
     math_style=run.find('m:rPr/m:sty',NS)
     if math_style is not None:
