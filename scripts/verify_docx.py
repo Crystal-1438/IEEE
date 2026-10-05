@@ -10,6 +10,8 @@ ROOT=Path(__file__).resolve().parents[1]
 NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     'm':'http://schemas.openxmlformats.org/officeDocument/2006/math'}
 W='{'+NS['w']+'}'
+source=(ROOT/'Article.md').read_text()
+equation_count=len(re.findall(r'\\tag\{\d+\}',source))
 with ZipFile(ROOT/'conference-template-a4.docx') as template, ZipFile(ROOT/'Article.docx') as doc:
     assert template.read('word/styles.xml')==doc.read('word/styles.xml'),'Template styles changed'
     root=E.fromstring(doc.read('word/document.xml'))
@@ -17,7 +19,7 @@ with ZipFile(ROOT/'conference-template-a4.docx') as template, ZipFile(ROOT/'Arti
     original=next(s for s in src.iter(W+'sectPr') if s.find('w:cols',NS).get(W+'num')=='2')
     actual=next(s for s in root.iter(W+'sectPr') if s.find('w:cols',NS).get(W+'num')=='2')
     assert E.tostring(original)==E.tostring(actual),'Body section differs from template'
-    assert len(root.findall('.//m:oMathPara',NS))==45,'Lost a display equation'
+    assert len(root.findall('.//m:oMathPara',NS))==equation_count,'Lost a display equation'
     ast=json.loads(pypandoc.convert_file(str(ROOT/'Article.md'),'json'))
     def math_count(node):
         if isinstance(node,dict): return int(node.get('t')=='Math')+sum(math_count(v) for v in node.values())
@@ -27,7 +29,7 @@ with ZipFile(ROOT/'conference-template-a4.docx') as template, ZipFile(ROOT/'Arti
     assert not any((t.text or '')=='&' for t in root.findall('.//m:t',NS)), 'Literal alignment marker'
     assert len(root.findall('.//w:pBdr',NS))==8,'Missing figure blank'
     names=[s.get(W+'val') for s in root.findall('.//w:tblCaption',NS)]
-    assert names==[f'Equation {i}' for i in range(1,46)],names
+    assert names==[f'Equation {i}' for i in range(1,equation_count+1)],names
     for r in root.findall('.//m:r',NS):
         tags=[x.tag for x in r]
         if '{'+NS['m']+'}rPr' in tags and W+'rPr' in tags:
@@ -35,7 +37,6 @@ with ZipFile(ROOT/'conference-template-a4.docx') as template, ZipFile(ROOT/'Arti
     # The previous build passed expression-count checks while turning every
     # matrix into a bold italic vector. Verify semantic style, not just presence.
     M='{'+NS['m']+'}'
-    source=(ROOT/'Article.md').read_text()
     expected_matrices=Counter(''.join(re.findall(r'\\mathbf\{([A-Za-z]+)\}',source)))
     actual_matrices=Counter()
     for r in root.findall('.//m:r',NS):
@@ -53,5 +54,5 @@ with ZipFile(ROOT/'conference-template-a4.docx') as template, ZipFile(ROOT/'Arti
     text=''.join(t.text or '' for t in root.findall('.//w:t',NS))
     for forbidden in ['Paper Title*','author1@example.com','FIGURESLOT','use style:']:
         assert forbidden not in text,forbidden
-print('DOCX validation: PASS (exact template styles/columns, 45 editable display equations, '
+print(f'DOCX validation: PASS (exact template styles/columns, {equation_count} editable display equations, '
       'inline math, 8 blank figures, no template guidance text)')

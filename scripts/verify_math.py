@@ -125,9 +125,9 @@ check('SRB symmetric normal-load split', np.max(abs(f.reshape(4,3)[:,2]-35*9.81/
 source = (Path(__file__).resolve().parents[1]/'Article.md').read_text()
 tags = [int(x) for x in re.findall(r'\\tag\{(\d+)\}', source)]
 assert tags == list(range(1, len(tags)+1))
-assert len(tags) == source.count('$$')//2 == 45
+assert len(tags) == source.count('$$')//2
 slots = [int(x) for x in re.findall(r'FIGURE_SLOT:(\d+)', source)]
 assert slots == [1,2,4,5,6,7,8,9]
 for target in re.findall(r'!\[[^\]]*\]\(([^)]+)\)', source):
     assert (Path(__file__).resolve().parents[1]/target).is_file()
-print('Article structure: PASS (45 numbered equations, 8 blank figure slots, image paths valid)')
+print(f'Article structure: PASS ({len(tags)} numbered equations, 8 blank figure slots, image paths valid)')

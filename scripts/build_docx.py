@@ -91,6 +91,7 @@ def table(widths, border=False):
 
 
 source=(ROOT/'Article.md').read_text()
+expected_equations=len(re.findall(r'\\tag\{\d+\}',source))
 source=re.sub(r'<!-- FIGURE_SLOT:(\d+) -->',r'FIGURESLOT\1',source)
 source=re.sub(r'\\tag\{\d+\}\n', '',source)
 # Pandoc 3.9 maps TeX \mathbf letters to OMML bi, losing the distinction
@@ -234,5 +235,5 @@ files['word/document.xml']=E.tostring(root,encoding='utf-8',xml_declaration=True
 files['word/styles.xml']=original_styles
 with ZipFile(ROOT/'Article.docx','w',ZIP_DEFLATED) as z:
     for name,data in files.items():z.writestr(name,data)
-assert equation_number==45
-print('Built Article.docx: original template styles, 2 columns, 45 editable numbered equations.')
+assert equation_number==expected_equations
+print(f'Built Article.docx: original template styles, 2 columns, {equation_number} editable numbered equations.')

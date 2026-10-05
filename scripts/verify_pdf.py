@@ -13,7 +13,8 @@ pdf = pymupdf.open(ROOT / 'Article.pdf')
 text = '\n'.join(page.get_text() for page in pdf)
 assert len(pdf) > 0
 numbers = [int(x) for x in re.findall(r'\((\d+)\)', text)]
-assert numbers == list(range(1, 46)), numbers
+expected_numbers=[int(n) for n in re.findall(r'\\tag\{(\d+)\}',(ROOT/'Article.md').read_text())]
+assert numbers == expected_numbers, numbers
 for n in [1, 2, 4, 5, 6, 7, 8, 9]:
     assert f'Fig. {n}.' in text
 for key in ['TABLE I.', 'TABLE II.', 'TABLE III.', 'TABLE IV.',
@@ -21,7 +22,6 @@ for key in ['TABLE I.', 'TABLE II.', 'TABLE III.', 'TABLE IV.',
             'Experiments and Results', 'Conclusion', 'References',
             '0.89', '0.51', '42.7', '16483', '16488']:
     assert key.casefold() in text.casefold(), key
-assert len(text) > 14000, 'Possible missing equations during Word export'
 assert '&' not in text, 'TeX alignment marker leaked into PDF'
 assert sum(0x1d400 <= ord(c) <= 0x1d7ff for c in text) > 100, 'Styled mathematical identifiers lost'
 assert '\ufffd' not in text, 'Replacement glyph in extracted text'
@@ -30,6 +30,9 @@ assert '\ufffd' not in text, 'Replacement glyph in extracted text'
 M='{http://schemas.openxmlformats.org/officeDocument/2006/math}'
 with ZipFile(ROOT/'Article.docx') as z:
     doc=E.fromstring(z.read('word/document.xml'))
+W='{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
+prose=''.join(t.text or '' for t in doc.iter(W+'t'))
+assert len(re.sub(r'\s','',text))>=0.9*len(re.sub(r'\s','',prose)),'Possible missing prose'
 expected=Counter()
 for run in doc.iter(M+'r'):
     sty=run.find(M+'rPr/'+M+'sty');t=run.find(M+'t')
@@ -43,7 +46,10 @@ for run in doc.iter(M+'r'):
 actual=Counter(c for c in text if unicodedata.name(c,'').startswith('MATHEMATICAL BOLD'))
 assert actual==expected,('Missing',expected-actual,'Unexpected',actual-expected)
 assert text.count('ℬ')==2,'Calligraphic workspace set B lost'
-assert text.count('ℝ')==2,'Real-number symbol lost'
+expected_reals=sum(t.text=='R' for r in doc.iter(M+'r')
+    if (scr:=r.find(M+'rPr/'+M+'scr')) is not None and scr.get(M+'val')=='double-struck'
+    for t in r.findall(M+'t'))
+assert text.count('ℝ')==expected_reals,'Real-number symbol lost'
 # Every non-ASCII mathematical operator in the source must survive export.
 source_symbols=Counter(c for t in doc.iter(M+'t') for c in t.text or ''
     if ord(c)>127 and not c.isspace() and unicodedata.category(c)=='Sm')
@@ -70,6 +76,6 @@ for index, page in enumerate(pdf):
         font_xrefs.add(font[0])
 for xref in font_xrefs:
     assert pdf.extract_font(xref)[3], f'Font {xref} is not embedded'
-print(f'PDF validation: PASS ({len(pdf)} pages, 45 ordered equations, 8 figure slots, '
+print(f'PDF validation: PASS ({len(pdf)} pages, {len(numbers)} ordered equations, 8 figure slots, '
       f'{len(font_xrefs)} embedded fonts, no out-of-bounds text)')
 print('Visual inspection is also required after layout changes.')

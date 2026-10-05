@@ -6,6 +6,7 @@ No network access is used. PDF is replaced only after a successful export.
 """
 import argparse
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -109,7 +110,10 @@ with tempfile.TemporaryDirectory(prefix='ieee-word-export-') as temp:
     import pymupdf
     with pymupdf.open(temporary/'Article.pdf') as pdf:
         text='\n'.join(page.get_text() for page in pdf)
-        if len(text)<14000:raise SystemExit('Possible missing formulas. Install LibreOffice Math.')
+        expected=len(doc.findall('.//{'+M+'}oMathPara'))
+        numbers=[int(n) for n in re.findall(r'\((\d+)\)',text)]
+        if numbers!=list(range(1,expected+1)):
+            raise SystemExit('Missing or disordered equations in PDF export.')
         pages=len(pdf)
     shutil.copy2(temporary/'Article.pdf',ROOT/'Article.pdf')
 print(f'Exported Article.docx -> Article.pdf ({pages} pages) using LibreOffice.')

@@ -4,7 +4,7 @@
 
 ## 摘要（Abstract）
 
-搭载机械臂的四足机器人兼具地形适应能力和环境操作能力，在灾害救援、危险环境作业与园区巡检等场景中具有应用价值。面向移动灵活性、结构质量和嵌入式计算资源之间的折中，本文提出一种麦克纳姆轮四足移动机械臂及其异构遥操作系统。底盘每腿保留两个俯仰关节和一个车轮驱动自由度，通过麦克纳姆轮的方向约束实现平面全向运动；控制上采用单腿虚功映射与整机单刚体模型相结合的分层力矩前馈，并通过姿态反馈调整腿长。六轴机械臂采用解析逆运动学、重力补偿及轨迹平滑，主端采用 Delta 并联机构与三编码器手柄分别输入末端位置和姿态。已有技术报告记录了底盘越障、姿态调节和主端重力补偿的功能演示，以及机械臂关节阶跃响应的改善。上述记录支持模块级实现的可行性；整机能耗、末端定位精度及重复任务成功率仍需统一测量验证。
+搭载机械臂的四足机器人兼具地形适应能力和环境操作能力，在灾害救援、危险环境作业与园区巡检等场景中具有应用价值。面向移动灵活性、结构质量和嵌入式计算资源之间的折中，本文提出一种麦克纳姆轮四足移动机械臂及其异构遥操作系统。底盘每腿保留两个俯仰关节和一个车轮驱动自由度，通过麦克纳姆轮的方向约束实现平面全向运动；控制上采用单腿虚功映射与整机单刚体模型相结合的分层力矩前馈，并通过姿态反馈调整腿长。六轴机械臂通过位置与姿态分解完成解析逆运动学，主端采用 Delta 并联机构与三编码器手柄分别输入末端位置和姿态。已有技术报告记录了底盘越障、姿态调节和主端重力补偿的功能演示，以及机械臂关节阶跃响应的改善。上述记录支持模块级实现的可行性；整机能耗、末端定位精度及重复任务成功率仍需统一测量验证。
 
 **关键词（Keywords）**：轮足机器人，麦克纳姆轮，移动操作，轻量化设计，力矩前馈，异构遥操作。
 
@@ -16,7 +16,7 @@
 
 本文关注采用微控制器部署的轮足移动操作平台。相对于每腿包含三个腿部转动关节及一个轮驱动的四轮足构型，本文底盘省去四个髋部滚转自由度，以麦克纳姆轮的平面全向运动能力补充转向与侧移能力。这里的十二自由度与十六自由度比较仅针对底盘主动自由度，不包括六轴机械臂和夹爪，也不将所有点足或轮足机器人概括为同一种构型。减少执行器数量为降低质量和控制复杂度提供了结构基础，实际节能效果仍取决于传动、滚动损耗和运动工况。
 
-本文沿用技术报告 [4] 的系统路线，并参考仓库机械设计资料 [5] 补充结构说明，主要贡献为：第一，将两关节轮腿、麦克纳姆轮及六轴夹爪机械臂集成为移动操作平台；第二，建立从整机期望合力与合力矩到足端力、关节力矩和电机力矩的分层映射，结合姿态反馈形成便于嵌入式实现的控制链；第三，通过 Delta 三平移机构和三转动编码器手柄构成异构主端，结合解析逆解、信号平滑及底盘平移补偿完成末端位姿输入。本文对已有记录进行整理和分析，不将尚未完成的约束优化或未测量的性能指标作为实验结果。
+本文沿用技术报告 [4] 的系统路线，并参考仓库机械设计资料 [5] 补充结构说明，主要贡献为：第一，将两关节轮腿、麦克纳姆轮及六轴夹爪机械臂集成为移动操作平台；第二，建立从整机期望合力与合力矩到足端力、关节力矩和电机力矩的分层映射，结合姿态反馈形成便于嵌入式实现的控制链；第三，通过 Delta 三平移机构和三转动编码器手柄构成异构主端，结合解析逆解及底盘平移补偿完成末端位姿输入。本文对已有记录进行整理和分析，不将尚未完成的约束优化或未测量的性能指标作为实验结果。
 
 ## II. 相关工作（Related Work）
 
@@ -38,7 +38,7 @@
 
 系统由十二自由度四轮足底盘、六转动关节机械臂及单自由度夹爪、Delta 异构遥操作控制器组成。机器人端共有十九个主动自由度；主端的三个平移自由度与三个姿态输入自由度单独计数。底盘上层框架采用碳纤维方管，下层采用铝方管，并结合碳纤维板与铝制连接件形成分层结构。两路腿部驱动集中在髋部，通过平行四边形机构传递膝部运动，降低电机随小腿摆动的惯量。机械臂采用碳纤维板和铝制加工件，夹爪采用连杆与滑轨结构 [5]。这些设计体现轻量化目标，但现有资料尚不足以给出等强度结构的减重百分比。
 
-控制流程如 Fig. 1 所示。底盘控制器接收期望平面速度、机身高度和姿态，分别计算轮速、关节位置及前馈力矩；机械臂控制器接收主端位姿，经坐标映射、逆解与平滑后生成关节指令。关节层采用位置与速度串级反馈，模型前馈与反馈输出在执行器侧叠加。
+控制流程如 Fig. 1 所示。底盘控制器接收期望平面速度、机身高度和姿态，分别计算轮速、关节位置及前馈力矩；机械臂控制器接收主端位姿，经坐标映射与逆解后生成关节指令。关节层采用位置与速度串级反馈，模型前馈与反馈输出在执行器侧叠加。
 
 <!-- FIGURE_SLOT:1 -->
 
@@ -311,136 +311,50 @@ $$
 
 该估计无法恢复垂直于腿平面的不可观测力分量。经坐标变换后的支撑方向分量可用于阈值检测，调试架场景还应补偿杆件重力。检测到脱离接触的腿不应继续分配支撑力，支撑集合改变后需重新构造力分配矩阵。阈值、滞回和接触切换的定量效果尚待补充。
 
-### C. 机械臂模块
+### C. 机械臂逆运动学
 
-#### 1) 结构与运动学模型
-
-机械臂由六个旋转关节和一个夹爪构成，采用肘式臂与球腕组合。末三轴交于腕心，便于将逆运动学分解为位置与姿态两个子问题；夹爪采用连杆—滑轨结构，设计开口范围为 $0$–$90\,\mathrm{mm}$ [5]。结构布置兼顾工作空间、刚度与运动学可解性。Fig. 6 预留机械臂坐标系和控制数据通路。
-
-<!-- FIGURE_SLOT:6 -->
-
-*Fig. 6. 六轴机械臂的关节坐标系、腕心及控制数据通路（留白，待补图）。*
-
-采用标准 Denavit–Hartenberg（DH）参数描述连杆，机械臂关节向量记为 $\boldsymbol{q}_{\mathrm{a}}\in\mathbb{R}^{6}$。第 $j$ 个关节的 DH 角为 $\theta_j=q_{\mathrm{a},j}+\theta_{0,j}$，其中 $\theta_{0,j}$ 为零位偏置。标准变换为
-
-$$
-\begin{aligned}
-\mathbf{T}_{j-1,j}&=\mathbf{R}_z(\theta_j)\mathbf{T}_z(d_j)\mathbf{T}_x(a_j)\mathbf{R}_x(\alpha_j),\\
-\mathbf{T}_{06}&=\prod_{j=1}^{6}\mathbf{T}_{j-1,j}
-=\begin{bmatrix}\mathbf{R}_{06}&\boldsymbol{p}_{06}\\\boldsymbol{0}^{\mathrm{T}}&1\end{bmatrix}.
-\end{aligned}
-\tag{22}
-$$
-
-这里旋转与平移算子在第一式中均为齐次形式；$a_j,d_j$ 为长度参数，$\alpha_j$ 为扭转角。机械尺寸不等同于完整 DH 参数，还需要关节轴方向和零位定义。报告说明了建模方法，但未给出可直接复现的完整数值参数表，故本文不以尺寸表猜测这些参数。
-
-按照报告的工具坐标定义，腕心位于末端原点沿工具负 $y$ 轴距离 $d_6$ 处，因此
+六轴机械臂采用肘式臂与球腕结构，末三轴交于腕心，可将逆解分为前三轴定位和后三轴定姿 [4]。给定末端目标位置 $\boldsymbol{p}_{06}$ 和姿态 $\mathbf{R}_{06}$，按照报告的工具坐标约定，腕心沿工具负 $y$ 轴回退距离 $d_6$：
 
 $$
 \boldsymbol{p}_{\mathrm{W}}=\boldsymbol{p}_{06}-d_6\mathbf{R}_{06}\boldsymbol{e}_y.
-\tag{23}
+\tag{22}
 $$
 
-这一定义不同于部分教材沿工具 $z$ 轴回退的约定，不能直接混用。设腕心坐标为 $(x_{\mathrm{W}},y_{\mathrm{W}},z_{\mathrm{W}})$，$\rho_{\mathrm{W}}=\sqrt{x_{\mathrm{W}}^2+y_{\mathrm{W}}^2}$，等效臂长 $\ell_2=a_2$、$\ell_3=\sqrt{a_3^2+d_4^2}$。报告采用的正向高臂分支可写为
+<!-- FIGURE_SLOT:6 -->
+
+*Fig. 6. 六轴机械臂逆解的关节坐标系与腕心几何（留白，待补图）。*
+
+设腕心坐标为 $(x_{\mathrm{W}},y_{\mathrm{W}},z_{\mathrm{W}})$，径向距离为 $\rho_{\mathrm{W}}=\sqrt{x_{\mathrm{W}}^2+y_{\mathrm{W}}^2}$。沿用报告的连杆参数与零位，$a_1,d_1$ 为肩部径向和高度偏置，等效臂长为 $\ell_2=a_2$、$\ell_3=\sqrt{a_3^2+d_4^2}$，肘部偏角为 $\delta_{\mathrm{A}}=\operatorname{atan2}(a_3,d_4)$。记肩腕距离 $\rho_{\mathrm{A}}=\sqrt{(\rho_{\mathrm{W}}-a_1)^2+(z_{\mathrm{W}}-d_1)^2}$、方向角 $\gamma_{\mathrm{A}}=\operatorname{atan2}(z_{\mathrm{W}}-d_1,\rho_{\mathrm{W}}-a_1)$，由平面三角形余弦定理，正向高臂分支为
 
 $$
 \begin{aligned}
-\rho_{\mathrm{A}}&=\sqrt{(\rho_{\mathrm{W}}-a_1)^2+(z_{\mathrm{W}}-d_1)^2},\\
-\gamma_{\mathrm{A}}&=\operatorname{atan2}(z_{\mathrm{W}}-d_1,\rho_{\mathrm{W}}-a_1),\\
 q_{\mathrm{a},1}&=\operatorname{atan2}(y_{\mathrm{W}},x_{\mathrm{W}}),\\
 q_{\mathrm{a},2}&=\gamma_{\mathrm{A}}+\arccos\frac{\ell_2^2+\rho_{\mathrm{A}}^2-\ell_3^2}{2\ell_2\rho_{\mathrm{A}}},\\
-q_{\mathrm{a},3}&=-\pi+\arccos\frac{\ell_2^2+\ell_3^2-\rho_{\mathrm{A}}^2}{2\ell_2\ell_3}-\delta_{\mathrm{A}},
+q_{\mathrm{a},3}&=-\pi+\arccos\frac{\ell_2^2+\ell_3^2-\rho_{\mathrm{A}}^2}{2\ell_2\ell_3}-\delta_{\mathrm{A}}.
 \end{aligned}
-\tag{24}
+\tag{23}
 $$
 
-其中 $\delta_{\mathrm{A}}=\operatorname{atan2}(a_3,d_4)$；以上关节零位沿用报告的前三轴几何约定，使用其他 DH 零位时须相应换算。反向分支令第一轴增加 $\pi$，并将平面几何中的 $\rho_{\mathrm{W}}$ 替换为 $-\rho_{\mathrm{W}}$。只有满足工作空间、关节限位和联动限制的候选解才予以保留。
-
-前三轴确定后，球腕目标姿态为
+前三轴确定旋转矩阵 $\mathbf{R}_{03}$ 后，由 $\mathbf{R}_{06}=\mathbf{R}_{03}\mathbf{R}_{36}$ 得球腕相对姿态
 
 $$
 \mathbf{R}_{36}=\mathbf{R}_{03}^{\mathrm{T}}\mathbf{R}_{06}
 =[\boldsymbol{n},\boldsymbol{o},\boldsymbol{a}].
-\tag{25}
+\tag{24}
 $$
 
-令 $n_z,o_x,o_y,o_z,a_z$ 为上述列矢量的相应分量。依照报告的球腕坐标定义，在 $\sin\theta_5\neq0$ 时，两组解为
+令 $n_z,o_x,o_y,o_z,a_z$ 为各列矢量的相应分量，腕部关节角满足 $q_{\mathrm{a},j}=\theta_j-\theta_{0,j}$，$j=4,5,6$，其中 $\theta_{0,j}$ 为零位偏置。按报告的球腕坐标约定，在 $\sin\theta_5\neq0$ 时，匹配旋转矩阵元素可得
 
 $$
 \begin{aligned}
 \theta_5^{(\pm)}&=\pm\arccos(-o_z),\\
-q_{\mathrm{a},5}^{(\pm)}&=\theta_5^{(\pm)}-\theta_{0,5},\\
-q_{\mathrm{a},4}^{(\pm)}&=\operatorname{atan2}(o_y\sin\theta_5^{(\pm)},o_x\sin\theta_5^{(\pm)})-\theta_{0,4},\\
-q_{\mathrm{a},6}^{(\pm)}&=\operatorname{atan2}(a_z\sin\theta_5^{(\pm)},n_z\sin\theta_5^{(\pm)})-\theta_{0,6}.
+\theta_4^{(\pm)}&=\operatorname{atan2}(o_y\sin\theta_5^{(\pm)},o_x\sin\theta_5^{(\pm)}),\\
+\theta_6^{(\pm)}&=\operatorname{atan2}(a_z\sin\theta_5^{(\pm)},n_z\sin\theta_5^{(\pm)}).
 \end{aligned}
-\tag{26}
+\tag{25}
 $$
 
-通过正运动学回代筛除不满足目标位姿的候选解，再选择相对于上一时刻关节角变化较小且不违反限位的分支。球腕结构提供解析分解条件，但不保证任意目标都有可行解。
-
-#### 2) 奇异处理与关节力矩前馈
-
-当腕心接近第一轴轴线时，第一关节角对水平位置扰动的敏感度增大；当 $\sin\theta_5$ 接近零时，第四、六轴的姿态作用退化。报告通过限制笛卡尔工作区，以及在球腕奇异附近暂时保持第四、六关节角，抑制角度跳变。保持原关节角可能引入瞬时姿态误差，这一策略保证的是指令连续性，不能等同于在奇异位置仍能精确跟踪任意姿态。
-
-关节控制采用位置—速度串级反馈，并叠加动力学前馈。六轴模型写为
-
-$$
-\boldsymbol{\tau}_{\mathrm{a}}=\mathbf{M}_{\mathrm{a}}(\boldsymbol{q}_{\mathrm{a}})\ddot{\boldsymbol{q}}_{\mathrm{a}}
-+\boldsymbol{c}_{\mathrm{a}}(\boldsymbol{q}_{\mathrm{a}},\dot{\boldsymbol{q}}_{\mathrm{a}})
-+\boldsymbol{g}_{\mathrm{a}}(\boldsymbol{q}_{\mathrm{a}}),
-\tag{27}
-$$
-
-其中 $\mathbf{M}_{\mathrm{a}}$ 为惯性矩阵，$\boldsymbol{c}_{\mathrm{a}}$ 为科里奥利与离心力矩，$\boldsymbol{g}_{\mathrm{a}}$ 为重力项。报告使用递归牛顿–欧拉法（RNE）计算这些力矩。在静态重力补偿中，
-
-$$
-\boldsymbol{\tau}_{\mathrm{a},\mathrm{ff}}
-=\operatorname{RNE}(\boldsymbol{q}_{\mathrm{a}},\boldsymbol{0},\boldsymbol{0})
-=\boldsymbol{g}_{\mathrm{a}}(\boldsymbol{q}_{\mathrm{a}}).
-\tag{28}
-$$
-
-对于已规划的运动，RNE 可同时使用参考速度和加速度。CAD 导出的质量、质心、惯性参数以及电机力矩常数需要经实物校准；忽略紧固件、传动摩擦或负载变化会导致前馈残差，反馈控制用于补偿剩余误差。报告中的重力悬停演示使用上一代舵轮平台，不能直接作为本代整机悬停精度的测量。
-
-#### 3) 三次轨迹插值与跟踪微分器
-
-对具有预定起止位置和时间的动作，采用三次多项式连接关节轨迹。设持续时间为 $T$，归一化时间 $s=t/T\in[0,1]$，端点位置为 $q_0,q_{\mathrm{f}}$，端点速度为 $v_0,v_{\mathrm{f}}$，则
-
-$$
-\begin{aligned}
-q_{\mathrm{r}}(t)={}&(2s^3-3s^2+1)q_0+(s^3-2s^2+s)Tv_0\\
-&+(-2s^3+3s^2)q_{\mathrm{f}}+(s^3-s^2)Tv_{\mathrm{f}}.
-\end{aligned}
-\tag{29}
-$$
-
-各关节使用相同的分段时间实现同步动作。分段三次插值在匹配端点速度时保证位置与速度连续，但不自动保证加速度跨段连续。笛卡尔位姿插值还需逐点逆解，并处理欧拉角环绕和运动学奇异。
-
-在线遥操作输入采用跟踪微分器（tracking differentiator，TD）平滑。令输入为 $r[k]$，跟踪位置与速度状态分别为 $x_1[k],x_2[k]$，加速度参数 $r_{\mathrm{TD}}>0$，滤波步长 $h_0>0$。沿用报告代码的离散形式：
-
-$$
-\begin{aligned}
-x_1[k+1]&=x_1[k]+T_{\mathrm{s}}x_2[k],\\
-x_2[k+1]&=x_2[k]+T_{\mathrm{s}}\operatorname{fst}(x_1[k]-r[k],x_2[k]).
-\end{aligned}
-\tag{30}
-$$
-
-为明确计算过程，定义 $S(y,d)=[\operatorname{sgn}(y+d)-\operatorname{sgn}(y-d)]/2$，以及
-
-$$
-\begin{aligned}
-d&=r_{\mathrm{TD}}h_0^2,\qquad a_0=h_0x_2,\qquad y=x_1-r+a_0,\\
-a_1&=\sqrt{d(d+8|y|)},\\
-a_2&=a_0+\operatorname{sgn}(y)(a_1-d)/2,\\
-a&=(a_0+y)S(y,d)+a_2[1-S(y,d)],\\
-\operatorname{fst}&=-r_{\mathrm{TD}}\bigl[(a/d)S(a,d)\\
-&\qquad+\operatorname{sgn}(a)(1-S(a,d))\bigr].
-\end{aligned}
-\tag{31}
-$$
-
-TD 限制参考信号变化并产生速度估计；它会引入跟踪滞后，且不能代替通信超时处理或关节速度限制。报告在无线位姿接收和逆解切换场景中使用这一处理，具体实现应注明平滑位于笛卡尔空间还是关节空间，两者不应视为等价。
+对候选解进行位姿回代及关节限位检查，选择与上一时刻关节角最接近的可行分支；不可达目标或奇异位形不直接使用上述逆解。
 
 ### D. Delta 遥操作控制器
 
@@ -468,14 +382,14 @@ TD 限制参考信号变化并产生速度估计；它会引入跟踪滞后，�
 $$
 \boldsymbol{c}_i=(R_{\mathrm{D}}-r_{\mathrm{D}}+L_{\mathrm{D}}\cos\theta_{\mathrm{D},i})\boldsymbol{e}_i
 -L_{\mathrm{D}}\sin\theta_{\mathrm{D},i}\boldsymbol{e}_z.
-\tag{32}
+\tag{26}
 $$
 
 从动臂等长约束给出三球交点方程
 
 $$
 \|\boldsymbol{p}_{\mathrm{D}}-\boldsymbol{c}_i\|_2^2=L_{\mathrm{P}}^2,\qquad i=1,2,3.
-\tag{33}
+\tag{27}
 $$
 
 第 2、3 个方程分别减去第 1 个方程，可消除二次项，得到
@@ -483,7 +397,7 @@ $$
 $$
 2(\boldsymbol{c}_i-\boldsymbol{c}_1)^{\mathrm{T}}\boldsymbol{p}_{\mathrm{D}}
 =\|\boldsymbol{c}_i\|_2^2-\|\boldsymbol{c}_1\|_2^2,\quad i=2,3.
-\tag{34}
+\tag{28}
 $$
 
 记 $\boldsymbol{c}_i=[c_{ix},c_{iy},c_{iz}]^{\mathrm{T}}$，定义
@@ -494,14 +408,14 @@ $$
 \boldsymbol{d}_{\mathrm{D}}&=\begin{bmatrix}\|\boldsymbol{c}_2\|^2-\|\boldsymbol{c}_1\|^2\\\|\boldsymbol{c}_3\|^2-\|\boldsymbol{c}_1\|^2\end{bmatrix},\\
 \boldsymbol{e}_{\mathrm{D}}&=2[c_{2z}-c_{1z},c_{3z}-c_{1z}]^{\mathrm{T}}.
 \end{aligned}
-\tag{35}
+\tag{29}
 $$
 
 在 $\mathbf{B}_{\mathrm{D}}$ 可逆时，令 $\boldsymbol{u}=\mathbf{B}_{\mathrm{D}}^{-1}\boldsymbol{d}_{\mathrm{D}}$、$\boldsymbol{v}=-\mathbf{B}_{\mathrm{D}}^{-1}\boldsymbol{e}_{\mathrm{D}}$，有
 
 $$
 [x_{\mathrm{D}},y_{\mathrm{D}}]^{\mathrm{T}}=\boldsymbol{u}+\boldsymbol{v}z_{\mathrm{D}}.
-\tag{36}
+\tag{30}
 $$
 
 代回第一球面，得到 $A_{\mathrm{D}}z_{\mathrm{D}}^2+B_{\mathrm{D}}z_{\mathrm{D}}+C_{\mathrm{D}}=0$，其中
@@ -512,7 +426,7 @@ A_{\mathrm{D}}&=1+\boldsymbol{v}^{\mathrm{T}}\boldsymbol{v},\\
 B_{\mathrm{D}}&=2\bigl[\boldsymbol{v}^{\mathrm{T}}(\boldsymbol{u}-\boldsymbol{c}_{1,xy})-c_{1z}\bigr],\\
 C_{\mathrm{D}}&=\|\boldsymbol{u}-\boldsymbol{c}_{1,xy}\|^2+c_{1z}^2-L_{\mathrm{P}}^2.
 \end{aligned}
-\tag{37}
+\tag{31}
 $$
 
 从二次方程候选根中选择满足工作侧、机构装配分支和连续性条件的根。矩阵退化或判别式显著小于零时不输出新位姿；不能仅以“负根”替代完整的几何有效性检查。
@@ -528,14 +442,14 @@ $$
 \mathbf{J}_{\mathrm{D}}&=\mathbf{S}_{\mathrm{D}}^{-1}\mathbf{D}_{\mathrm{D}},\qquad
 \dot{\boldsymbol{p}}_{\mathrm{D}}=\mathbf{J}_{\mathrm{D}}\dot{\boldsymbol{\theta}}_{\mathrm{D}}.
 \end{aligned}
-\tag{38}
+\tag{32}
 $$
 
 此表达式要求 $\mathbf{S}_{\mathrm{D}}$ 可逆。静力学采用虚功原理：若机构对动平台提供的期望支撑力为 $\boldsymbol{f}_{\mathrm{D}}$，对应电机广义力矩为
 
 $$
 \boldsymbol{\tau}_{\mathrm{D},\mathrm{ff}}=\mathbf{J}_{\mathrm{D}}^{\mathrm{T}}\boldsymbol{f}_{\mathrm{D}}.
-\tag{39}
+\tag{33}
 $$
 
 将动平台与手柄等效质量记为 $m_{\mathrm{D}}$，重力补偿取 $\boldsymbol{f}_{\mathrm{D}}=-m_{\mathrm{D}}\boldsymbol{g}$，必要时另加各支链重力项。该方法用于降低手持机构的静态负担。摩擦、参数误差和机构奇异会影响补偿效果，近奇异区域应限制力矩和操作范围。报告提供了补偿效果演示，尚未提供残余手持力的测量。
@@ -547,7 +461,7 @@ $$
 $$
 \boldsymbol{p}_{\mathrm{A},\mathrm{d}}=\boldsymbol{p}_{\mathrm{A},0}
 +\mathbf{K}_{\mathrm{map}}\mathbf{R}_{\mathrm{AD}}(\boldsymbol{p}_{\mathrm{D}}-\boldsymbol{p}_{\mathrm{D},0}),
-\tag{40}
+\tag{34}
 $$
 
 其中 $\mathbf{R}_{\mathrm{AD}}$ 为固定坐标校准旋转，$\mathbf{K}_{\mathrm{map}}=\operatorname{diag}(k_x,k_y,k_z)$ 为无量纲缩放矩阵。较小缩放系数可减小从端对手部位移的响应，但不能消除机械误差。重置按钮更新参考点时，应保持从端目标连续。
@@ -556,7 +470,7 @@ $$
 
 $$
 \mathbf{R}_{\mathrm{A},\mathrm{d}}=\mathbf{R}_{\mathrm{cal},1}\mathbf{R}_{\mathrm{h}}(\boldsymbol{q}_{\mathrm{h}})\mathbf{R}_{\mathrm{cal},2}.
-\tag{41}
+\tag{35}
 $$
 
 编码器角不能未经变换就当作从端的滚转、俯仰、偏航角。报告将旋转矩阵转换为欧拉角传输，接收端需采用一致的旋转顺序和角度环绕处理。位置与姿态组成目标齐次变换后，再进入机械臂解析逆解。
@@ -568,7 +482,7 @@ $$
 \overline{\boldsymbol{p}}_{\mathrm{A},\mathrm{d}}[k]&=\Pi_{\mathcal{B}}(\boldsymbol{p}_{\mathrm{A},\mathrm{d}}[k]),\\
 \boldsymbol{e}_{\mathrm{comp}}[k]&=\mathbf{P}_{xy}\bigl(\boldsymbol{p}_{\mathrm{A},\mathrm{d}}[k]-\overline{\boldsymbol{p}}_{\mathrm{A},\mathrm{d}}[k]\bigr),
 \end{aligned}
-\tag{42}
+\tag{36}
 $$
 
 其中 $\mathbf{P}_{xy}$ 取出水平分量。为避免每周期重复累计同一越界量，底盘参考增量采用
@@ -576,7 +490,7 @@ $$
 $$
 \Delta\boldsymbol{p}_{\mathrm{b},\mathrm{d}}[k]
 =\mathbf{R}_{\mathrm{map},xy}\bigl(\boldsymbol{e}_{\mathrm{comp}}[k]-\boldsymbol{e}_{\mathrm{comp}}[k-1]\bigr).
-\tag{43}
+\tag{37}
 $$
 
 $\mathbf{R}_{\mathrm{map},xy}$ 表示在底盘近似水平、朝向固定时，从机械臂水平轴到导航水平轴的二维旋转。实际状态机需明确目标回到区间内时是否回退底盘，以及如何更新参考零点；报告代码片段不足以验证所有切换行为。边界盒也不是机械臂真实可达集，截断后仍须检查逆解、碰撞和关节联动限制。垂直方向沿用报告的限幅方式，不将其写成已实现的底盘升降补偿。
@@ -595,7 +509,7 @@ E_{\mathrm{p}}&=\sqrt{\frac{1}{N}\sum_{k=1}^{N}\|\boldsymbol{p}_{\mathrm{d}}[k]-
 e_{\mathrm{R}}[k]&=\arccos\frac{\operatorname{tr}(\mathbf{R}_{\mathrm{d}}^{\mathrm{T}}[k]\mathbf{R}[k])-1}{2},\\
 E_{\mathrm{bat}}&=\sum_{k=1}^{N}U[k]I[k]T_{\mathrm{s}}.
 \end{aligned}
-\tag{44}
+\tag{38}
 $$
 
 其中 $N$ 为样本数，$U,I$ 为电池端电压和电流；姿态式中的反余弦输入须防止舍入越界。对于同一路线，可报告平均功率及单位行程耗能 $E_{\mathrm{bat}}/D$，$D$ 为行程。阶跃响应应统一稳定时间误差带，越障任务应给出成功次数、总试验次数和障碍几何。以上定义是补测方案，当前不赋予未测数值。
@@ -619,7 +533,7 @@ TABLE III 汇总报告中的硬件与开发条件。
 
 软件框架分为配置层、操作系统抽象层、板级支持层、硬件抽象层、通用库和应用层等模块。报告使用 MATLAB 进行符号推导与运动学可视化，使用 CAD 参数建立动力学模型，再部署至嵌入式控制器。具体 MCU 型号、控制周期、无线链路频率、PID 增益、TD 参数和全部惯性参数未完整列出，因而当前只能复现方法结构，尚不能精确复现实机响应。
 
-现有对比设置为机械臂第一关节的 $\pi/4\,\mathrm{rad}$ 阶跃输入，比较单纯串级 PID 与 TD 加串级 PID。底盘仿真记录包括台阶和减速带通过，实机记录包括基本运动、单边台阶、坡道自平衡和双级台阶功能。仿真、实机及上一代平台演示分别记录，不合并为同一实验条件。
+现有对比设置为机械臂第一关节的 $\pi/4\,\mathrm{rad}$ 阶跃输入，比较单纯串级 PID 与跟踪微分器（tracking differentiator，TD）加串级 PID，后者用于平滑参考指令。底盘仿真记录包括台阶和减速带通过，实机记录包括基本运动、单边台阶、坡道自平衡和双级台阶功能。仿真、实机及上一代平台演示分别记录，不合并为同一实验条件。
 
 ### C. 结果与分析
 
@@ -642,7 +556,7 @@ TABLE III 汇总报告中的硬件与开发条件。
 
 $$
 \frac{0.89-0.51}{0.89}\times100\%\approx42.7\%.
-\tag{45}
+\tag{39}
 $$
 
 这一比例仅是报告两个近似读数的换算，支持该次测试中引入 TD 后响应改善的观察。它不能替代相同误差带下的多次试验，也不能推出末端定位误差降低了相同比例。Fig. 8 预留原始曲线重新导出的对比图。
@@ -669,7 +583,7 @@ $$
 
 ## V. 结论（Conclusion）
 
-本文围绕麦克纳姆轮四足底盘、六轴机械臂和 Delta 异构遥操作控制器，整理并建立了结构设计、运动学映射、模型前馈与轨迹平滑相结合的系统方案。底盘通过两关节轮腿和麦克纳姆轮实现支撑调节与平面移动，控制采用单腿虚功映射和整机单刚体分配；机械臂通过球腕解析分解、重力补偿和 TD 处理完成位姿输入的关节化执行；主端通过 Delta 平移、三编码器姿态输入与坐标缩放连接操作者和机器人。
+本文围绕麦克纳姆轮四足底盘、六轴机械臂和 Delta 异构遥操作控制器，整理并建立了结构设计、运动学映射与底盘模型前馈相结合的系统方案。底盘通过两关节轮腿和麦克纳姆轮实现支撑调节与平面移动，控制采用单腿虚功映射和整机单刚体分配；机械臂通过腕心定位与球腕定姿，将末端目标位姿转换为关节指令；主端通过 Delta 平移、三编码器姿态输入与坐标缩放连接操作者和机器人。
 
 已有报告支持模块级功能实现，并记录了关节阶跃响应改善及底盘越障、姿态调节的阶段性成果。当前主要限制是缺少统一的原始实验日志、完整标定参数以及整机能耗和末端精度测量。后续将完善带物理约束的接触力分配与主从标定，统一仿真和实机测试条件，并通过重复任务试验评价该方案的效率、精度和适用范围。
 
