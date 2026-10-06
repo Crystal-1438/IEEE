@@ -1,4 +1,4 @@
-"""Draw the attitude loop in Article.docx, Eqs. (18) and (20).
+"""Draw the attitude loop in Article.docx, Eqs. (18) and (19).
 
 Creates an editable SVG and a high-resolution PNG for Word. No PDF output.
 Requires cairosvg; labels use locally installed CJK and DejaVu fonts.
@@ -69,7 +69,7 @@ text(305,438,'Δ'+sym('u','χ')+'[k]',25,'start',True)
 block(452,[('离散累加与限幅',False),('饱和时停止同向累加',False)],86)
 arrow([(280,538),(280,586)])
 text(305,568,sym('u','ϕ')+', '+sym('u','θ'),25,'start',True)
-block(586,[('四腿支撑高度分配',False),('式（20）',False)],86)
+block(586,[('四腿支撑高度分配',False),('式（19）',False)],86)
 arrow([(28,629),(125,629)])
 text(69,609,sym('h','0'),27,math=True)
 arrow([(280,672),(280,716)])

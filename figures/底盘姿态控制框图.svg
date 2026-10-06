@@ -29,7 +29,7 @@
 <text x="305" y="568" text-anchor="start" font-family="DejaVu Serif" font-size="25"><tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">ϕ</tspan><tspan dy="-7">&#8203;</tspan>, <tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">θ</tspan><tspan dy="-7">&#8203;</tspan></text>
 <rect x="125" y="586" width="310" height="86" fill="white" stroke="black" stroke-width="2.5"/>
 <text x="280" y="621.0" text-anchor="middle" font-family="WenQuanYi Zen Hei, sans-serif" font-size="27">四腿支撑高度分配</text>
-<text x="280" y="655.0" text-anchor="middle" font-family="WenQuanYi Zen Hei, sans-serif" font-size="27">式（20）</text>
+<text x="280" y="655.0" text-anchor="middle" font-family="WenQuanYi Zen Hei, sans-serif" font-size="27">式（19）</text>
 <polyline points="28,629 125,629" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
 <text x="55.5" y="609" text-anchor="start" font-family="DejaVu Serif" font-size="27"><tspan font-style="italic">h</tspan><tspan dy="7" font-size="19">0</tspan><tspan dy="-7">&#8203;</tspan></text>
 <polyline points="280,672 280,716" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
