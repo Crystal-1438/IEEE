@@ -30,11 +30,11 @@
 <text x="453.00" y="439.00" font-size="40" fill="#17232c"><tspan font-style="italic" font-weight="bold">p</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
 <text x="448.00" y="669.51" font-size="38" fill="#17232c">P</text>
 <path d="M430.00,240.00 L627.63,286.25" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="640.63" y="307.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
-<path d="M430.00,240.00 L358.09,340.92" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="343.09" y="375.92" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">y</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="640.63" y="307.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L501.91,139.08" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="511.91" y="135.08" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">y</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
 <path d="M430.00,240.00 L430.00,58.75" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="446.00" y="55.75" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="446.00" y="55.75" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
 <text x="451.00" y="102.00" font-size="36" fill="#17232c">{D}</text>
 <text x="569.49" y="255.31" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
 <text x="705.90" y="475.68" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
@@ -58,7 +58,7 @@
 <text x="223.96" y="1030.00" font-size="37" fill="#17232c">(a) Three-limb geometry</text>
 <path d="M950.00,190.00 L950.00,667.25" fill="none" stroke="#82909a" stroke-width="2" stroke-dasharray="7 6"/>
 <path d="M950.00,180.00 L950.00,55.00" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="929.00" y="51.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="929.00" y="51.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
 <path d="M950.00,180.00 L1515.00,180.00" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
 <text x="1426.00" y="150.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="bold">e</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
 <text x="1180.00" y="103.00" font-size="33" fill="#17232c">Radially outward</text>

@@ -15,9 +15,11 @@ OUT = ROOT / 'figures/Delta机械臂几何图'
 R, r, LD, LP = .095, .066, .150, .200
 theta = math.radians(50)
 elbow_r = R + LD * math.cos(theta)
-elbow_z = -LD * math.sin(theta)
-pz = elbow_z - math.sqrt(LP**2 - (elbow_r-r)**2)
-P = (0., 0., pz)
+elbow_x = -LD * math.sin(theta)
+px = elbow_x - math.sqrt(LP**2 - (elbow_r-r)**2)
+# Frame D: +X is the platform normal toward the fixed platform;
+# +Z points from O to A1; +Y completes the right-handed basis.
+P = (px, 0., 0.)
 FONT = subprocess.check_output(['fc-match', '-f', '%{file}', 'DejaVu Serif'], text=True)
 BLUE, ORANGE, GREEN, INK = '#174f86', '#bb4807', '#087e77', '#17232c'
 items = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1070" viewBox="0 0 1600 1070">
@@ -55,7 +57,7 @@ def point(p, color=INK, radius=6):
 
 def project(v):
     x,y,z = v
-    return (430 + 1450*(.94*x-.342*y), 240 + 1450*(.22*x+.48*y-z))
+    return (430 + 1450*(.94*z+.342*y), 240 + 1450*(.22*z-.48*y-x))
 
 def add(v, w): return tuple(a+b for a,b in zip(v,w))
 def mul(a, v): return tuple(a*b for b in v)
@@ -65,16 +67,16 @@ def diff(a,b): return tuple(x-y for x,y in zip(a,b))
 limbs=[]
 for i in range(3):
     psi=2*math.pi*i/3
-    e=(math.cos(psi),math.sin(psi),0.)
-    t=(-math.sin(psi),math.cos(psi),0.)
-    A=mul(R,e); B=add(mul(elbow_r,e),(0,0,elbow_z)); C=add(P,mul(r,e))
+    e=(0.,-math.sin(psi),math.cos(psi))
+    t=(0.,-math.cos(psi),-math.sin(psi))
+    A=mul(R,e); B=add(mul(elbow_r,e),(elbow_x,0,0)); C=add(P,mul(r,e))
     c=add(B,mul(-r,e))
     assert abs(norm(diff(B,A))-LD)<1e-12
     assert abs(norm(diff(C,B))-LP)<1e-12
     assert abs(norm(diff(P,c))-LP)<1e-12
     limbs.append((A,B,C,t))
 
-# (a) Complete mechanism. Both platform planes have normal (0,0,1).
+# (a) Complete mechanism. Both platform planes have normal (1,0,0).
 line((816,55),(816,980),'#c8ced3',2)
 poly([project(x[0]) for x in limbs], BLUE, '#edf4fb', 4)
 poly([project(x[2]) for x in limbs], BLUE, '#dbeaf6', 4)
@@ -93,7 +95,7 @@ point(O);point(pp)
 text(451,223,'O',38)
 text(453,439,sym('p','D',True),40)
 text(pp[0]+18,pp[1]+37,'P',38)
-for v,label,delta in [((.145,0,0),'x',(13,21)),((0,.145,0),'y',(-15,35)),((0,0,.125),'z',(16,-3))]:
+for v,label,delta in [((0,0,.145),'z',(13,21)),((0,.145,0),'y',(10,-4)),((.125,0,0),'x',(16,-3))]:
     tip=project(v);line(O,tip,INK,3,arrow=True)
     text(tip[0]+delta[0],tip[1]+delta[1],sym(label,'D'),37)
 text(451,102,'{D}',36)
@@ -118,12 +120,12 @@ text(407,1030,'(a) Three-limb geometry',37,'middle')
 # (b) True radial section for the symmetric illustrated configuration.
 # C_i is the real platform joint. c_i is the equivalent sphere center,
 # shifted from B_i by r_D e_i, as in Article Eq. (24).
-def section(rho,z):return (950+1800*rho,180-1800*z)
-oo=section(0,0);aa=section(R,0);bb=section(elbow_r,elbow_z)
-cc=section(r,pz);pp2=section(0,pz);eqc=section(elbow_r-r,elbow_z)
+def section(rho,x):return (950+1800*rho,180-1800*x)
+oo=section(0,0);aa=section(R,0);bb=section(elbow_r,elbow_x)
+cc=section(r,px);pp2=section(0,px);eqc=section(elbow_r-r,elbow_x)
 line((oo[0],oo[1]+10),(oo[0],pp2[1]),'#82909a',2,'7 6')
 line(oo,(oo[0],55),INK,3,arrow=True)
-text(oo[0]-21,51,sym('z','D'),36)
+text(oo[0]-21,51,sym('x','D'),36)
 line(oo,(1515,180),INK,2.5,'8 6',True)
 text(1426,150,sym('e','i',True),36)
 text(1180,103,'Radially outward',33)
@@ -178,5 +180,5 @@ stacked='''<svg xmlns="http://www.w3.org/2000/svg" width="840" height="2160" vie
 stack_out=OUT.with_name(OUT.name+'-单栏')
 stack_out.with_suffix('.svg').write_text(stacked)
 cairosvg.svg2png(bytestring=stacked.encode(),write_to=str(stack_out.with_suffix('.png')),scale=2)
-print(f'Geometry verified: LD={LD} m, LP={LP} m, all three limbs close; platform z={pz:.6f} m.')
+print(f'Geometry verified: LD={LD} m, LP={LP} m, all three limbs close; platform x={px:.6f} m.')
 print(OUT.with_suffix('.png'))
