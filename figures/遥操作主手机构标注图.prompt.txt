@@ -1,0 +1,64 @@
+Mode: built-in image_gen; edit/compositing and text localization.
+Inputs: figures/遥操作主手delta机械臂部分.jpg; figures/遥操作主手三轴手柄部分.jpg
+Output: figures/遥操作主手机构标注图.png
+User requirements: show rotation axes, a parallelogram linkage, and moving/fixed platform parallelism; all text inside the image must be English.
+
+Initial assembly and component-label prompt:
+Use case: compositing / precise-object-edit for an IEEE robotics paper.
+Two input images are EDIT TARGETS, not inspiration. Produce ONE clean two-panel annotated technical figure with input 1 on the LEFT as panel (a), input 2 on the RIGHT as panel (b). Preserve each device's exact hardware, configuration, camera view, component proportions and colors. Only add labels and callout lines and arrange the two source images on a clean WHITE page. Do not redesign, invent, rotate, mirror, or simplify any link, bracket, bearing, platform or handle. Keep the full devices visible.
+
+Panel (a) is the Delta translation mechanism. Preserve the full three-chain assembly. Add exactly FOUR large, clear Chinese callouts in free space with thin black leader lines ending in small filled dots ON the correct components:
+"静平台" -> the large rear circular carbon-fiber fixed plate, not the bottom support stand.
+"主动臂 L_D" -> the black carbon-fiber tapered upper arm running from the TOP fixed motor around (465,420) to the top cross-shaft around (640,45) in original 1280x1345 image. Point to its middle around (558,230). Do NOT point to the long pale-gray rods.
+"平行四边形从动臂 L_P" -> the PAIR of long pale-gray parallel rods on the top-right chain, between the top shaft and moving platform. Point to their middle around (755,310), with a small bracket joining the pair if needed. These are the parallelogram follower links.
+"动平台" -> the small central pale metal plate around (835,680), carrying the three chain connections and central circular mounting opening. It is NOT the large rear plate or bottom stand.
+Use typographic subscript upright D and P, italic L in the length labels. These are component identifiers, NOT dimension arrows; do not draw numerical dimension lines.
+Place small panel marker "(a)" below the left image.
+
+Panel (b) is the three-axis orientation handle. Preserve the exact full long handle and nested linkage brackets. Add clean labels and leaders, no Euler-angle triads or invented rotation directions:
+"安装端" -> the protruding vertical short cylindrical stem at top, centered around (282,100) in original 912x1344 image.
+"关节 1" -> the top rotary bearing below that stem around (282,170), connecting mounting stem to the outer long bracket.
+"关节 2" -> the side rotary joint between outer and inner brackets around (595,489), next to the right-side encoder board.
+"关节 3" -> the rotary joint immediately above the handgrip around (278,330), beneath the upper small encoder board.
+"握持部" -> the long lower grip, around (265,890).
+Number in serial order from platform installation end to handgrip; do not label these roll/pitch/yaw.
+Place small panel marker "(b)" below the right image.
+
+Style: textbook-quality annotation OVERLAY on existing CAD images. Black, sharp, straight or right-angled leader lines with filled dot endpoints, no arrows mistaken for coordinate axes. Large legible dark Chinese text, matching fonts across both panels; math L with actual subscript D/P. Put labels in white space, not covering hardware; leader lines may have thin white halos where they cross hardware. Maintain high contrast. Reserve generous enough annotation margins so callouts do not collide. Use about 60 px labels at a ~2048 px wide image so the figure is readable when printed at 85 mm width. The figure can be moderately tall to allow uncluttered labels. Balance panel heights while keeping all device details in frame. No figure number, no top title, no explanatory paragraph, no decorative background, no color-coded force arrows or symbols. Output opaque background.
+
+Axes and parallelism prompt:
+Edit the supplied TWO-PANEL annotated Delta/handle figure to satisfy the user's additional requirements: show ROTATION AXES, explicitly outline a PARALLELOGRAM, and illustrate that the MOVING PLATFORM ALWAYS REMAINS PARALLEL TO THE FIXED PLATFORM.
+Preserve both mechanisms, their exact current pose, every hardware component, proportions, labels and panel layout. This is ONLY an annotation edit; do not invent parts or change linkage geometry.
+
+A. Panel (a), Delta:
+1. Emphasize the complete upper parallelogram linkage as a CLOSED four-sided amber outline connecting the actual four hinge centers: approximately (420,43)->(514,25)->(639,410)->(548,428)->back to (420,43) in the current 1536x1024 image. The two long sides track the two long pale-gray follower rods; the two short sides track the top and bottom cross-shafts. Use high-contrast amber dashed outline, small corner dots, a thin white halo. Do not mistakenly enclose the black carbon-fiber active arm. Retain its label "平行四边形从动臂 L_P", clearly pointing to the highlighted quadrilateral.
+2. Mark a REPRESENTATIVE Delta active rotation axis through the center of the upper fixed motor, approximately (315,310). The shaft direction in this view is slightly up-right, parallel to the upper cross-shaft. Draw a short dark red DASH-DOT centerline extending beyond both sides of the motor, aligned with its cylindrical shaft. Label "驱动转轴" in nearby white space with an unambiguous leader. It is a shaft centerline, NOT a world-coordinate axis or a force arrow.
+3. Show the parallel-platform invariant visually without distorting the assembly: put matching BLUE parallel-plane symbols beside the existing "静平台" and "动平台" callouts, and draw a small dark-blue normal arrow from each platform surface in the SAME projected direction (toward the right and slightly up), both arrows exactly parallel. These normal arrows are illustrative geometric normals, not rotation axes, and need no new variable labels. Their roots must lie on the fixed rear plate and the small moving plate respectively. Add the explicit text "动平台始终与静平台平行" beneath panel (a), with room so it does not cover hardware. This is a property of the THREE parallelogram chains together.
+
+B. Panel (b), three-axis handle:
+Overlay the actual three joint rotation AXIS CENTERLINES, dark red dash-dot lines with thin white halos:
+- Joint 1: vertical shaft centerline through the top mounting stem and top bearing, approximately x1110, y70 to220. This is the physical mounting-stem axis.
+- Joint 2: shaft centerline across the side rotary bearing at approximately (1350,385), projected roughly horizontally. Extend left/right just beyond the bearing, e.g. x1290 to1410, through the true bearing center.
+- Joint 3: vertical shaft centerline through the rotary bearing immediately above the handgrip, approximately x1106, y235 to365. Keep it as a SEPARATE finite centerline from joint 1. The two vertical axes can overlap in this projection; do not falsely force all three axes into an orthogonal xyz triad.
+Retain the existing callouts "关节 1", "关节 2", "关节 3" and move their black leader endpoints if needed to point exactly to the correct joint centers. Do not call them roll/pitch/yaw. Retain "安装端" and "握持部".
+
+Add ONE small legend along the bottom: a short red dash-dot sample and text "转轴中心线". Keep (a) and (b) panel markers. Allow additional white canvas below to accommodate the parallelism statement and legend. Fonts large, black, consistent, legible at journal size; avoid overlapping labels, hidden subscripts, line crossings through text. Black callout leaders end in dots; red dash-dot axes must be visibly distinct from them. Keep high contrast on hardware and retain thin white halos. No new dimensions, no coordinate-frame triads, no imaginary tests, no rotated or reconfigured mechanisms.
+
+Final English annotation prompt:
+Use case: text-localization.
+Edit this completed two-panel engineering figure by translating EVERY Chinese annotation into ENGLISH. Keep ALL robot geometry, camera poses, hardware, red dash-dot rotation centerlines, amber closed parallelogram highlight, blue parallelism symbols and parallel normal arrows unchanged. Keep the Chinese-free CAD imagery untouched. Only replace text and adjust callout leader endpoints/layout minimally to fit English in white space without overlaps.
+Required exact English replacements:
+静平台 -> "Fixed platform"
+主动臂 L_D -> "Active arm L_D" (italic L with actual upright D subscript)
+平行四边形从动臂 L_P -> "Parallelogram linkage L_P" (can wrap on two lines; italic L with actual upright P subscript)
+动平台 -> "Moving platform"
+驱动转轴 -> "Drive axis"
+安装端 -> "Mounting interface"
+关节 1 -> "Joint 1"
+关节 2 -> "Joint 2"
+关节 3 -> "Joint 3"
+握持部 -> "Grip"
+动平台始终与静平台平行 -> "Fixed and moving platforms remain parallel" (wrap into two short lines under panel a if needed)
+转轴中心线 -> "Rotation axis" (retain the red dash-dot sample directly beside it)
+Keep "(a)" and "(b)" panel markers.
+NO Chinese characters may remain anywhere in the final image. English labels professional serif type, dark, large, consistent, crisp and easy to read at journal size. Keep all callouts fully inside the canvas. Add white side/bottom margins if required so "Mounting interface", "Parallelogram linkage" and the parallelism statement do not collide with each other, the diagrams, or panel markers. The leader for "Parallelogram linkage L_P" should still identify BOTH long gray sides of the highlighted four-sided linkage. Retain the visibly closed amber quadrilateral with its four joint dots. No added geometry or arrows, no omitted axis centerlines, no change to their direction. Preserve the distinct gaps separating the two vertical rotation-axis centerlines of Joint 1 and Joint 3. Pure opaque white background.
