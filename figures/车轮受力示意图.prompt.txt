@@ -1,0 +1,23 @@
+车轮受力示意图生成记录
+模式：内置 image_gen 编辑；基于 figures/轮侧视示意图.png。
+输出：figures/车轮受力示意图.png；已嵌入 Article.docx 的 Fig. 4。
+
+初次提示词
+Use case: precise-object-edit.
+Asset type: IEEE robotics paper Fig. 4, wheel free-body diagram.
+Edit target: supplied local wheel-side-view PNG. Preserve its wheel side-view geometry: black outer circle, smaller light-gray circular hub centered on the axle, and two parallel thin lower-leg outlines extending toward the upper left. Make the leg outlines pale gray as context, keeping the isolated WHEEL visually dominant. White opaque background. Crisp publication line art, generous whitespace, landscape composition. No title or caption within the image. No invented mechanical parts, no 3-D perspective.
+Add the following physically consistent annotations, all readable at single-column width. Force arrows dark blue, moment arrow dark red, geometric construction lines gray; remain legible in grayscale. Render math labels professionally with real subscript typography, italic scalar and bold italic vectors, roman descriptive subscripts. Never print LaTeX backslashes or underscore syntax.
+1. Wheel center C is at the exact hub center, marked by a small black point and label C slightly above-left of it.
+2. Horizontal thin ground line tangent to the bottom of the wheel. Mark the exact tangent contact point E with a small black point and place label E just below-left of it.
+3. Ground force vector f_e: ONE arrow whose tail is exactly at E and whose tip points diagonally UP-LEFT into the lower-left wheel area. Put label f_e beside this arrow, outside the wheel to the lower left, with a short leader if necessary.
+4. Axle force vector f_w (the force of the leg ON THE WHEEL): ONE arrow whose tail is exactly at C and whose tip points diagonally DOWN-RIGHT into the wheel's lower-right region. Put label f_w near its tip. It is a force on the wheel; do NOT show an opposing reaction force on the leg.
+5. Weight m_w g: ONE arrow starting exactly at C, pointing vertically DOWN, length approximately half the radius, stopping strictly above E. Put label m_w g left of this downward arrow, separated from it. m_w is scalar mass and g is a bold italic gravity vector.
+6. Driving moment tau_w: one small curved COUNTERCLOCKWISE arrow centered geometrically on C, running from the right side toward the upper-right of the wheel around the hub, with its arrowhead near the upper-right pointing up-left. Label with Greek τ and subscript w, near this arc. Do not confuse this moment with an extra force arrow.
+7. Position vector r_ce from C to E: show as a translated thin dashed VERTICAL DOWNWARD arrow to the RIGHT OUTSIDE the wheel. Its start is exactly level with C, its arrowhead exactly level with E. Thin horizontal dashed extension lines from C and E reach this construction. Label r_ce to the right of the arrow. This geometric vector must be visually distinct from force arrows. Avoid overlapping the force and moment annotations.
+Exactly three straight force arrows (f_e, f_w, m_w g), one curved moment arrow (τ_w), and one dashed geometry arrow (r_ce). Do not add axes, acceleration vectors, or component forces. All labels must be complete and correctly spelled: C, E, f_e, f_w, m_w g, τ_w, r_ce, with subscripts as described. The diagram represents forces acting ON the wheel only. Keep every label clear of the wheel outlines and arrowheads.
+
+最终修订提示词
+Edit the supplied wheel free-body diagram, preserving its entire composition, wheel, hub, gray leg, C and E locations, THREE blue force arrows, red counterclockwise torque arrow, labels and ground line. Correct ONLY the geometry annotation and mathematical label typography.
+CRITICAL correction: r_ce is a displacement VECTOR from C downward to E, not a dimension with two heads. On the gray dashed vertical line to the right, REMOVE the upper arrowhead completely. Retain only ONE downward arrowhead at its bottom. Set that bottom arrow tip exactly at the same y coordinate as the center of the black point E, exactly on the ground level. The bottom horizontal gray dashed construction line must run horizontally from E to that bottom arrow tip, NOT above E and NOT sloped. The upper dashed extension remains horizontal at C's level. Use a thin dashed shaft, only one downward arrowhead, absolutely no arrowhead at the top.
+TYPOGRAPHY correction: all descriptive subscripts "w", "e", and "ce" must be upright ROMAN, not italic. Keep f and r vectors bold italic, g bold italic, m and τ scalar italic; C and E italic. Labels precisely f subscript e, f subscript w, m subscript w times g, τ subscript w, and r subscript ce. Do not add letters, force components, or an image title. Maintain white opaque background, sharp clean lines and high-resolution publication quality.
+
