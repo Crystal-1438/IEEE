@@ -1,0 +1,36 @@
+Mode: built-in image_gen; edit/compositing.
+Edit target: figures/机械臂侧视图.jpg
+Coordinate-direction reference: figures/机械臂关节坐标系定义.png
+User clarification: frames 2 and 3 share an origin in the physical view.
+Final output: figures/机械臂关节坐标系实物叠加图.png
+
+Confirmed overlay prompt:
+Use case: compositing / precise-object-edit for an IEEE robotics figure.
+Input 1 is the immutable arm side-view rendering to annotate. Input 2 gives the EXACT coordinate AXIS DIRECTIONS and labels. User clarification OVERRIDES the schematic separation: frames 2 and 3 have COINCIDENT ORIGINS in the physical view. Frames 4 and 5 also share one origin. Do not separate either pair.
+
+Preserve image 1 robot hardware and pose EXACTLY. Do not redraw a different arm, stretch or bend links, move motors or change gripper. Overlay coordinate arrows; add clean white margin around the original rendering as needed for the arrows and text. No title, dimension lines, stick diagram or additional formulas.
+
+Place frame origins at these landmarks in image 1 (input image is 1280 by 293 pixels; coordinates approximate, refine to actual pivot centers):
+0: base mounting datum at the bottom of the base plate, approximately (84,244).
+1: large circular shoulder rotation center, approximately (84,158).
+2 AND 3: ONE common origin at the elbow rotation center, approximately (530,158), centered on the large round elbow housing. This is the user's explicit instruction: 2 and 3 coincide. There must NOT be another frame-3 origin at the forearm motor.
+4 AND 5: ONE common origin at the center of the prominent white circular wrist joint, approximately (1003,158), NOT its top edge.
+6: distal tool reference on the gripper's longitudinal centerline at the rightmost jaw tips, approximately (1268,158). Add margin to the right to show axes without moving the arm.
+
+Exact axes from the reference:
+Origin 0: x₀ right; y₀ diagonally up-right; z₀ vertically up.
+Origin 1: x₁ right; y₁ vertically up; z₁ diagonally down-left.
+Shared origin 2/3: x₂ and z₃ BOTH horizontally right; y₂ and x₃ BOTH vertically up; z₂ and y₃ BOTH diagonally down-left. Show each shared direction as one arrow carrying BOTH clearly separated labels. Thus exactly three direction arrows and six labels at this origin, not six diverging arrows. If color conflicts, use black shared-direction arrows and color the individual labels by x/y/z.
+Shared origin 4/5: x₅ up; x₄ down; y₄ and z₅ BOTH horizontally right; z₄ and y₅ BOTH diagonally down-left. Exactly four direction arrows and six labels; y₄ must NOT point diagonally up-right.
+Origin 6: y₆ horizontally right; x₆ vertically down; z₆ diagonally down-left.
+
+All 21 labels x/y/z with numeric indices 0,1,2,3,4,5,6 must appear exactly once, with actual subscripts and professional italic math lettering. Use deep BLUE for x labels, deep OCHRE for y labels, deep RED for z labels. Single-axis arrows match label color; shared arrows may be black for clarity. Small black origin dots with white surround. High contrast and thin white halos on arrows and labels over machinery.
+Axes at 0 and 1 are close: keep arrows short enough to avoid overlapping origins, or place label near arrow using a short clear leader. Do not move origins just to create room. Place shared-axis labels side by side near arrow tips, NOT one over another. Preserve the original mechanism proportions. Opaque white/light neutral background and generous top/bottom and right annotation margins, but no wasteful empty space. A clean, precise overlay, not a conceptual redraw.
+
+Annotation alignment correction:
+Precisely edit ONLY the overlay annotations on this already annotated arm image. Freeze every hardware pixel and every arm proportion: no robot redraw, no change to motors, gears, link shapes, gripper or background. Keep all labels, arrow directions, colors, line widths and styles.
+Correct three overlay origin positions, using the current image coordinate system of 2048 x 683 pixels:
+1. Frame 1 currently has its black origin dot around (159,287), above/right of the large circular shoulder bearing center. Translate the WHOLE frame-1 annotation (origin dot and its three arrows and x1/y1/z1 labels) left/down so its common origin is at the ACTUAL center of that large circular shoulder bearing, approximately (135,330). The large bearing is the LEFT round main shoulder, NOT the smaller pivot at (210,342).
+2. Shared frame 2/3 currently has its dot around (858,297), above/right of the large round elbow housing center. Translate the ENTIRE combined frame-2/3 annotation left/down to put its ONE origin at the center of the large round elbow housing, approximately (830,335), NOT the small linkage pivot at (914,327). Retain exactly three positive directions: up has y2,x3; right has x2,z3; down-left has z2,y3. Frames 2 and 3 MUST remain coincident.
+3. Shared frame 4/5 currently has its dot around (1456,320), at the right edge of the white circular wrist disk. Translate its ENTIRE combined overlay to place the ONE origin at the exact CENTER of the prominent WHITE CIRCULAR WRIST DISK, approximately (1414,334). Retain up x5, down x4, right y4,z5, down-left z4,y5. Frames 4 and 5 remain coincident.
+Remove the old origin dots and old arrows completely, restoring the unchanged underlying hardware where those annotations were before. Draw the new overlays with the same thin white halos. Keep frames 0 and 6 exactly unchanged. NO axis directions change, NO labels added or removed, NO change of pose or machine geometry. A precise local annotation translation only.
