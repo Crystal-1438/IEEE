@@ -1,0 +1,44 @@
+Fig. 5 生成记录
+模式：内置 image_gen 编辑。
+输入：figures/整体侧视图.png。
+输出：figures/整机质心与接触力示意图.png；已嵌入最新 Article.docx 的 Fig. 5。
+说明：侧视投影，前轮 1、4，后轮 2、3；接触力标注为各轮组投影合力，质心位置仅作示意。
+
+初次提示词
+Use case: precise-object-edit.
+Asset type: IEEE robotics article Fig. 5, whole-robot center-of-mass and contact-force SIDE-VIEW diagram.
+Input image is the edit target: the supplied CAD side view of a wheel-legged robot with a long six-axis arm extending RIGHT. Preserve the recognizable mechanism accurately: two projected wheel positions beneath a dark rectangular chassis, folded wheel legs, and the long articulated arm and gripper reaching right. Keep the side-view orientation and pose, chassis and wheel locations and gripper shape. Clean the pale blue/gray CAD background to pure opaque white, remove tiny CAD coordinate widgets, retain the actual gray mechanical assembly. Do not invent a different robot or extra visible wheels.
+Composition: wide landscape technical diagram, white background, ample padding above, below and left of the robot, enough whitespace below chassis for legible annotations. No image title, no decorative legend, no watermark. Render crisp outlines and restrained desaturated gray machinery; annotations visually dominant. Engineering schematic, not photorealism.
+Physical convention: the arm points FORWARD to the right. Therefore the RIGHT wheel location is the projected FRONT pair (indices 1 and 4); the LEFT wheel is the projected REAR pair (indices 2 and 3). Left/right wheels on each axle coincide in this side projection. Do not draw four spatially separated wheels.
+Add:
+1) A thin horizontal gray ground line tangent to both projected wheel bottoms; mark a small black contact dot under each wheel. Rear (LEFT) contact label below ground: E₂, E₃. Front (RIGHT) contact label below ground: E₁, E₄. Make the ground contact alignment precise, allowing a tiny perspective cleanup of the reference image.
+2) A clear black center-of-mass point G, near the chassis midsection, slightly toward the arm base but horizontally between the projected contact points. Place italic label G above the point. This is a SCHEMATIC center of mass, no numerical values.
+3) ONE blue vertical DOWNWARD weight arrow, tail EXACTLY at G and tip in the free space between the legs above the ground. Label m g next to it: m scalar italic, g bold italic. Do not use wheel mass m_w: this is the TOTAL robot weight.
+4) ONE blue vertical UPWARD support-force arrow from the LEFT contact dot, about wheel-diameter length, with label f_{e,2} + f_{e,3} to its left in clear whitespace, a short fine leader if necessary. It is the projected resultant of the rear pair.
+5) ONE blue vertical UPWARD support-force arrow from the RIGHT contact dot, same illustrative length, with label f_{e,1} + f_{e,4} to its right in clear whitespace. It is the projected resultant of the front pair.
+6) TWO thin GRAY DASHED position-vector arrows with tails EXACTLY at G and single arrowheads at the respective contact dots (down-left and down-right). These are lever arms measured from the WHOLE-ROBOT CENTER OF MASS, not from the chassis origin or a wheel center. Label only the down-right dashed vector r_{e,i} near its middle; it illustrates the general position-vector definition. Leave the left dashed ray unlabeled to avoid crowding. Ensure arrowheads point toward the ground contacts, never toward G.
+Typography: f, r, g vectors bold italic; m scalar italic; descriptive subscript e UPRIGHT ROMAN; index i italic; numerals regular. Render true subscripts, no literal braces/backslashes/underscores. All three force arrow tails and both lever arm arrow tails must be located exactly at the stated physical points. Avoid labels on top of mechanical parts or overlapping arrows. Only these labels: G, m g, E₂, E₃, E₁, E₄, f_{e,2}+f_{e,3}, f_{e,1}+f_{e,4}, r_{e,i}. No invented measured COM coordinate, no torque arrows, no acceleration arrows, no joint labels.
+Keep original robot proportions and correct side-view geometry; sufficient resolution for readable annotations in a scientific paper.
+
+修订 1
+Correct ONLY the contact-point annotations of this supplied whole-robot diagram. Preserve the exact robot image, pose, G point, weight arrow, typography scale, colors, and canvas.
+The current black ground dots and blue support arrows are incorrectly outside the wheels. They MUST be relocated to the true wheel-ground tangency points:
+- Rear LEFT wheel tangent is on the ground line directly beneath the LEFT wheel CENTER, approximately 18.1% of image width and 88.6% of image height (about x=335, y=754 on this image).
+- Front RIGHT wheel tangent is on the ground line directly beneath the RIGHT wheel CENTER, approximately 46.2% of image width and 88.6% of image height (about x=855, y=754).
+Remove both old black ground dots at x≈240 and x≈987. Put exactly TWO black ground dots at the correct tangency points under the wheel centers. Reposition each vertical blue upward support-force arrow so its TAIL is exactly on the corresponding new dot, even though the arrow now overlays its wheel: overlaying the wheel is CORRECT for a free-body force diagram. Keep force arrow length about one wheel diameter.
+Center E₂,E₃ below the new left dot, and E₁,E₄ below the new right dot.
+Keep the rear-force text f_{e,2}+f_{e,3} in the blank space to the left, keep the front-force text f_{e,1}+f_{e,4} in the blank space to the right. They label the corresponding nearby arrows.
+Redraw BOTH thin gray dashed moment-arm arrows so they start exactly at G and terminate exactly at the new contact dots. Each gray arrow has only ONE arrowhead, at its ground endpoint. Remove their old paths and old arrowheads. The down-right arrow must not end at an intermediate point to the right of the wheel. No extra black dots or unlabeled arrows.
+Subscript e in all force and r labels must be upright roman; index i remains italic. Bold italic f, r, g; italic scalar m. No other edits. White background. Do NOT leave the arrows next to the wheels: the force arrow tails and gray vector arrowheads MUST coincide with the actual bottoms of the circular wheels.
+
+修订 2
+Make a precise annotation-only correction to the supplied diagram. Keep the robot, text, ground, G and both black contact dots exactly fixed.
+1. There is an erroneous downward BLUE arrowhead at the base of the LEFT wheel force arrow. REMOVE that extra downward blue arrowhead. There must be exactly THREE blue arrowheads total in the entire image: ONE downward arrowhead on the central weight arrow, ONE upward arrowhead on the left wheel support arrow, ONE upward arrowhead on the right wheel support arrow. Both support arrows must have plain tails at the black contact dots, with no lower blue arrowheads.
+2. Replace the two current gray dashed lever-arm paths with perfectly STRAIGHT dashed gray arrows using a ruler: G near pixel (520,224) to rear contact near (324,754), and G near (520,224) to front contact near (852,754), on the approximately 1848 by 851 canvas. Each must be one straight segment, with no bends or stair steps around the mechanism. Dashed lines may pass over machinery; use a subtle white halo to preserve visibility. One small dark-gray arrowhead at each ground endpoint, oriented diagonally along its straight segment. The two gray heads must be clearly gray and distinguishable from the BLUE vertical support-force arrows. Do not change or duplicate the blue arrows. No other edits. Retain all labels, including the complete front and rear pair force sums.
+
+最终修订
+Edit this technical figure with minimal localized changes. Keep ALL robot geometry, force arrows, black contact dots, G, weight, labels, and ground exactly as they are.
+REMOVE the ENTIRE LEFT gray dashed diagonal construction arrow from G toward the rear (left) wheel, including all its dashed strokes, white halo, and its gray arrowhead near the left wheel's lower-left edge. Restore the underlying machinery cleanly. That left gray arrow is not required; DO NOT replace it.
+Keep ONLY ONE gray dashed lever-arm vector: the one labelled r with subscript e,i, from G down toward the RIGHT wheel contact. Its endpoint must be the BLACK DOT directly below the CENTER of the RIGHT wheel, the same exact point where the blue vertical upward arrow starts, labelled E₁,E₄ below the ground. Extend/adjust the final few pixels of the existing right dashed arrow so its tip reaches that black dot (it is acceptable for the tip to be obscured by the black dot). It must be a single straight arrow from G to that black dot. DO NOT end it to either side of the black dot. The black contact dot must lie precisely at the termination of this vector.
+After the edit, the diagram contains exactly THREE blue force arrows and exactly ONE gray dashed diagonal vector. No gray diagonal at all toward the LEFT wheel. No other changes.
+
