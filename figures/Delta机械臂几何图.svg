@@ -3,51 +3,53 @@
 <rect width="1600" height="1070" fill="white"/>
 <g font-family="DejaVu Serif" fill="#17232c" font-size="36">
 <path d="M816.00,55.00 L816.00,980.00" fill="none" stroke="#c8ced3" stroke-width="2"/>
-<polygon points="559.49,270.31 324.46,282.11 406.06,167.59" stroke="#174f86" fill="#edf4fb" stroke-width="4"/>
-<polygon points="519.96,653.56 356.68,661.76 413.37,582.20" stroke="#174f86" fill="#dbeaf6" stroke-width="4"/>
-<path d="M406.06,167.59 L381.76,260.71" fill="none" stroke="#bb4807" stroke-width="7"/>
-<polygon points="393.18,260.13 370.33,261.28 401.94,582.77 424.79,581.63" stroke="#087e77" fill="none" stroke-width="4"/>
-<path d="M381.76,260.71 L413.37,582.20" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
-<circle cx="406.06" cy="167.59" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="381.76" cy="260.71" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="413.37" cy="582.20" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<path d="M324.46,282.11 L217.34,491.46" fill="none" stroke="#bb4807" stroke-width="7"/>
-<polygon points="209.88,486.47 224.80,496.46 364.14,666.76 349.22,656.77" stroke="#087e77" fill="none" stroke-width="4"/>
-<path d="M217.34,491.46 L356.68,661.76" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
-<circle cx="324.46" cy="282.11" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="217.34" cy="491.46" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="356.68" cy="661.76" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<path d="M559.49,270.31 L690.90,467.68" fill="none" stroke="#bb4807" stroke-width="7"/>
-<polygon points="686.94,473.25 694.87,462.11 523.93,648.00 515.99,659.13" stroke="#087e77" fill="none" stroke-width="4"/>
-<path d="M690.90,467.68 L519.96,653.56" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
-<circle cx="559.49" cy="270.31" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="690.90" cy="467.68" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="519.96" cy="653.56" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<path d="M430.00,240.00 L430.00,632.51" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="9 7" marker-end="url(#arrow)"/>
+<polygon points="559.44,259.91 406.08,182.67 324.48,277.42" stroke="#174f86" fill="#edf4fb" stroke-width="4"/>
+<polygon points="519.93,609.57 413.38,555.90 356.69,621.73" stroke="#174f86" fill="#dbeaf6" stroke-width="4"/>
+<path d="M406.08,182.67 L381.80,275.49" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="370.38,276.34 393.23,274.63 424.81,555.05 401.96,556.76" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M381.80,275.49 L413.38,555.90" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="406.08" cy="182.67" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="381.80" cy="275.49" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="413.38" cy="555.90" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M559.44,259.91 L690.82,431.12" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="694.79,426.52 686.85,435.73 515.96,614.17 523.90,604.96" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M690.82,431.12 L519.93,609.57" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="559.44" cy="259.91" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="690.82" cy="431.12" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="519.93" cy="609.57" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M324.48,277.42 L217.38,466.40" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="224.84,470.16 209.92,462.65 349.23,617.98 364.15,625.49" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M217.38,466.40 L356.69,621.73" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="324.48" cy="277.42" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="217.38" cy="466.40" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="356.69" cy="621.73" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M430.00,240.00 L430.00,595.73" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="9 7" marker-end="url(#arrow)"/>
 <circle cx="430.00" cy="240.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
-<circle cx="430.00" cy="632.51" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="430.00" cy="595.73" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
 <text x="451.00" y="223.00" font-size="38" fill="#17232c">O</text>
 <text x="453.00" y="439.00" font-size="40" fill="#17232c"><tspan font-style="italic" font-weight="bold">p</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="448.00" y="669.51" font-size="38" fill="#17232c">P</text>
-<path d="M430.00,240.00 L627.63,286.25" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="640.63" y="307.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
-<path d="M430.00,240.00 L501.91,139.08" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="511.91" y="135.08" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">y</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
-<path d="M430.00,240.00 L430.00,58.75" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="446.00" y="55.75" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="451.00" y="102.00" font-size="36" fill="#17232c">{D}</text>
-<text x="569.49" y="255.31" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="705.90" y="475.68" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="537.96" y="679.56" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="268.46" y="310.11" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="150.34" y="499.46" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="297.68" y="689.76" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="349.06" y="150.59" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="312.76" y="251.71" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
-<text x="385.37" y="562.20" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="448.00" y="632.73" font-size="38" fill="#17232c">P</text>
+<path d="M430.00,240.00 L627.57,270.39" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="640.57" y="291.39" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L358.09,323.50" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="338.09" y="358.50" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">y</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L430.00,75.73" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="446.00" y="72.73" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="461.00" y="146.00" font-size="36" fill="#17232c">{D}</text>
+<text x="529.00" y="64.00" font-size="28" fill="#17232c">Right-handed frame</text>
+<text x="532.00" y="111.00" font-size="32" fill="#17232c"><tspan font-style="italic" font-weight="bold">e</tspan><tspan dy="9" font-size="26">x</tspan><tspan dy="-9">&#8203;</tspan> × <tspan font-style="italic" font-weight="bold">e</tspan><tspan dy="9" font-size="26">y</tspan><tspan dy="-9">&#8203;</tspan> = <tspan font-style="italic" font-weight="bold">e</tspan><tspan dy="9" font-size="26">z</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="569.44" y="244.91" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="705.82" y="439.12" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="537.93" y="635.57" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="349.08" y="165.67" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="312.80" y="266.49" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="385.38" y="535.90" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="268.48" y="305.42" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="150.38" y="474.40" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="297.69" y="649.73" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
 <path d="M203.00,112.00 L365.00,229.00" fill="none" stroke="#174f86" stroke-width="2.5"/>
 <text x="50.00" y="88.00" font-size="39" fill="#174f86">Fixed platform</text>
-<path d="M287.00,752.00 L389.00,644.00" fill="none" stroke="#174f86" stroke-width="2.5"/>
+<path d="M287.00,752.00 L386.64,599.50" fill="none" stroke="#174f86" stroke-width="2.5"/>
 <text x="47.00" y="802.00" font-size="39" fill="#174f86">Moving platform</text>
 <text x="357.00" y="850.00" font-size="35" fill="#174f86">Parallel platforms</text>
 <path d="M66.00,897.00 L127.00,897.00" fill="none" stroke="#bb4807" stroke-width="7"/>

@@ -55,9 +55,26 @@ def poly(points, stroke, fill='none', width=3, dash=None):
 def point(p, color=INK, radius=6):
     items.append(f'<circle cx="{p[0]:.2f}" cy="{p[1]:.2f}" r="{radius}" fill="{color}" stroke="white" stroke-width="2"/>')
 
+def cross(a,b):
+    return (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+
+def dot(a,b):return sum(x*y for x,y in zip(a,b))
+
+# A proper orthographic camera above the fixed-platform plane. The previous
+# oblique view was from the negative-X side and made the handedness ambiguous.
+az,el=math.radians(20),math.radians(25)
+screen_right=(0.,-math.sin(az),math.cos(az))
+screen_up=(math.cos(el),-math.sin(el)*math.cos(az),-math.sin(el)*math.sin(az))
+toward_viewer=cross(screen_right,screen_up)
+assert abs(dot(screen_right,screen_up))<1e-12
+assert abs(dot(screen_right,screen_right)-1)<1e-12
+assert abs(dot(screen_up,screen_up)-1)<1e-12
+assert toward_viewer[0]>0
+ex,ey,ez=(1.,0.,0.),(0.,1.,0.),(0.,0.,1.)
+assert cross(ex,ey)==ez and cross(ez,ex)==ey
+
 def project(v):
-    x,y,z = v
-    return (430 + 1450*(.94*z+.342*y), 240 + 1450*(.22*z-.48*y-x))
+    return (430+1450*dot(screen_right,v),240-1450*dot(screen_up,v))
 
 def add(v, w): return tuple(a+b for a,b in zip(v,w))
 def mul(a, v): return tuple(a*b for b in v)
@@ -69,6 +86,7 @@ for i in range(3):
     psi=2*math.pi*i/3
     e=(0.,-math.sin(psi),math.cos(psi))
     t=(0.,-math.cos(psi),-math.sin(psi))
+    assert norm(diff(cross(ex,e),t))<1e-12
     A=mul(R,e); B=add(mul(elbow_r,e),(elbow_x,0,0)); C=add(P,mul(r,e))
     c=add(B,mul(-r,e))
     assert abs(norm(diff(B,A))-LD)<1e-12
@@ -80,7 +98,7 @@ for i in range(3):
 line((816,55),(816,980),'#c8ced3',2)
 poly([project(x[0]) for x in limbs], BLUE, '#edf4fb', 4)
 poly([project(x[2]) for x in limbs], BLUE, '#dbeaf6', 4)
-for i in [2,1,0]:
+for i in [1,0,2]:
     A,B,C,t=limbs[i]
     line(project(A),project(B),ORANGE,7)
     offset=mul(.008,t)
@@ -95,19 +113,21 @@ point(O);point(pp)
 text(451,223,'O',38)
 text(453,439,sym('p','D',True),40)
 text(pp[0]+18,pp[1]+37,'P',38)
-for v,label,delta in [((0,0,.145),'z',(13,21)),((0,.145,0),'y',(10,-4)),((.125,0,0),'x',(16,-3))]:
+for v,label,delta in [((0,0,.145),'z',(13,21)),((0,.145,0),'y',(-20,35)),((.125,0,0),'x',(16,-3))]:
     tip=project(v);line(O,tip,INK,3,arrow=True)
     text(tip[0]+delta[0],tip[1]+delta[1],sym(label,'D'),37)
-text(451,102,'{D}',36)
+text(461,146,'{D}',36)
+text(529,64,'Right-handed frame',28)
+text(532,111,sym('e','x',True)+' × '+sym('e','y',True)+' = '+sym('e','z',True),32)
 
-offsets={0:((10,-15),(15,8),(18,26)),1:((-56,28),(-67,8),(-59,28)),2:((-57,-17),(-69,-9),(-28,-20))}
+offsets={0:((10,-15),(15,8),(18,26)),1:((-57,-17),(-69,-9),(-28,-20)),2:((-56,28),(-67,8),(-59,28))}
 for i,(A,B,C,t) in enumerate(limbs):
     for j,(base,v) in enumerate(zip('ABC',[A,B,C])):
         q=project(v);dx,dy=offsets[i][j]
         text(q[0]+dx,q[1]+dy,sym(base,str(i+1)),35)
 line((203,112),(365,229),BLUE,2.5)
 text(50,88,'Fixed platform',39,color=BLUE)
-line((287,752),(389,644),BLUE,2.5)
+line((287,752),project(add(P,(-0.,.016,-.026))),BLUE,2.5)
 text(47,802,'Moving platform',39,color=BLUE)
 text(357,850,'Parallel platforms',35,color=BLUE)
 line((66,897),(127,897),ORANGE,7)
