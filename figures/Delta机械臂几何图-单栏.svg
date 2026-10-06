@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="2160" viewBox="0 0 840 2160"><rect width="840" height="2160" fill="white"/>
+<svg x="0" y="0" width="840" height="1070" viewBox="0 0 808 1070"><defs><marker id="arrow-a" markerWidth="13" markerHeight="11" refX="12" refY="5.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5.5 L0,11 Z" fill="context-stroke"/></marker></defs>
+<rect width="1600" height="1070" fill="white"/>
+<g font-family="DejaVu Serif" fill="#17232c" font-size="36">
+
+<polygon points="559.49,270.31 324.46,282.11 406.06,167.59" stroke="#174f86" fill="#edf4fb" stroke-width="4"/>
+<polygon points="519.96,653.56 356.68,661.76 413.37,582.20" stroke="#174f86" fill="#dbeaf6" stroke-width="4"/>
+<path d="M406.06,167.59 L381.76,260.71" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="393.18,260.13 370.33,261.28 401.94,582.77 424.79,581.63" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M381.76,260.71 L413.37,582.20" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="406.06" cy="167.59" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="381.76" cy="260.71" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="413.37" cy="582.20" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M324.46,282.11 L217.34,491.46" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="209.88,486.47 224.80,496.46 364.14,666.76 349.22,656.77" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M217.34,491.46 L356.68,661.76" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="324.46" cy="282.11" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="217.34" cy="491.46" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="356.68" cy="661.76" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M559.49,270.31 L690.90,467.68" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="686.94,473.25 694.87,462.11 523.93,648.00 515.99,659.13" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M690.90,467.68 L519.96,653.56" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="559.49" cy="270.31" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="690.90" cy="467.68" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="519.96" cy="653.56" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M430.00,240.00 L430.00,632.51" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="9 7" marker-end="url(#arrow-a)"/>
+<circle cx="430.00" cy="240.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="430.00" cy="632.51" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<text x="451.00" y="223.00" font-size="38" fill="#17232c">O</text>
+<text x="453.00" y="439.00" font-size="40" fill="#17232c"><tspan font-style="italic" font-weight="bold">p</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="448.00" y="669.51" font-size="38" fill="#17232c">P</text>
+<path d="M430.00,240.00 L627.63,286.25" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-a)"/>
+<text x="640.63" y="307.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L358.09,340.92" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-a)"/>
+<text x="343.09" y="375.92" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">y</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L430.00,58.75" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-a)"/>
+<text x="446.00" y="55.75" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="451.00" y="102.00" font-size="36" fill="#17232c">{D}</text>
+<text x="569.49" y="255.31" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="705.90" y="475.68" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="537.96" y="679.56" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="268.46" y="310.11" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="150.34" y="499.46" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="297.68" y="689.76" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="349.06" y="150.59" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="312.76" y="251.71" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="385.37" y="562.20" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M203.00,112.00 L365.00,229.00" fill="none" stroke="#174f86" stroke-width="2.5"/>
+<text x="50.00" y="88.00" font-size="39" fill="#174f86">Fixed platform</text>
+<path d="M287.00,752.00 L389.00,644.00" fill="none" stroke="#174f86" stroke-width="2.5"/>
+<text x="47.00" y="802.00" font-size="39" fill="#174f86">Moving platform</text>
+<text x="357.00" y="850.00" font-size="35" fill="#174f86">Parallel platforms</text>
+<path d="M66.00,897.00 L127.00,897.00" fill="none" stroke="#bb4807" stroke-width="7"/>
+<text x="150.00" y="908.00" font-size="36" fill="#bb4807">Active arm</text>
+<path d="M66.00,945.00 L127.00,945.00" fill="none" stroke="#087e77" stroke-width="4"/>
+<path d="M66.00,955.00 L127.00,955.00" fill="none" stroke="#087e77" stroke-width="4"/>
+<text x="150.00" y="961.00" font-size="36" fill="#087e77">Passive arm (paired rods)</text>
+<text x="223.96" y="1030.00" font-size="37" fill="#17232c">(a) Three-limb geometry</text>
+<path d="M950.00,190.00 L950.00,667.25" fill="none" stroke="#82909a" stroke-width="2" stroke-dasharray="7 6"/>
+<path d="M950.00,180.00 L950.00,55.00" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-a)"/>
+<text x="929.00" y="51.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M950.00,180.00 L1515.00,180.00" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow-a)"/>
+<text x="1426.00" y="150.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="bold">e</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1180.00" y="103.00" font-size="33" fill="#17232c">Radially outward</text>
+<path d="M950.00,180.00 L1121.00,180.00" fill="none" stroke="#174f86" stroke-width="5"/>
+<path d="M950.00,667.25 L1068.80,667.25" fill="none" stroke="#174f86" stroke-width="5"/>
+<path d="M1121.00,180.00 L1294.55,386.83" fill="none" stroke="#bb4807" stroke-width="7"/>
+<path d="M1294.55,386.83 L1068.80,667.25" fill="none" stroke="#087e77" stroke-width="7"/>
+<path d="M1175.75,386.83 L950.00,667.25" fill="none" stroke="#087e77" stroke-width="2.5" stroke-dasharray="10 7"/>
+<path d="M1175.75,386.83 L1294.55,386.83" fill="none" stroke="#17232c" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="950.00" cy="180.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1121.00" cy="180.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1294.55" cy="386.83" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1068.80" cy="667.25" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="950.00" cy="667.25" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1175.75" cy="386.83" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<text x="910.00" y="192.00" font-size="36" fill="#17232c">O</text>
+<text x="1099.00" y="161.00" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1311.55" y="398.83" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1085.80" y="684.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="915.00" y="683.25" font-size="36" fill="#17232c">P</text>
+<text x="1123.75" y="368.83" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="bold">c</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1150.78" y="293.42" font-size="40" fill="#bb4807"><tspan font-style="italic" font-weight="normal">L</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1201.68" y="542.04" font-size="40" fill="#087e77"><tspan font-style="italic" font-weight="normal">L</tspan><tspan dy="9" font-size="26">P</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M1190.00,180.00 L1189.97,182.15" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.97,182.15 L1189.87,184.30" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.87,184.30 L1189.70,186.44" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.70,186.44 L1189.46,188.58" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.46,188.58 L1189.16,190.71" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.16,190.71 L1188.80,192.83" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1188.80,192.83 L1188.36,194.93" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1188.36,194.93 L1187.87,197.03" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1187.87,197.03 L1187.30,199.10" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1187.30,199.10 L1186.68,201.16" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1186.68,201.16 L1185.98,203.19" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1185.98,203.19 L1185.23,205.21" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1185.23,205.21 L1184.41,207.20" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1184.41,207.20 L1183.54,209.16" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1183.54,209.16 L1182.60,211.10" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1182.60,211.10 L1181.60,213.00" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1181.60,213.00 L1180.54,214.87" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1180.54,214.87 L1179.42,216.71" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1179.42,216.71 L1178.25,218.51" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1178.25,218.51 L1177.02,220.28" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1177.02,220.28 L1175.74,222.00" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1175.74,222.00 L1174.41,223.69" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1174.41,223.69 L1173.02,225.33" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1173.02,225.33 L1171.58,226.93" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1171.58,226.93 L1170.09,228.49" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1170.09,228.49 L1168.56,229.99" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1168.56,229.99 L1166.98,231.45" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1166.98,231.45 L1165.35,232.86" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1166.98,231.45 L1165.35,232.86" fill="none" stroke="#bb4807" stroke-width="2.8" marker-end="url(#arrow-a)"/>
+<text x="1199.00" y="237.00" font-size="36" fill="#bb4807"><tspan font-style="italic" font-weight="normal">θ</tspan><tspan dy="9" font-size="26">D,<tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M950.00,180.00 L950.00,128.00" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1121.00,180.00 L1121.00,128.00" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M950.00,128.00 L1121.00,128.00" fill="none" stroke="#174f86" stroke-width="2" marker-end="url(#arrow-a)" marker-start="url(#arrow-a)"/>
+<text x="1010.12" y="116.00" font-size="36" fill="#174f86"><tspan font-style="italic" font-weight="normal">R</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M950.00,667.25 L950.00,721.25" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1068.80,667.25 L1068.80,721.25" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M950.00,721.25 L1068.80,721.25" fill="none" stroke="#174f86" stroke-width="2" marker-end="url(#arrow-a)" marker-start="url(#arrow-a)"/>
+<text x="990.42" y="709.25" font-size="36" fill="#174f86"><tspan font-style="italic" font-weight="normal">r</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M1175.75,386.83 L1175.75,440.83" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1294.55,386.83 L1294.55,440.83" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1175.75,440.83 L1294.55,440.83" fill="none" stroke="#174f86" stroke-width="2" marker-end="url(#arrow-a)" marker-start="url(#arrow-a)"/>
+<text x="1216.17" y="428.83" font-size="36" fill="#174f86"><tspan font-style="italic" font-weight="normal">r</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="866.00" y="778.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: base joint</text>
+<text x="1197.00" y="778.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: elbow joint</text>
+<text x="866.00" y="826.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: platform joint</text>
+<text x="866.00" y="874.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="bold">c</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: equivalent sphere center</text>
+<text x="866.00" y="932.00" font-size="31" fill="#087e77">Dashed link: equivalent constraint</text>
+<text x="1013.96" y="1030.00" font-size="37" fill="#17232c">(b) Single-limb geometry</text>
+</g></svg>
+<svg x="0" y="1090" width="840" height="1070" viewBox="824 0 776 1070"><defs><marker id="arrow-b" markerWidth="13" markerHeight="11" refX="12" refY="5.5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L12,5.5 L0,11 Z" fill="context-stroke"/></marker></defs>
+<rect width="1600" height="1070" fill="white"/>
+<g font-family="DejaVu Serif" fill="#17232c" font-size="36">
+
+<polygon points="559.49,270.31 324.46,282.11 406.06,167.59" stroke="#174f86" fill="#edf4fb" stroke-width="4"/>
+<polygon points="519.96,653.56 356.68,661.76 413.37,582.20" stroke="#174f86" fill="#dbeaf6" stroke-width="4"/>
+<path d="M406.06,167.59 L381.76,260.71" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="393.18,260.13 370.33,261.28 401.94,582.77 424.79,581.63" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M381.76,260.71 L413.37,582.20" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="406.06" cy="167.59" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="381.76" cy="260.71" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="413.37" cy="582.20" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M324.46,282.11 L217.34,491.46" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="209.88,486.47 224.80,496.46 364.14,666.76 349.22,656.77" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M217.34,491.46 L356.68,661.76" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="324.46" cy="282.11" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="217.34" cy="491.46" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="356.68" cy="661.76" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M559.49,270.31 L690.90,467.68" fill="none" stroke="#bb4807" stroke-width="7"/>
+<polygon points="686.94,473.25 694.87,462.11 523.93,648.00 515.99,659.13" stroke="#087e77" fill="none" stroke-width="4"/>
+<path d="M690.90,467.68 L519.96,653.56" fill="none" stroke="#087e77" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="559.49" cy="270.31" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="690.90" cy="467.68" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="519.96" cy="653.56" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<path d="M430.00,240.00 L430.00,632.51" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="9 7" marker-end="url(#arrow-b)"/>
+<circle cx="430.00" cy="240.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="430.00" cy="632.51" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<text x="451.00" y="223.00" font-size="38" fill="#17232c">O</text>
+<text x="453.00" y="439.00" font-size="40" fill="#17232c"><tspan font-style="italic" font-weight="bold">p</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="448.00" y="669.51" font-size="38" fill="#17232c">P</text>
+<path d="M430.00,240.00 L627.63,286.25" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-b)"/>
+<text x="640.63" y="307.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">x</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L358.09,340.92" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-b)"/>
+<text x="343.09" y="375.92" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">y</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M430.00,240.00 L430.00,58.75" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-b)"/>
+<text x="446.00" y="55.75" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="451.00" y="102.00" font-size="36" fill="#17232c">{D}</text>
+<text x="569.49" y="255.31" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="705.90" y="475.68" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="537.96" y="679.56" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">1</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="268.46" y="310.11" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="150.34" y="499.46" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="297.68" y="689.76" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">2</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="349.06" y="150.59" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="312.76" y="251.71" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="385.37" y="562.20" font-size="35" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26">3</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M203.00,112.00 L365.00,229.00" fill="none" stroke="#174f86" stroke-width="2.5"/>
+<text x="50.00" y="88.00" font-size="39" fill="#174f86">Fixed platform</text>
+<path d="M287.00,752.00 L389.00,644.00" fill="none" stroke="#174f86" stroke-width="2.5"/>
+<text x="47.00" y="802.00" font-size="39" fill="#174f86">Moving platform</text>
+<text x="357.00" y="850.00" font-size="35" fill="#174f86">Parallel platforms</text>
+<path d="M66.00,897.00 L127.00,897.00" fill="none" stroke="#bb4807" stroke-width="7"/>
+<text x="150.00" y="908.00" font-size="36" fill="#bb4807">Active arm</text>
+<path d="M66.00,945.00 L127.00,945.00" fill="none" stroke="#087e77" stroke-width="4"/>
+<path d="M66.00,955.00 L127.00,955.00" fill="none" stroke="#087e77" stroke-width="4"/>
+<text x="150.00" y="961.00" font-size="36" fill="#087e77">Passive arm (paired rods)</text>
+<text x="223.96" y="1030.00" font-size="37" fill="#17232c">(a) Three-limb geometry</text>
+<path d="M950.00,190.00 L950.00,667.25" fill="none" stroke="#82909a" stroke-width="2" stroke-dasharray="7 6"/>
+<path d="M950.00,180.00 L950.00,55.00" fill="none" stroke="#17232c" stroke-width="3" marker-end="url(#arrow-b)"/>
+<text x="929.00" y="51.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="normal">z</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M950.00,180.00 L1515.00,180.00" fill="none" stroke="#17232c" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrow-b)"/>
+<text x="1426.00" y="150.00" font-size="36" fill="#17232c"><tspan font-style="italic" font-weight="bold">e</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1180.00" y="103.00" font-size="33" fill="#17232c">Radially outward</text>
+<path d="M950.00,180.00 L1121.00,180.00" fill="none" stroke="#174f86" stroke-width="5"/>
+<path d="M950.00,667.25 L1068.80,667.25" fill="none" stroke="#174f86" stroke-width="5"/>
+<path d="M1121.00,180.00 L1294.55,386.83" fill="none" stroke="#bb4807" stroke-width="7"/>
+<path d="M1294.55,386.83 L1068.80,667.25" fill="none" stroke="#087e77" stroke-width="7"/>
+<path d="M1175.75,386.83 L950.00,667.25" fill="none" stroke="#087e77" stroke-width="2.5" stroke-dasharray="10 7"/>
+<path d="M1175.75,386.83 L1294.55,386.83" fill="none" stroke="#17232c" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="950.00" cy="180.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1121.00" cy="180.00" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1294.55" cy="386.83" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1068.80" cy="667.25" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="950.00" cy="667.25" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<circle cx="1175.75" cy="386.83" r="6" fill="#17232c" stroke="white" stroke-width="2"/>
+<text x="910.00" y="192.00" font-size="36" fill="#17232c">O</text>
+<text x="1099.00" y="161.00" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1311.55" y="398.83" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1085.80" y="684.25" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="915.00" y="683.25" font-size="36" fill="#17232c">P</text>
+<text x="1123.75" y="368.83" font-size="37" fill="#17232c"><tspan font-style="italic" font-weight="bold">c</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1150.78" y="293.42" font-size="40" fill="#bb4807"><tspan font-style="italic" font-weight="normal">L</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="1201.68" y="542.04" font-size="40" fill="#087e77"><tspan font-style="italic" font-weight="normal">L</tspan><tspan dy="9" font-size="26">P</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M1190.00,180.00 L1189.97,182.15" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.97,182.15 L1189.87,184.30" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.87,184.30 L1189.70,186.44" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.70,186.44 L1189.46,188.58" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.46,188.58 L1189.16,190.71" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1189.16,190.71 L1188.80,192.83" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1188.80,192.83 L1188.36,194.93" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1188.36,194.93 L1187.87,197.03" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1187.87,197.03 L1187.30,199.10" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1187.30,199.10 L1186.68,201.16" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1186.68,201.16 L1185.98,203.19" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1185.98,203.19 L1185.23,205.21" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1185.23,205.21 L1184.41,207.20" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1184.41,207.20 L1183.54,209.16" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1183.54,209.16 L1182.60,211.10" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1182.60,211.10 L1181.60,213.00" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1181.60,213.00 L1180.54,214.87" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1180.54,214.87 L1179.42,216.71" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1179.42,216.71 L1178.25,218.51" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1178.25,218.51 L1177.02,220.28" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1177.02,220.28 L1175.74,222.00" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1175.74,222.00 L1174.41,223.69" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1174.41,223.69 L1173.02,225.33" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1173.02,225.33 L1171.58,226.93" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1171.58,226.93 L1170.09,228.49" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1170.09,228.49 L1168.56,229.99" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1168.56,229.99 L1166.98,231.45" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1166.98,231.45 L1165.35,232.86" fill="none" stroke="#bb4807" stroke-width="2.8"/>
+<path d="M1166.98,231.45 L1165.35,232.86" fill="none" stroke="#bb4807" stroke-width="2.8" marker-end="url(#arrow-b)"/>
+<text x="1199.00" y="237.00" font-size="36" fill="#bb4807"><tspan font-style="italic" font-weight="normal">θ</tspan><tspan dy="9" font-size="26">D,<tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M950.00,180.00 L950.00,128.00" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1121.00,180.00 L1121.00,128.00" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M950.00,128.00 L1121.00,128.00" fill="none" stroke="#174f86" stroke-width="2" marker-end="url(#arrow-b)" marker-start="url(#arrow-b)"/>
+<text x="1010.12" y="116.00" font-size="36" fill="#174f86"><tspan font-style="italic" font-weight="normal">R</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M950.00,667.25 L950.00,721.25" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1068.80,667.25 L1068.80,721.25" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M950.00,721.25 L1068.80,721.25" fill="none" stroke="#174f86" stroke-width="2" marker-end="url(#arrow-b)" marker-start="url(#arrow-b)"/>
+<text x="990.42" y="709.25" font-size="36" fill="#174f86"><tspan font-style="italic" font-weight="normal">r</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<path d="M1175.75,386.83 L1175.75,440.83" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1294.55,386.83 L1294.55,440.83" fill="none" stroke="#7a8891" stroke-width="1.5"/>
+<path d="M1175.75,440.83 L1294.55,440.83" fill="none" stroke="#174f86" stroke-width="2" marker-end="url(#arrow-b)" marker-start="url(#arrow-b)"/>
+<text x="1216.17" y="428.83" font-size="36" fill="#174f86"><tspan font-style="italic" font-weight="normal">r</tspan><tspan dy="9" font-size="26">D</tspan><tspan dy="-9">&#8203;</tspan></text>
+<text x="866.00" y="778.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="normal">A</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: base joint</text>
+<text x="1197.00" y="778.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="normal">B</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: elbow joint</text>
+<text x="866.00" y="826.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="normal">C</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: platform joint</text>
+<text x="866.00" y="874.00" font-size="31" fill="#17232c"><tspan font-style="italic" font-weight="bold">c</tspan><tspan dy="9" font-size="26"><tspan font-style="italic">i</tspan></tspan><tspan dy="-9">&#8203;</tspan>: equivalent sphere center</text>
+<text x="866.00" y="932.00" font-size="31" fill="#087e77">Dashed link: equivalent constraint</text>
+<text x="1013.96" y="1030.00" font-size="37" fill="#17232c">(b) Single-limb geometry</text>
+</g></svg></svg>
