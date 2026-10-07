@@ -39,3 +39,9 @@ The current output is 1114 x 1412 pixels. Make three precise corrections:
 
 No other changes. Keep exact English labels "Teleoperation controller", "Delta robot", "Three-axis handle", "Base {D}". Keep the same white halos and line thickness. Preserve the underlying controller geometry and all component identities exactly.
 
+Y-axis correction (built-in image_gen):
+Use case: precise-object-edit
+Edit target: the supplied annotated teleoperation controller figure.
+Change ONLY the green y_D axis arrow and its label near O. Keep O at the exact existing fixed-platform center (approximately pixel 371,491 in the 1114x1412 input).
+The y_D arrow must be parallel in the image to the short front edge of the rectangular bottom base plate: the edge running from approximately (550,1340) to (906,1190). Thus positive y_D points LEFT and slightly DOWN from O, vector approximately (-125,+53), with its arrow tip approximately (246,544). This is a shallow left-down direction, NOT the current steep down-left direction. Use the same green arrow, white contrast halo, and italic y with subscript D; place y_D below the new arrowhead near (227,571), avoiding overlap with hardware labels. Completely remove the original green arrow and its original y_D label, restoring the background beneath them.
+Strict invariants: preserve red x_D and blue z_D arrows, O and P, all hardware geometry, module colored regions, outlines, all English callout boxes, typography, perspective, white background and full uncropped image framing. Do not move or rotate any other axis. No additional axes, no additional text. Retain original image aspect ratio.
