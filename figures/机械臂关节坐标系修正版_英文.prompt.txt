@@ -1,0 +1,8 @@
+Mode: built-in image_gen
+Input: figures/机械臂关节坐标系修正版.png
+Output: figures/机械臂关节坐标系修正版_英文.png
+Usage: Article.docx Fig. 8(b)
+
+Use case: text-localization.
+Edit target: supplied mechanical arm joint coordinate diagram.
+Change ONLY the large Chinese title in the lower-right white area into the exact English title "Arm joint coordinate frames" in bold dark sans-serif, sized to fit the same white area. No Chinese text remains. Preserve the original white background, 2:1 wide framing, and EVERY diagram stroke, black link, dashed dimension line, arrowhead, colored coordinate axis, and alphanumeric label at its exact original position and orientation. In particular retain x0 through x6, y0 through y6, z0 through z6 and dimensions a1, a2, d1, d4, d6. Do not redraw or reinterpret the geometry. Do not change any axis direction or origin. Only replace the Chinese title.
