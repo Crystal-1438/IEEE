@@ -1,0 +1,41 @@
+Mode: built-in image_gen; scientific annotation / precise-object-edit.
+Edit target: figures/遥操作控制器侧视图.png
+Style reference: figures/整机模块与坐标系标注图.png
+Final output: figures/遥操作控制器模块与坐标系标注图.png
+Used as: Fig. 1(b) in Article.docx.
+
+Initial prompt:
+Use case: scientific annotation / precise-object-edit.
+Input 1: EDIT TARGET, the original 393 x 498 side-oblique CAD rendering of the complete Delta teleoperation controller.
+Input 2: STYLE REFERENCE ONLY, the already annotated whole robot. Match its semi-transparent filled module envelopes, thin colored outlines, rounded light callout boxes, bold black English labels, white-halo RGB coordinate arrows. Do NOT copy the robot into this image and do not copy its coordinate origins or axis directions.
+
+Preserve the entire hardware in input 1 EXACTLY: its viewpoint, proportions, pose, static platform, three motors, active links, paired passive links, moving platform, three-axis handle, structural stand, electronics/battery and bottom base. All parts remain in the same positions. Do not simplify the hardware or invent missing detail. Add clean white margins for annotations. Output a single standalone annotated controller panel, not a collage and not the full robot. Use opaque white background, portrait composition close to the original aspect ratio, at least 1200 px tall if feasible.
+
+Required color hierarchy:
+- ONE primary, clearly visible translucent lavender/purple filled envelope and moderately strong purple perimeter around the ENTIRE CONTROLLER, including the Delta assembly, complete handle, support stand, electronics and bottom base. Primary English label in a matching light-purple rounded box: "Teleoperation controller". This must be the most prominent module region.
+- Inside it, a SECONDARY, very pale desaturated blue translucent region marking the Delta parallel robot itself: fixed platform and drive motors, active links, all paired passive links, and moving platform. Its thin muted outline and lower-opacity fill must be less prominent than the outer controller region. Do not include the handle, battery or supporting stand in this subregion. Secondary English label: "Delta robot".
+- Another SECONDARY, very pale warm amber region marking ONLY the complete three-axis handle from its attachment on the moving platform out to the grip. Same weaker intensity and thin outline. Secondary English label: "Three-axis handle".
+Both secondary callouts are smaller and visually quieter than "Teleoperation controller". All regions must remain translucent so the original CAD details are readable. Leaders must be thin and unambiguous. Do not paint motors/links into new materials.
+
+Coordinate annotation:
+Show ONE right-handed base coordinate triad "{D}", attached to the STATIC PLATFORM CENTER O. The static platform is the tilted roughly circular carbon-fiber plate on the LEFT behind the three actuators, NOT the small moving-platform cluster on the right and NOT the bottom support stand.
+Estimate O at the geometric center of that static plate (approximately x=140, y=180 in input 1; refine according to the actual circular-platform center). All three arrows start from this same O with a small black origin dot.
+- +x_D is perpendicular to the STATIC platform, directed FROM the MOVING platform BACK TOWARD the STATIC platform. In this camera view it points left/up, away from the handle. It is NOT a horizontal ground axis and it does NOT point toward the handle.
+- +z_D lies IN the static platform plane and passes from O toward the upper static-platform actuator/base joint A1 (approximately x=165, y=112 in input 1). Thus z_D points up/right along that plate.
+- +y_D lies IN the static platform plane and completes the RIGHT-HANDED triad: e_x cross e_y = e_z, equivalently e_y = e_z cross e_x. Its projection points generally down/left in this view. Do not make a left-handed triad.
+Use red x_D, dark green y_D and deep blue z_D arrows/labels, with thin white halos, like input 2. Use actual subscript D, not plain xD. Use a matching white-halo black label "Base {D}" with a short leader to O if needed. The label O may sit beside the origin.
+Also mark the moving-platform center P as ONE small black dot, approximately (218,234) in input 1, with a small clear label "P". Optionally a thin dashed O-to-P position arrow can be omitted to avoid clutter; no additional coordinates/triads.
+
+All words must be English. Exactly these words are allowed: "Teleoperation controller", "Delta robot", "Three-axis handle", "Base {D}", plus O, P, x_D, y_D, z_D. No title, figure number, Chinese text, equations, coordinate legend, or other labels.
+Keep the frame and two subregion callouts separated. Axes should be short enough to avoid covering the important joints, and every arrowhead and label must remain legible at paper-column size. Preserve the original mechanical structure and pose.
+
+Correction prompt:
+Use case: precise-object-edit. Edit ONLY the annotations of the supplied controller figure. Keep every hardware part, camera, pose, proportion, the purple whole-controller envelope, handle envelope, all labels, and the white background fixed.
+
+The current output is 1114 x 1412 pixels. Make three precise corrections:
+1. The origin O of Base {D} is currently too far up-left (around 345,430). Translate the entire triad origin to approximately (418,510), the geometric center of the three static-platform drive pivots, on the fixed tilted carbon plate. It must NOT be on the small moving platform. Remove the old dot and arrows. From the NEW common origin (418,510), draw +x_D in red toward approximately (328,451), +y_D in dark green toward (350,592), and +z_D in blue toward (449,391). This preserves the right-handed paper convention: x_D is the normal from the moving platform toward the fixed plate, z_D lies in the fixed plate toward the UPPER drive pivot, y_D completes the right-hand frame. Keep all three correct subscript labels and O attached to the new arrows without overlapping machinery detail. Update the leader from "Base {D}" to this new origin, avoiding any false second origin. Leave moving-platform point P at its current position.
+2. Expand ONLY the very pale blue Delta robot subregion so that it includes the ENTIRE parallel mechanism: all the paired long passive rods on the upper-right side (including the far-right long rod extending from approximately (765,65) down to (713,580)), their top pivots, the fixed platform, active arms, lower paired rods, and moving platform. At present the far-right passive rod lies outside the blue region; correct that. Keep this blue inner outline thinner and its fill more subdued than the purple overall controller region. Do not color the three-axis handle, stand or battery blue. Keep the primary purple envelope unchanged.
+3. Remove any tiny non-English printed markings on the top of the gray electronics/battery case near the bottom, leaving the same clean case surface; do not add replacement text.
+
+No other changes. Keep exact English labels "Teleoperation controller", "Delta robot", "Three-axis handle", "Base {D}". Keep the same white halos and line thickness. Preserve the underlying controller geometry and all component identities exactly.
+
