@@ -1,4 +1,4 @@
-"""Draw Fig. 1 with explicit joint, wheel, and feedforward control paths.
+"""Draw Fig. 2 with explicit joint, wheel, and feedforward control paths.
 
 Panel (a) omits master gravity compensation and TD. Panel (b) follows the
 specified chassis controller: attitude P/P -> leg-height increment -> leg IK

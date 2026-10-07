@@ -1,0 +1,36 @@
+Mode: built-in image_gen, edit / scientific annotation.
+Source: figures/整机斜视图.png
+User-confirmed forward direction: image right, toward the gripper.
+Output: figures/整机模块与坐标系标注图.png
+
+Initial prompt:
+Use case: precise-object-edit / text-localization / scientific annotation.
+Asset type: a publication-quality IEEE robotics system overview figure.
+Edit target: the supplied whole-robot oblique CAD image. Preserve EXACTLY the robot pose, viewpoint, link geometry, arm, gripper, base, all four legs and all four Mecanum wheels. This is an annotation overlay, NOT a redesign or new robot. Keep the source proportions and its photographic/CAD detail. Add modest white margins for annotations. Remove only the small original CAD orientation widget in the bottom-left corner and the faint empty background artifacts. Opaque white or very light neutral background.
+
+Primary request: identify TWO modules with translucent filled color regions and label FOUR right-handed coordinate frames. All words must be English. Do not place a figure number, title, equations, Chinese text or extra coordinate frames.
+
+Module regions: cover the arm assembly above its base mounting plane (all upper links, motors, wrist and gripper) with a pale translucent amber region and a thin amber outline; cover the whole chassis below that mounting plane (base frame, four hips, all legs and all wheels) with a pale translucent cyan region and thin cyan outline. These are clearly visible light filled region silhouettes/envelopes, NOT just colored labels or arrows. Preserve all hardware details through the fills. Regions should follow the module envelopes without huge rectangles obscuring the robot. Put two clear English callouts with matching solid color swatches in free white space: "Manipulator module" and "Chassis module". Thin leaders can identify the corresponding regions.
+
+Direction convention CONFIRMED BY USER: robot forward is toward the RIGHT of the image, the direction in which the gripper points. Use one consistent projected 3D basis: F = screen right and slightly down, L = diagonally up-right into the chassis depth, U = straight up. These represent robot forward, robot left, and up. At this illustrated level pose, X forward, Y left, Z up is right-handed. Do NOT copy the original CAD corner-widget axis names, which differ from the paper.
+
+Draw exactly FOUR coordinate triads with black origin dots, positive-axis arrowheads, thin white halos and legible math-style labels. Keep origins precisely on the indicated landmarks; coordinate labels may use short leaders but do not move the actual origins for spacing. Use red for each x axis, dark green for each y axis, deep blue for each z axis, with axis labels next to arrowheads. All 12 labels and all 4 brace labels must appear once. Use real subscripts, leg index is the full word "leg".
+
+1. World frame "{s}": in clear white space at ground level below and left of the robot, independent of its body. Positive x_s points F, y_s points L, z_s points U. Label "World {s}". An origin anywhere on the shown ground reference is acceptable. Delete the old CAD widget. Make this triad large enough to read.
+2. Body frame "{b}": origin at the chassis base center, approximately (600, 665) in the original 1256 x 1282 input. This is on the central chassis frame, NOT the arm shoulder joint. Positive x_b points F; y_b points L; z_b points U. Use "Body {b}" near the origin or a leader. Keep this triad compact enough to distinguish it from the arm base frame.
+3. Representative leg base "{leg}": origin at the center of the clearly visible large leftmost near-side hip motor/rotation axis, approximately (277, 740) in the original input. NOT at the knee or wheel. Positive x_leg points F; positive y_leg points U; positive z_leg points opposite L, diagonally down-left. This makes the leg xy plane its sagittal linkage plane and x_leg cross y_leg = z_leg. Label "Leg {leg}". Three arrows start from the same exact hip origin. This is only one representative leg, not all four.
+4. Arm DH base "{0}": origin at the bottom of the arm mounting base where the arm bracket meets the chassis top platform, approximately (708, 614) in the original input, NOT at the large shoulder pivot around (710, 515). Positive x_0 points F; y_0 points L; z_0 points U. Use label "Arm base {0}". The z_0 arrow is vertical along the first-joint/base yaw axis. The body origin and the arm DH base origin must be distinct.
+
+Clarity: no axis should be mistaken for a module leader; leaders are thin black without triangular axis arrowheads. Use dark, high-contrast labels on white halos. Preserve all geometry under the translucent tint. Keep module callouts outside robot, and frame brace labels separated from axis letters. Near the body/arm-base pair, use short triads of different lengths to avoid any crossings/overlapping text. At least 2000 px on the long side, near-square portrait composition matching the input. No watermarks.
+
+Annotation refinement prompt:
+Use case: precise-object-edit. Edit target: the already annotated whole-robot overview image.
+Keep robot hardware, pose, proportions, background, both translucent module masks, outlines, and both module callouts EXACTLY unchanged. Keep all axis colors, axis directions, all four right-handed frame conventions, label spellings and white halos. Correct ONLY three coordinate-origin positions and their associated annotation groups. Do not introduce any new text, arrows, frames or equations.
+
+Coordinates below refer to the current 1241 x 1267 annotated image:
+1. Move the body frame "{b}" origin from approximately (605,742) UP onto the center of the chassis base's top reference plane at approximately (587,650). The current origin is on the near side of the chassis and is too low. Move its three arrows and x_b, y_b, z_b labels with it. Make this triad compact: x_b from (587,650) toward (656,651), y_b toward (634,614), z_b toward (587,584). Move the "Body {b}" callout to clear adjacent space with a thin leader pointing ONLY to that origin.
+2. Move arm DH frame "{0}" origin slightly down from (712,583) to (712,610), precisely at the bottom mounting datum of the arm where its bracket meets the chassis platform. Keep the frame off the shoulder pivot. Its x_0 points right, y_0 up-right, z_0 vertically up. Position the "Arm base {0}" callout so it cannot be confused with the body label.
+3. Move the representative "{leg}" frame origin slightly up from (255,749) to the actual center of the left visible hip's circular motor face, approximately (255,727). Move all three arrows and labels with it. Its x_leg points right, y_leg up, z_leg down-left. "Leg {leg}" must point only to this common origin, not to the knee.
+
+World {s} stays EXACTLY unchanged at bottom left. Keep module labels "Manipulator module" and "Chassis module" unchanged. Completely erase old coordinate overlays at the old positions, reconstructing only the unchanged underlying CAD hardware/tint. All 12 axis labels must remain legible with proper subscripts, including full "leg". Avoid any overlap between nearby body and arm base labels/arrows. Do not redraw the robot.
+
