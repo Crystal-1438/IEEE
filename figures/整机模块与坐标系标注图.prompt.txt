@@ -3,6 +3,13 @@ Source: figures/整机斜视图.png
 User-confirmed forward direction: image right, toward the gripper.
 Output: figures/整机模块与坐标系标注图.png
 
+Final module-name correction (built-in image_gen):
+Use case: text-localization, precise local text replacement.
+Edit target: the supplied annotated robot figure.
+Change ONLY the black English text in the amber upper-right module label from "Manipulator module" to the exact text "Robotic arm module".
+Preserve the existing amber label rectangle, its size and location, border, fill, leader, bold black font style and centered alignment; slightly adjust font size only if necessary to fit the new phrase.
+Freeze everything outside this one text label: identical robot hardware and pose, same amber/cyan module regions, same colors, all four frame origins, all 12 coordinate arrows and labels, all white halos, other callouts ("Arm base {0}", "Body {b}", "Leg {leg}", "World {s}", "Chassis module"), background, image size and composition. Do not move any coordinates, redraw the mechanism or add any new text. Do not translate anything into Chinese. The output must be the same figure with only that module name replaced.
+
 Initial prompt:
 Use case: precise-object-edit / text-localization / scientific annotation.
 Asset type: a publication-quality IEEE robotics system overview figure.
@@ -33,4 +40,3 @@ Coordinates below refer to the current 1241 x 1267 annotated image:
 3. Move the representative "{leg}" frame origin slightly up from (255,749) to the actual center of the left visible hip's circular motor face, approximately (255,727). Move all three arrows and labels with it. Its x_leg points right, y_leg up, z_leg down-left. "Leg {leg}" must point only to this common origin, not to the knee.
 
 World {s} stays EXACTLY unchanged at bottom left. Keep module labels "Manipulator module" and "Chassis module" unchanged. Completely erase old coordinate overlays at the old positions, reconstructing only the unchanged underlying CAD hardware/tint. All 12 axis labels must remain legible with proper subscripts, including full "leg". Avoid any overlap between nearby body and arm base labels/arrows. Do not redraw the robot.
-
