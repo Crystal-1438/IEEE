@@ -84,8 +84,9 @@ block(926,[('IMU',False),('Attitude / angular rate',False)],86,size=25)
 # Two independent measurement outputs: no differentiation block is implied.
 arrow([(435,951),(552,951),(552,291),(301,291)])
 arrow([(435,989),(688,989),(688,100),(301,100)])
-text(573,695,sym('χ̇')+'[k]',26,'start',True)
-text(620,540,sym('χ')+'[k]',26,'middle',True)
+# Keep both measurement labels equally offset to the right of their own lines.
+text(564,695,sym('χ̇')+'[k]',26,'start',True)
+text(700,695,sym('χ')+'[k]',26,'start',True)
 text(380,1053,'χ ∈ {ϕ, θ}',26,math=True)
 items.append('</g></svg>')
 svg = '\n'.join(items)

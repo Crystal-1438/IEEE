@@ -48,7 +48,7 @@
 <text x="280" y="994.3333333333334" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Attitude / angular rate</text>
 <polyline points="435,951 552,951 552,291 301,291" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
 <polyline points="435,989 688,989 688,100 301,100" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
-<text x="573" y="695" text-anchor="start" font-family="DejaVu Serif" font-size="26"><tspan dx="8" dy="-17">·</tspan><tspan dx="-17" dy="17" font-style="italic">χ</tspan>[k]</text>
-<text x="599.0703125" y="540" text-anchor="start" font-family="DejaVu Serif" font-size="26"><tspan font-style="italic">χ</tspan>[k]</text>
+<text x="564" y="695" text-anchor="start" font-family="DejaVu Serif" font-size="26"><tspan dx="8" dy="-17">·</tspan><tspan dx="-17" dy="17" font-style="italic">χ</tspan>[k]</text>
+<text x="700" y="695" text-anchor="start" font-family="DejaVu Serif" font-size="26"><tspan font-style="italic">χ</tspan>[k]</text>
 <text x="322.6796875" y="1053" text-anchor="start" font-family="DejaVu Serif" font-size="26">χ ∈ {ϕ, θ}</text>
 </g></svg>
