@@ -40,7 +40,7 @@
 <polyline points="280,778 280,820" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
 <text x="305" y="806" text-anchor="start" font-family="DejaVu Sans, sans-serif" font-size="25">Joint targets</text>
 <rect x="125" y="820" width="310" height="62" fill="white" stroke="black" stroke-width="2.5"/>
-<text x="280" y="859.3333333333334" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Joint servos + chassis</text>
+<text x="280" y="859.3333333333334" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Joint servos</text>
 <polyline points="280,882 280,926" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
 <text x="305" y="911" text-anchor="start" font-family="DejaVu Sans, sans-serif" font-size="25">Body motion</text>
 <rect x="125" y="926" width="310" height="86" fill="white" stroke="black" stroke-width="2.5"/>
