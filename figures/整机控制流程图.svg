@@ -1,77 +1,151 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1860" viewBox="0 0 760 1860">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="2360" viewBox="0 0 980 2360">
 <title>System control architecture</title>
-<desc>Teleoperation master to six-axis arm, and chassis commands to wheel-legged chassis. Dashed feedback paths show encoder and IMU measurements.</desc>
-<defs><marker id="arrow" markerWidth="11" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#111"/></marker></defs>
-<rect width="760" height="1860" fill="white"/>
+<desc>Teleoperation and arm control, followed by three parallel chassis branches: joint controller, torque feedforward, and Mecanum wheel controller. Joint and wheel motor torques each sum controller output and feedforward.</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="11" refX="11" refY="5.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L11,5.5 L0,11 Z" fill="#111"/></marker></defs>
+<rect width="980" height="2360" fill="white"/>
 <g font-family="DejaVu Sans, sans-serif" fill="#111">
-<text x="380" y="39" text-anchor="middle" font-size="30" font-weight="bold">(a) Teleoperation and arm control</text>
-<rect x="45" y="75" width="320" height="135" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="205.0" y="117.28" text-anchor="middle" font-size="26" font-weight="normal">Delta master</text>
-<text x="205.0" y="151.6" text-anchor="middle" font-size="26" font-weight="normal">Forward kinematics</text>
-<text x="205.0" y="185.92" text-anchor="middle" font-size="26" font-weight="normal">Gravity compensation</text>
-<rect x="395" y="75" width="320" height="135" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="555.0" y="117.28" text-anchor="middle" font-size="26" font-weight="normal">RPY handle</text>
-<text x="555.0" y="151.6" text-anchor="middle" font-size="26" font-weight="normal">Moving-axis rotations</text>
-<text x="555.0" y="185.92" text-anchor="middle" font-size="26" font-weight="normal">Roll / pitch / yaw</text>
-<polyline points="205,210 205,248 380,248" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/>
-<polyline points="555,210 555,248 380,248" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/>
-<circle cx="380" cy="248" r="4" fill="#111"/>
-<polyline points="380,248 380,288" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="170" y="288" width="420" height="105" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="332.13" text-anchor="middle" font-size="27" font-weight="normal">Master pose: xyz + RPY</text>
-<text x="380.0" y="367.77" text-anchor="middle" font-size="27" font-weight="normal">Wireless link + TD</text>
-<polyline points="380,393 380,449" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="170" y="449" width="420" height="105" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="493.13" text-anchor="middle" font-size="27" font-weight="normal">Pose mapping</text>
-<text x="380.0" y="528.7700000000001" text-anchor="middle" font-size="27" font-weight="normal">Arm inverse kinematics</text>
-<text x="403" y="589" text-anchor="start" font-size="25" font-weight="normal">Joint targets</text>
-<polyline points="380,554 380,618" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="170" y="618" width="420" height="140" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="679.63" text-anchor="middle" font-size="27" font-weight="normal">Joint position / velocity PID</text>
-<text x="380.0" y="715.2700000000001" text-anchor="middle" font-size="27" font-weight="normal">+ gravity feedforward</text>
-<polyline points="380,758 380,810" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="170" y="810" width="420" height="76" fill="#eef1f4" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="858.15" text-anchor="middle" font-size="29" font-weight="normal">Six-axis arm</text>
-<polyline points="170,848 65,848 65,688 170,688" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="9 6" marker-end="url(#arrow)"/>
-<text x="74" y="790" text-anchor="start" font-size="24" font-weight="normal">Encoders</text>
-<line x1="35" y1="933" x2="725" y2="933" stroke="#777" stroke-width="1.5"/>
-<text x="380" y="981" text-anchor="middle" font-size="30" font-weight="bold">(b) Chassis control</text>
-<rect x="170" y="1015" width="420" height="100" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="1056.63" text-anchor="middle" font-size="27" font-weight="normal">Chassis commands</text>
-<text x="380.0" y="1092.27" text-anchor="middle" font-size="27" font-weight="normal">Velocity, height, attitude</text>
-<polyline points="380,1115 380,1149" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/>
-<circle cx="380" cy="1149" r="4" fill="#111"/>
-<polyline points="380,1149 205,1149 205,1185" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<polyline points="380,1149 555,1149 555,1185" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="50" y="1185" width="315" height="160" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="207.5" y="1225.88" text-anchor="middle" font-size="24" font-weight="normal">Motion references</text>
-<text x="207.5" y="1257.5600000000002" text-anchor="middle" font-size="24" font-weight="normal">Mecanum wheel speeds</text>
-<text x="207.5" y="1289.24" text-anchor="middle" font-size="24" font-weight="normal">Dual-loop P + leg IK</text>
-<text x="207.5" y="1320.92" text-anchor="middle" font-size="24" font-weight="normal">IMU feedback</text>
-<rect x="395" y="1185" width="315" height="160" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="552.5" y="1224.25" text-anchor="middle" font-size="25" font-weight="normal">Torque feedforward</text>
-<text x="552.5" y="1257.25" text-anchor="middle" font-size="25" font-weight="normal">Rigid-body allocation</text>
-<text x="552.5" y="1290.25" text-anchor="middle" font-size="25" font-weight="normal">Wheel / leg torque map</text>
-<text x="552.5" y="1323.25" text-anchor="middle" font-size="25" font-weight="normal">State feedback</text>
-<polyline points="205,1345 205,1398" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="50" y="1398" width="315" height="130" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="207.5" y="1439.72" text-anchor="middle" font-size="24" font-weight="normal">Wheel / leg servos</text>
-<text x="207.5" y="1471.4" text-anchor="middle" font-size="24" font-weight="normal">Position / speed loops</text>
-<text x="207.5" y="1503.0800000000002" text-anchor="middle" font-size="24" font-weight="normal">Encoder feedback</text>
-<polyline points="205,1528 205,1570 360,1570" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<polyline points="555,1345 555,1570 400,1570" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<circle cx="380" cy="1570" r="20" fill="white" stroke="#111" stroke-width="2.6"/>
-<text x="345" y="1553" text-anchor="middle" font-size="27" font-weight="normal">+</text>
-<text x="416" y="1553" text-anchor="middle" font-size="27" font-weight="normal">+</text>
-<polyline points="380,1590 380,1635" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="170" y="1635" width="420" height="78" fill="#eef1f4" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="1683.8" text-anchor="middle" font-size="28" font-weight="normal">Wheel-legged chassis</text>
-<polyline points="380,1713 380,1747" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
-<rect x="170" y="1747" width="420" height="72" fill="white" stroke="#111" stroke-width="2.8"/>
-<text x="380.0" y="1792.45" text-anchor="middle" font-size="27" font-weight="normal">IMU + joint encoders</text>
-<polyline points="170,1783 22,1783 22,1265 50,1265" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="9 6" marker-end="url(#arrow)"/>
-<polyline points="22,1463 50,1463" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="9 6" marker-end="url(#arrow)"/>
-<circle cx="22" cy="1463" r="4" fill="#111"/>
-<polyline points="590,1783 738,1783 738,1265 710,1265" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" stroke-dasharray="9 6" marker-end="url(#arrow)"/>
-<text x="380" y="1850" text-anchor="middle" font-size="23" font-weight="normal">Solid: forward path     Dashed: feedback</text>
+<text x="490" y="40" text-anchor="middle" font-size="34" font-weight="bold">(a) Teleoperation and arm control</text>
+<rect x="55" y="80" width="390" height="122" fill="white" stroke="#111" stroke-width="3"/>
+<text x="250.0" y="132.165" text-anchor="middle" font-size="31" font-weight="normal">Delta master</text>
+<text x="250.0" y="171.535" text-anchor="middle" font-size="31" font-weight="normal">Forward kinematics</text>
+<rect x="535" y="80" width="390" height="122" fill="white" stroke="#111" stroke-width="3"/>
+<text x="730.0" y="132.45" text-anchor="middle" font-size="30" font-weight="normal">RPY handle: moving axes</text>
+<text x="730.0" y="170.55" text-anchor="middle" font-size="30" font-weight="normal">Roll / pitch / yaw</text>
+<polyline points="250,202 250,238 490,238" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round"/>
+<polyline points="730,202 730,238 490,238" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round"/>
+<circle cx="490" cy="238" r="4.5" fill="#111"/>
+<polyline points="490,238 490,272" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="275" y="272" width="430" height="102" fill="white" stroke="#111" stroke-width="3"/>
+<text x="490.0" y="314.165" text-anchor="middle" font-size="31" font-weight="normal">Master pose: xyz + RPY</text>
+<text x="490.0" y="353.535" text-anchor="middle" font-size="31" font-weight="normal">Wireless link</text>
+<polyline points="490,374 490,415 190,415 190,459" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="55" y="459" width="270" height="138" fill="white" stroke="#111" stroke-width="3"/>
+<text x="190.0" y="500.4" text-anchor="middle" font-size="30" font-weight="normal">Pose mapping</text>
+<text x="190.0" y="538.5" text-anchor="middle" font-size="30" font-weight="normal">Arm inverse</text>
+<text x="190.0" y="576.6" text-anchor="middle" font-size="30" font-weight="normal">kinematics</text>
+<polyline points="325,528 362,528" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="362" y="459" width="296" height="138" fill="white" stroke="#111" stroke-width="3"/>
+<text x="510.0" y="501.32" text-anchor="middle" font-size="29" font-weight="normal">Joint cascaded PID</text>
+<text x="510.0" y="538.15" text-anchor="middle" font-size="29" font-weight="normal">+ gravity</text>
+<text x="510.0" y="574.98" text-anchor="middle" font-size="29" font-weight="normal">feedforward</text>
+<polyline points="658,528 705,528" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="705" y="479" width="220" height="98" fill="#eef1f4" stroke="#111" stroke-width="3"/>
+<text x="815.0" y="538.85" text-anchor="middle" font-size="31" font-weight="normal">Six-axis arm</text>
+<polyline points="815,577 815,644 510,644 510,597" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow)"/>
+<text x="675" y="681" text-anchor="middle" font-size="28" font-weight="normal">Joint encoders</text>
+<line x1="40" y1="713" x2="940" y2="713" stroke="#777" stroke-width="1.5"/>
+<text x="490" y="764" text-anchor="middle" font-size="34" font-weight="bold">(b) Chassis control</text>
+<rect x="75" y="805" width="830" height="143" fill="white" stroke="#111" stroke-width="3"/>
+<text x="490.0" y="847.98" text-anchor="middle" font-size="31" font-weight="normal">Chassis commands</text>
+<text x="490.0" y="887.35" text-anchor="middle" font-size="31" font-weight="normal">Translational velocity + acceleration</text>
+<text x="490.0" y="926.72" text-anchor="middle" font-size="31" font-weight="normal">Baseline height + roll / pitch angles</text>
+<polyline points="490,948 490,980" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round"/>
+<circle cx="490" cy="980" r="4.5" fill="#111"/>
+<polyline points="490,980 185,980 185,1062" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="490,980 490,1062" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="490,980 795,980 795,1062" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="53" y="1003" width="264" height="41" fill="white"/>
+<text x="185" y="1033" text-anchor="middle" font-size="29" font-weight="bold">Joint controller</text>
+<rect x="358" y="1003" width="264" height="41" fill="white"/>
+<text x="490" y="1033" text-anchor="middle" font-size="29" font-weight="bold">Feedforward</text>
+<rect x="663" y="1003" width="264" height="41" fill="white"/>
+<text x="795" y="1033" text-anchor="middle" font-size="29" font-weight="bold">Wheel controller</text>
+<rect x="60" y="1062" width="250" height="162" fill="white" stroke="#111" stroke-width="3"/>
+<text x="185.0" y="1117.24" text-anchor="middle" font-size="28" font-weight="normal">Attitude angle /</text>
+<text x="185.0" y="1152.8" text-anchor="middle" font-size="28" font-weight="normal">angular-rate</text>
+<text x="185.0" y="1188.36" text-anchor="middle" font-size="28" font-weight="normal">cascaded P loops</text>
+<polyline points="185,1224 185,1320" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="61.828125" y="1232" width="246.34375" height="32" fill="white"/>
+<text x="185" y="1257" text-anchor="middle" font-size="25" font-weight="normal">Equivalent leg-length</text>
+<rect x="118.8671875" y="1263" width="132.265625" height="34" fill="white"/>
+<text x="185" y="1290" text-anchor="middle" font-size="27" font-weight="normal">increment</text>
+<rect x="60" y="1320" width="250" height="142" fill="white" stroke="#111" stroke-width="3"/>
+<text x="185.0" y="1349.015" text-anchor="middle" font-size="27" font-weight="normal">Accumulate</text>
+<text x="185.0" y="1383.305" text-anchor="middle" font-size="27" font-weight="normal">+ baseline height</text>
+<text x="185.0" y="1417.595" text-anchor="middle" font-size="27" font-weight="normal">Leg inverse</text>
+<text x="185.0" y="1451.885" text-anchor="middle" font-size="27" font-weight="normal">kinematics</text>
+<polyline points="185,1462 185,1560" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="71.8125" y="1476" width="226.375" height="33" fill="white"/>
+<text x="185" y="1502" text-anchor="middle" font-size="26" font-weight="normal">Joint-angle targets</text>
+<rect x="60" y="1560" width="250" height="150" fill="white" stroke="#111" stroke-width="3"/>
+<text x="185.0" y="1608.3200000000002" text-anchor="middle" font-size="29" font-weight="normal">Single-joint</text>
+<text x="185.0" y="1645.15" text-anchor="middle" font-size="29" font-weight="normal">position / speed</text>
+<text x="185.0" y="1681.98" text-anchor="middle" font-size="29" font-weight="normal">cascaded PID</text>
+<polyline points="185,1710 185,1849" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="93.5234375" y="1724" width="182.953125" height="33" fill="white"/>
+<text x="185" y="1750" text-anchor="middle" font-size="26" font-weight="normal">Joint controller</text>
+<rect x="139.890625" y="1755" width="90.21875" height="34" fill="white"/>
+<text x="185" y="1782" text-anchor="middle" font-size="27" font-weight="normal">torque</text>
+<rect x="365" y="1062" width="250" height="162" fill="white" stroke="#111" stroke-width="3"/>
+<text x="490.0" y="1118.16" text-anchor="middle" font-size="27" font-weight="normal">Single-rigid-body</text>
+<text x="490.0" y="1152.45" text-anchor="middle" font-size="27" font-weight="normal">dynamics</text>
+<text x="490.0" y="1186.74" text-anchor="middle" font-size="27" font-weight="normal">Force allocation</text>
+<polyline points="490,1224 490,1320" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="374.546875" y="1249" width="230.90625" height="33" fill="white"/>
+<text x="490" y="1275" text-anchor="middle" font-size="26" font-weight="normal">Desired foot forces</text>
+<rect x="365" y="1320" width="250" height="204" fill="white" stroke="#111" stroke-width="3"/>
+<text x="490.0" y="1376.9050000000002" text-anchor="middle" font-size="29" font-weight="normal">Mecanum wheel</text>
+<text x="490.0" y="1413.7350000000001" text-anchor="middle" font-size="29" font-weight="normal">dynamics</text>
+<text x="490.0" y="1450.565" text-anchor="middle" font-size="29" font-weight="normal">+ leg-linkage</text>
+<text x="490.0" y="1487.395" text-anchor="middle" font-size="29" font-weight="normal">force mapping</text>
+<polyline points="490,1524 490,1760" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round"/>
+<rect x="406.9296875" y="1556" width="166.140625" height="34" fill="white"/>
+<text x="490" y="1583" text-anchor="middle" font-size="27" font-weight="normal">Motor torque</text>
+<rect x="411.8203125" y="1590" width="156.359375" height="34" fill="white"/>
+<text x="490" y="1617" text-anchor="middle" font-size="27" font-weight="normal">feedforward</text>
+<circle cx="490" cy="1760" r="4.5" fill="#111"/>
+<polyline points="490,1760 340,1760 340,1870 206,1870" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="490,1760 640,1760 640,1870 774,1870" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="301.234375" y="1774" width="111.53125" height="34" fill="white"/>
+<text x="357" y="1801" text-anchor="middle" font-size="27" font-weight="normal">Joint FF</text>
+<rect x="311.890625" y="1806" width="90.21875" height="34" fill="white"/>
+<text x="357" y="1833" text-anchor="middle" font-size="27" font-weight="normal">torque</text>
+<rect x="557.59375" y="1774" width="130.8125" height="34" fill="white"/>
+<text x="623" y="1801" text-anchor="middle" font-size="27" font-weight="normal">Wheel FF</text>
+<rect x="577.890625" y="1806" width="90.21875" height="34" fill="white"/>
+<text x="623" y="1833" text-anchor="middle" font-size="27" font-weight="normal">torque</text>
+<rect x="670" y="1062" width="250" height="162" fill="white" stroke="#111" stroke-width="3"/>
+<text x="795.0" y="1134.7350000000001" text-anchor="middle" font-size="29" font-weight="normal">Mecanum wheel</text>
+<text x="795.0" y="1171.565" text-anchor="middle" font-size="29" font-weight="normal">kinematics</text>
+<polyline points="795,1224 795,1560" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="711.140625" y="1343" width="167.71875" height="34" fill="white"/>
+<text x="795" y="1370" text-anchor="middle" font-size="27" font-weight="normal">Wheel-motor</text>
+<rect x="706.4609375" y="1379" width="177.078125" height="34" fill="white"/>
+<text x="795" y="1406" text-anchor="middle" font-size="27" font-weight="normal">speed targets</text>
+<rect x="670" y="1560" width="250" height="150" fill="white" stroke="#111" stroke-width="3"/>
+<text x="795.0" y="1626.7350000000001" text-anchor="middle" font-size="29" font-weight="normal">Wheel-motor</text>
+<text x="795.0" y="1663.565" text-anchor="middle" font-size="29" font-weight="normal">speed-loop PID</text>
+<polyline points="795,1710 795,1849" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="694.25" y="1724" width="201.5" height="33" fill="white"/>
+<text x="795" y="1750" text-anchor="middle" font-size="26" font-weight="normal">Wheel controller</text>
+<rect x="749.890625" y="1755" width="90.21875" height="34" fill="white"/>
+<text x="795" y="1782" text-anchor="middle" font-size="27" font-weight="normal">torque</text>
+<circle cx="185" cy="1870" r="21" fill="white" stroke="#111" stroke-width="2.8"/>
+<text x="162" y="1840" text-anchor="middle" font-size="30" font-weight="normal">+</text>
+<text x="219" y="1852" text-anchor="middle" font-size="30" font-weight="normal">+</text>
+<circle cx="795" cy="1870" r="21" fill="white" stroke="#111" stroke-width="2.8"/>
+<text x="818" y="1840" text-anchor="middle" font-size="30" font-weight="normal">+</text>
+<text x="761" y="1852" text-anchor="middle" font-size="30" font-weight="normal">+</text>
+<polyline points="185,1891 185,1970" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="795,1891 795,1970" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="82.65625" y="1906" width="204.6875" height="33" fill="white"/>
+<text x="185" y="1932" text-anchor="middle" font-size="26" font-weight="normal">Total joint torque</text>
+<rect x="682.6015625" y="1906" width="224.796875" height="33" fill="white"/>
+<text x="795" y="1932" text-anchor="middle" font-size="26" font-weight="normal">Total wheel torque</text>
+<rect x="60" y="1970" width="250" height="92" fill="#eef1f4" stroke="#111" stroke-width="3"/>
+<text x="185.0" y="2026.15" text-anchor="middle" font-size="29" font-weight="normal">Leg joint motors</text>
+<rect x="670" y="1970" width="250" height="92" fill="#eef1f4" stroke="#111" stroke-width="3"/>
+<text x="795.0" y="2026.15" text-anchor="middle" font-size="29" font-weight="normal">Wheel motors</text>
+<polyline points="185,2062 185,2130 310,2130" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="795,2062 795,2130 670,2130" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="310" y="2084" width="360" height="92" fill="#eef1f4" stroke="#111" stroke-width="3"/>
+<text x="490.0" y="2140.15" text-anchor="middle" font-size="29" font-weight="normal">Wheel-legged chassis</text>
+<polyline points="490,2176 490,2230" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="310" y="2230" width="360" height="84" fill="white" stroke="#111" stroke-width="3"/>
+<text x="490.0" y="2282.5" text-anchor="middle" font-size="30" font-weight="normal">IMU + encoders</text>
+<polyline points="310,2272 24,2272 24,1143 60,1143" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow)"/>
+<polyline points="24,1635 60,1635" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow)"/>
+<circle cx="24" cy="1635" r="4.5" fill="#111"/>
+<polyline points="670,2272 956,2272 956,1635 920,1635" fill="none" stroke="#111" stroke-width="2.8" stroke-linejoin="round" stroke-dasharray="10 7" marker-end="url(#arrow)"/>
+<text x="490" y="2350" text-anchor="middle" font-size="25" font-weight="normal">Solid: forward path   Dashed: feedback   FF: feedforward</text>
 </g></svg>
