@@ -23,9 +23,7 @@
 <polyline points="280,409 280,452" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
 <text x="305" y="438" text-anchor="start" font-family="DejaVu Serif" font-size="25">Δ<tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">χ</tspan><tspan dy="-7">&#8203;</tspan>[k]</text>
 <rect x="125" y="452" width="310" height="86" fill="white" stroke="black" stroke-width="2.5"/>
-<text x="280" y="478.6666666666667" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">Accumulate + limit</text>
-<text x="280" y="502.6666666666667" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">Block outward updates</text>
-<text x="280" y="526.6666666666667" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">when saturated</text>
+<text x="280" y="502.6666666666667" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">Accumulate</text>
 <polyline points="280,538 280,586" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
 <text x="305" y="568" text-anchor="start" font-family="DejaVu Serif" font-size="25"><tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">ϕ</tspan><tspan dy="-7">&#8203;</tspan>, <tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">θ</tspan><tspan dy="-7">&#8203;</tspan></text>
 <rect x="125" y="586" width="310" height="86" fill="white" stroke="black" stroke-width="2.5"/>
