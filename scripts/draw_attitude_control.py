@@ -1,4 +1,4 @@
-"""Draw the attitude loop in Article.docx, Eqs. (18) and (19).
+"""Draw the attitude loop in Article.docx, Eqs. (17) and (18).
 
 Creates an editable SVG and a high-resolution PNG for Word. No PDF output.
 Requires cairosvg; English labels and math use locally installed DejaVu fonts.
@@ -69,7 +69,7 @@ text(305,438,'Δ'+sym('u','χ')+'[k]',25,'start',True)
 block(452,[('Accumulate',False)],86,size=23)
 arrow([(280,538),(280,586)])
 text(305,568,sym('u','ϕ')+', '+sym('u','θ'),25,'start',True)
-block(586,[('Four-leg height allocation',False),('Eq. (19)',False)],86,size=23)
+block(586,[('Four-leg height allocation',False),('Eq. (18)',False)],86,size=23)
 arrow([(28,629),(125,629)])
 text(69,609,sym('h','0'),27,math=True)
 arrow([(280,672),(280,716)])
