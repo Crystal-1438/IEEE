@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1016" viewBox="0 0 760 1016">
+<defs><marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 Z" fill="black" /></marker></defs>
+<rect width="760" height="1016.500" fill="white" />
+<g fill="black" font-family="DejaVu Sans, sans-serif" font-size="27">
+<text x="420" y="30.400" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Separate loops for roll and pitch</text>
+<text x="167.78125" y="57.950" text-anchor="start" font-family="DejaVu Serif" font-size="27"><tspan font-style="italic">χ</tspan><tspan dy="7" font-size="19">d</tspan><tspan dy="-7">​</tspan>[k]</text>
+<polyline points="280,38.000 280,75.050" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<circle cx="280" cy="95.000" r="21" fill="white" stroke="black" stroke-width="2.5" />
+<text x="239.953125" y="73.150" text-anchor="start" font-family="DejaVu Serif" font-size="25">+</text>
+<text x="311.953125" y="86.450" text-anchor="start" font-family="DejaVu Serif" font-size="25">−</text>
+<polyline points="280,114.950 280,151.050" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="305" y="139.650" text-anchor="start" font-family="DejaVu Serif" font-size="25"><tspan font-style="italic">e</tspan><tspan dy="7" font-size="19">χ</tspan><tspan dy="-7">​</tspan>[k]</text>
+<rect x="125" y="151.050" width="310" height="58.900" fill="white" stroke="black" stroke-width="2.5" />
+<text x="257.0625" y="189.050" text-anchor="start" font-family="DejaVu Serif" font-size="27"><tspan font-style="italic">k</tspan><tspan dy="7" font-size="19">p,χ</tspan><tspan dy="-7">​</tspan></text>
+<polyline points="280,209.950 280,256.500" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="175.75" y="241.300" text-anchor="start" font-family="DejaVu Serif" font-size="25"><tspan dx="8" dy="-17">·</tspan><tspan dx="-17" dy="17" font-style="italic">χ</tspan><tspan dy="7" font-size="19">d</tspan><tspan dy="-7">​</tspan>[k]</text>
+<circle cx="280" cy="276.450" r="21" fill="white" stroke="black" stroke-width="2.5" />
+<text x="239.953125" y="254.600" text-anchor="start" font-family="DejaVu Serif" font-size="25">+</text>
+<text x="311.953125" y="267.900" text-anchor="start" font-family="DejaVu Serif" font-size="25">−</text>
+<polyline points="280,296.400 280,329.650" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<rect x="125" y="329.650" width="310" height="58.900" fill="white" stroke="black" stroke-width="2.5" />
+<text x="256.78125" y="367.650" text-anchor="start" font-family="DejaVu Serif" font-size="27"><tspan font-style="italic">k</tspan><tspan dy="7" font-size="19">h,χ</tspan><tspan dy="-7">​</tspan></text>
+<polyline points="280,388.550 280,429.400" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="305" y="416.100" text-anchor="start" font-family="DejaVu Serif" font-size="25">Δ<tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">χ</tspan><tspan dy="-7">​</tspan>[k]</text>
+<rect x="125" y="429.400" width="310" height="81.700" fill="white" stroke="black" stroke-width="2.5" />
+<text x="280" y="477.533" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">Accumulate</text>
+<polyline points="280,511.100 280,556.700" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="305" y="539.600" text-anchor="start" font-family="DejaVu Serif" font-size="25"><tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">ϕ</tspan><tspan dy="-7">​</tspan>, <tspan font-style="italic">u</tspan><tspan dy="7" font-size="19">θ</tspan><tspan dy="-7">​</tspan></text>
+<rect x="125" y="556.700" width="310" height="81.700" fill="white" stroke="black" stroke-width="2.5" />
+<text x="280" y="588.683" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">Four-leg height allocation</text>
+<text x="280" y="620.983" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="23">Eq. (19)</text>
+<polyline points="28,597.550 125,597.550" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="55.5" y="578.550" text-anchor="start" font-family="DejaVu Serif" font-size="27"><tspan font-style="italic">h</tspan><tspan dy="7" font-size="19">0</tspan><tspan dy="-7">​</tspan></text>
+<polyline points="280,638.400 280,680.200" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="305" y="665.950" text-anchor="start" font-family="DejaVu Serif" font-size="25"><tspan font-style="italic">h</tspan><tspan dy="7" font-size="19">i</tspan><tspan dy="-7">​</tspan><tspan dx="-7" dy="-13" font-size="19">d</tspan><tspan dy="13">​</tspan></text>
+<rect x="125" y="680.200" width="310" height="58.900" fill="white" stroke="black" stroke-width="2.5" />
+<text x="280" y="717.567" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Leg inverse kinematics</text>
+<polyline points="280,739.100 280,779.000" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="305" y="765.700" text-anchor="start" font-family="DejaVu Sans, sans-serif" font-size="25">Joint targets</text>
+<rect x="125" y="779.000" width="310" height="58.900" fill="white" stroke="black" stroke-width="2.5" />
+<text x="280" y="816.367" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Joint servos</text>
+<polyline points="280,837.900 280,879.700" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="305" y="865.450" text-anchor="start" font-family="DejaVu Sans, sans-serif" font-size="25">Body motion</text>
+<rect x="125" y="879.700" width="310" height="81.700" fill="white" stroke="black" stroke-width="2.5" />
+<text x="280" y="912.317" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">IMU</text>
+<text x="280" y="944.617" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="25">Attitude / angular rate</text>
+<polyline points="435,903.450 552,903.450 552,276.450 301,276.450" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<polyline points="435,939.550 688,939.550 688,95.000 301,95.000" fill="none" stroke="black" stroke-width="2.5" marker-end="url(#arrow)" />
+<text x="564" y="660.250" text-anchor="start" font-family="DejaVu Serif" font-size="26"><tspan dx="8" dy="-17">·</tspan><tspan dx="-17" dy="17" font-style="italic">χ</tspan>[k]</text>
+<text x="700" y="660.250" text-anchor="start" font-family="DejaVu Serif" font-size="26"><tspan font-style="italic">χ</tspan>[k]</text>
+<text x="322.6796875" y="1000.350" text-anchor="start" font-family="DejaVu Serif" font-size="26">χ ∈ {ϕ, θ}</text>
+</g></svg>
