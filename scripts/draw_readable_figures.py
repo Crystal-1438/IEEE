@@ -157,7 +157,29 @@ torques. Solid arrows are forward paths and dashed arrows are feedback.</desc>
     line([(605, 1692), (885, 1692), (885, 1278), (860, 1278)], feedback=True)
     text(450, 1753, 'Solid: forward   Dashed: feedback   FF: feedforward')
     parts.append('</g></svg>')
-    save('\n'.join(parts), 'Fig2_Control_Flow_Readable', 3)
+    # Keep the original figure's printed height. Compress vertical spacing,
+    # not text, to avoid pushing the manuscript's floating figures onto a new
+    # page when the diagram is expanded to the full column width.
+    root = ET.fromstring('\n'.join(parts))
+    compact_height = 1565
+    scale_y = compact_height / height
+    root.set('height', str(compact_height))
+    root.set('viewBox', f'0 0 {width} {compact_height}')
+    for node in root.iter():
+        tag = node.tag.rsplit('}', 1)[-1]
+        attributes = {
+            'rect': ('y', 'height'), 'text': ('y',),
+            'line': ('y1', 'y2'), 'circle': ('cy', 'r'),
+        }.get(tag, ())
+        for attr in attributes:
+            if attr in node.attrib:
+                node.set(attr, f'{float(node.get(attr))*scale_y:.3f}')
+        if tag == 'polyline':
+            node.set('points', ' '.join(
+                f'{x},{float(y)*scale_y:.3f}'
+                for x, y in (point.split(',') for point in node.get('points').split())
+            ))
+    save(ET.tostring(root, encoding='unicode'), 'Fig2_Control_Flow_Readable', 3)
 
 
 def enlarge_delta():
